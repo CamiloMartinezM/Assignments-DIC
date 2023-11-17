@@ -772,16 +772,11 @@ for (i=1; i<=nx; i++)
      vy = (v[i][j+1] - v[i][j-1]) * inv_two_hy;
 
      /* compute squared gradient of v */
-     /*
-       SUPPLEMENT CODE
-     */
+     grad_sqr = vx * vx + vy * vy;
 
      /* compute exponential Perona-Malik diffusivity g */
-     /*
-       SUPPLEMENT CODE
-     */
+     g[i][j] = exp(-grad_sqr * aux);
      }
-
 
 /* ---- perform one diffusion step ---- */
 
