@@ -1,0 +1,605 @@
+initial image
+minimum:             51.00 
+maximum:            191.00 
+mean:               123.79 
+standard dev.:       20.38 
+
+iteration:               1
+minimum:             55.60 
+maximum:            188.76 
+mean:               123.79 
+standard dev.:       19.38 
+
+iteration:               2
+minimum:             57.47 
+maximum:            185.51 
+mean:               123.79 
+standard dev.:       18.86 
+
+iteration:               3
+minimum:             58.52 
+maximum:            183.82 
+mean:               123.79 
+standard dev.:       18.48 
+
+iteration:               4
+minimum:             59.44 
+maximum:            182.71 
+mean:               123.79 
+standard dev.:       18.17 
+
+iteration:               5
+minimum:             60.26 
+maximum:            182.15 
+mean:               123.79 
+standard dev.:       17.92 
+
+iteration:               6
+minimum:             61.05 
+maximum:            181.55 
+mean:               123.79 
+standard dev.:       17.70 
+
+iteration:               7
+minimum:             61.76 
+maximum:            181.06 
+mean:               123.79 
+standard dev.:       17.50 
+
+iteration:               8
+minimum:             62.43 
+maximum:            180.53 
+mean:               123.79 
+standard dev.:       17.33 
+
+iteration:               9
+minimum:             63.04 
+maximum:            180.10 
+mean:               123.79 
+standard dev.:       17.17 
+
+iteration:              10
+minimum:             63.62 
+maximum:            179.65 
+mean:               123.79 
+standard dev.:       17.02 
+
+iteration:              11
+minimum:             64.14 
+maximum:            179.25 
+mean:               123.79 
+standard dev.:       16.89 
+
+iteration:              12
+minimum:             64.65 
+maximum:            178.87 
+mean:               123.79 
+standard dev.:       16.76 
+
+iteration:              13
+minimum:             65.11 
+maximum:            178.51 
+mean:               123.79 
+standard dev.:       16.64 
+
+iteration:              14
+minimum:             65.55 
+maximum:            178.18 
+mean:               123.79 
+standard dev.:       16.53 
+
+iteration:              15
+minimum:             65.96 
+maximum:            177.88 
+mean:               123.79 
+standard dev.:       16.43 
+
+iteration:              16
+minimum:             66.36 
+maximum:            177.58 
+mean:               123.79 
+standard dev.:       16.33 
+
+iteration:              17
+minimum:             66.74 
+maximum:            177.31 
+mean:               123.79 
+standard dev.:       16.23 
+
+iteration:              18
+minimum:             67.10 
+maximum:            177.10 
+mean:               123.79 
+standard dev.:       16.14 
+
+iteration:              19
+minimum:             67.39 
+maximum:            176.85 
+mean:               123.79 
+standard dev.:       16.05 
+
+iteration:              20
+minimum:             67.66 
+maximum:            176.66 
+mean:               123.79 
+standard dev.:       15.97 
+
+iteration:              21
+minimum:             67.93 
+maximum:            176.43 
+mean:               123.79 
+standard dev.:       15.89 
+
+iteration:              22
+minimum:             68.20 
+maximum:            176.24 
+mean:               123.79 
+standard dev.:       15.81 
+
+iteration:              23
+minimum:             68.47 
+maximum:            176.01 
+mean:               123.79 
+standard dev.:       15.73 
+
+iteration:              24
+minimum:             68.73 
+maximum:            175.82 
+mean:               123.79 
+standard dev.:       15.66 
+
+iteration:              25
+minimum:             68.99 
+maximum:            175.60 
+mean:               123.79 
+standard dev.:       15.59 
+
+iteration:              26
+minimum:             69.25 
+maximum:            175.42 
+mean:               123.79 
+standard dev.:       15.53 
+
+iteration:              27
+minimum:             69.51 
+maximum:            175.20 
+mean:               123.79 
+standard dev.:       15.46 
+
+iteration:              28
+minimum:             69.76 
+maximum:            175.03 
+mean:               123.79 
+standard dev.:       15.40 
+
+iteration:              29
+minimum:             70.01 
+maximum:            174.86 
+mean:               123.79 
+standard dev.:       15.33 
+
+iteration:              30
+minimum:             70.26 
+maximum:            174.69 
+mean:               123.79 
+standard dev.:       15.27 
+
+iteration:              31
+minimum:             70.51 
+maximum:            174.52 
+mean:               123.79 
+standard dev.:       15.22 
+
+iteration:              32
+minimum:             70.75 
+maximum:            174.36 
+mean:               123.79 
+standard dev.:       15.16 
+
+iteration:              33
+minimum:             70.97 
+maximum:            174.20 
+mean:               123.79 
+standard dev.:       15.10 
+
+iteration:              34
+minimum:             71.20 
+maximum:            174.03 
+mean:               123.79 
+standard dev.:       15.05 
+
+iteration:              35
+minimum:             71.42 
+maximum:            173.87 
+mean:               123.79 
+standard dev.:       15.00 
+
+iteration:              36
+minimum:             71.65 
+maximum:            173.70 
+mean:               123.79 
+standard dev.:       14.94 
+
+iteration:              37
+minimum:             71.87 
+maximum:            173.55 
+mean:               123.79 
+standard dev.:       14.89 
+
+iteration:              38
+minimum:             72.09 
+maximum:            173.38 
+mean:               123.79 
+standard dev.:       14.84 
+
+iteration:              39
+minimum:             72.31 
+maximum:            173.23 
+mean:               123.79 
+standard dev.:       14.79 
+
+iteration:              40
+minimum:             72.53 
+maximum:            173.07 
+mean:               123.79 
+standard dev.:       14.75 
+
+iteration:              41
+minimum:             72.74 
+maximum:            172.91 
+mean:               123.79 
+standard dev.:       14.70 
+
+iteration:              42
+minimum:             72.95 
+maximum:            172.75 
+mean:               123.79 
+standard dev.:       14.65 
+
+iteration:              43
+minimum:             73.17 
+maximum:            172.60 
+mean:               123.79 
+standard dev.:       14.61 
+
+iteration:              44
+minimum:             73.38 
+maximum:            172.46 
+mean:               123.79 
+standard dev.:       14.57 
+
+iteration:              45
+minimum:             73.58 
+maximum:            172.32 
+mean:               123.79 
+standard dev.:       14.52 
+
+iteration:              46
+minimum:             73.79 
+maximum:            172.19 
+mean:               123.79 
+standard dev.:       14.48 
+
+iteration:              47
+minimum:             73.99 
+maximum:            172.05 
+mean:               123.79 
+standard dev.:       14.44 
+
+iteration:              48
+minimum:             74.20 
+maximum:            171.92 
+mean:               123.79 
+standard dev.:       14.40 
+
+iteration:              49
+minimum:             74.40 
+maximum:            171.78 
+mean:               123.79 
+standard dev.:       14.36 
+
+iteration:              50
+minimum:             74.59 
+maximum:            171.65 
+mean:               123.79 
+standard dev.:       14.32 
+
+iteration:              51
+minimum:             74.79 
+maximum:            171.51 
+mean:               123.79 
+standard dev.:       14.28 
+
+iteration:              52
+minimum:             74.98 
+maximum:            171.38 
+mean:               123.79 
+standard dev.:       14.24 
+
+iteration:              53
+minimum:             75.18 
+maximum:            171.24 
+mean:               123.79 
+standard dev.:       14.20 
+
+iteration:              54
+minimum:             75.37 
+maximum:            171.11 
+mean:               123.79 
+standard dev.:       14.17 
+
+iteration:              55
+minimum:             75.56 
+maximum:            170.98 
+mean:               123.79 
+standard dev.:       14.13 
+
+iteration:              56
+minimum:             75.74 
+maximum:            170.84 
+mean:               123.79 
+standard dev.:       14.09 
+
+iteration:              57
+minimum:             75.93 
+maximum:            170.71 
+mean:               123.79 
+standard dev.:       14.06 
+
+iteration:              58
+minimum:             76.11 
+maximum:            170.58 
+mean:               123.79 
+standard dev.:       14.02 
+
+iteration:              59
+minimum:             76.29 
+maximum:            170.45 
+mean:               123.79 
+standard dev.:       13.99 
+
+iteration:              60
+minimum:             76.47 
+maximum:            170.32 
+mean:               123.79 
+standard dev.:       13.95 
+
+iteration:              61
+minimum:             76.65 
+maximum:            170.19 
+mean:               123.79 
+standard dev.:       13.92 
+
+iteration:              62
+minimum:             76.83 
+maximum:            170.07 
+mean:               123.79 
+standard dev.:       13.89 
+
+iteration:              63
+minimum:             77.00 
+maximum:            169.94 
+mean:               123.79 
+standard dev.:       13.85 
+
+iteration:              64
+minimum:             77.17 
+maximum:            169.81 
+mean:               123.79 
+standard dev.:       13.82 
+
+iteration:              65
+minimum:             77.34 
+maximum:            169.69 
+mean:               123.79 
+standard dev.:       13.79 
+
+iteration:              66
+minimum:             77.51 
+maximum:            169.56 
+mean:               123.79 
+standard dev.:       13.76 
+
+iteration:              67
+minimum:             77.68 
+maximum:            169.44 
+mean:               123.79 
+standard dev.:       13.73 
+
+iteration:              68
+minimum:             77.84 
+maximum:            169.31 
+mean:               123.79 
+standard dev.:       13.70 
+
+iteration:              69
+minimum:             78.01 
+maximum:            169.19 
+mean:               123.79 
+standard dev.:       13.67 
+
+iteration:              70
+minimum:             78.17 
+maximum:            169.07 
+mean:               123.79 
+standard dev.:       13.64 
+
+iteration:              71
+minimum:             78.24 
+maximum:            168.95 
+mean:               123.79 
+standard dev.:       13.61 
+
+iteration:              72
+minimum:             78.31 
+maximum:            168.83 
+mean:               123.79 
+standard dev.:       13.58 
+
+iteration:              73
+minimum:             78.38 
+maximum:            168.71 
+mean:               123.79 
+standard dev.:       13.55 
+
+iteration:              74
+minimum:             78.45 
+maximum:            168.60 
+mean:               123.79 
+standard dev.:       13.52 
+
+iteration:              75
+minimum:             78.52 
+maximum:            168.48 
+mean:               123.79 
+standard dev.:       13.49 
+
+iteration:              76
+minimum:             78.59 
+maximum:            168.37 
+mean:               123.79 
+standard dev.:       13.46 
+
+iteration:              77
+minimum:             78.66 
+maximum:            168.25 
+mean:               123.79 
+standard dev.:       13.43 
+
+iteration:              78
+minimum:             78.72 
+maximum:            168.14 
+mean:               123.79 
+standard dev.:       13.41 
+
+iteration:              79
+minimum:             78.78 
+maximum:            168.03 
+mean:               123.79 
+standard dev.:       13.38 
+
+iteration:              80
+minimum:             78.84 
+maximum:            167.92 
+mean:               123.79 
+standard dev.:       13.35 
+
+iteration:              81
+minimum:             78.89 
+maximum:            167.81 
+mean:               123.79 
+standard dev.:       13.33 
+
+iteration:              82
+minimum:             78.95 
+maximum:            167.70 
+mean:               123.79 
+standard dev.:       13.30 
+
+iteration:              83
+minimum:             79.01 
+maximum:            167.59 
+mean:               123.79 
+standard dev.:       13.27 
+
+iteration:              84
+minimum:             79.07 
+maximum:            167.48 
+mean:               123.79 
+standard dev.:       13.25 
+
+iteration:              85
+minimum:             79.13 
+maximum:            167.37 
+mean:               123.79 
+standard dev.:       13.22 
+
+iteration:              86
+minimum:             79.19 
+maximum:            167.26 
+mean:               123.79 
+standard dev.:       13.20 
+
+iteration:              87
+minimum:             79.25 
+maximum:            167.15 
+mean:               123.79 
+standard dev.:       13.17 
+
+iteration:              88
+minimum:             79.31 
+maximum:            167.04 
+mean:               123.79 
+standard dev.:       13.15 
+
+iteration:              89
+minimum:             79.37 
+maximum:            166.94 
+mean:               123.79 
+standard dev.:       13.12 
+
+iteration:              90
+minimum:             79.43 
+maximum:            166.83 
+mean:               123.79 
+standard dev.:       13.10 
+
+iteration:              91
+minimum:             79.48 
+maximum:            166.73 
+mean:               123.79 
+standard dev.:       13.07 
+
+iteration:              92
+minimum:             79.53 
+maximum:            166.62 
+mean:               123.79 
+standard dev.:       13.05 
+
+iteration:              93
+minimum:             79.59 
+maximum:            166.52 
+mean:               123.79 
+standard dev.:       13.03 
+
+iteration:              94
+minimum:             79.64 
+maximum:            166.41 
+mean:               123.79 
+standard dev.:       13.00 
+
+iteration:              95
+minimum:             79.69 
+maximum:            166.31 
+mean:               123.79 
+standard dev.:       12.98 
+
+iteration:              96
+minimum:             79.74 
+maximum:            166.21 
+mean:               123.79 
+standard dev.:       12.96 
+
+iteration:              97
+minimum:             79.79 
+maximum:            166.11 
+mean:               123.79 
+standard dev.:       12.93 
+
+iteration:              98
+minimum:             79.85 
+maximum:            166.01 
+mean:               123.79 
+standard dev.:       12.91 
+
+iteration:              99
+minimum:             79.90 
+maximum:            165.91 
+mean:               123.79 
+standard dev.:       12.89 
+
+iteration:             100
+minimum:             79.95 
+maximum:            165.81 
+mean:               123.79 
+standard dev.:       12.87

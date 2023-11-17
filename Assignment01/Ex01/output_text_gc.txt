@@ -1,0 +1,147 @@
+GAUSSIAN CONVOLUTION FOR GREYSCALE (PGM) IMAGES
+ALGORITHM: TRUNCATED AND RENORMALISED GAUSSIAN
+           WITH TRUNCATION AT +/- 5 * SIGMA
+
+**************************************************
+
+    Copyright 2020 by Joachim Weickert            
+    Dept. of Mathematics and Computer Science     
+    Saarland University, Saarbruecken, Germany    
+
+    All rights reserved. Unauthorised usage,      
+    copying, hiring, and selling prohibited.      
+
+    Send bug reports to                           
+    weickert@mia.uni-saarland.de                  
+
+**************************************************
+
+input image (pgm):                  fabric.pgm
+standard deviation sigma (> 0.0):   1
+output image (pgm):                 output_1_gc.png 
+
+initial image
+minimum:             51.00 
+maximum:            191.00 
+mean:               123.79 
+standard dev.:       20.38 
+
+convolved image
+minimum:             57.29 
+maximum:            185.48 
+mean:               123.79 
+standard dev.:       18.86 
+
+ Camilo  ~  Documentos  Local de Onedrive-Unisaarland [to execute]  Ex01  ./gauss_conv
+
+GAUSSIAN CONVOLUTION FOR GREYSCALE (PGM) IMAGES
+ALGORITHM: TRUNCATED AND RENORMALISED GAUSSIAN
+           WITH TRUNCATION AT +/- 5 * SIGMA
+
+**************************************************
+
+    Copyright 2020 by Joachim Weickert            
+    Dept. of Mathematics and Computer Science     
+    Saarland University, Saarbruecken, Germany    
+
+    All rights reserved. Unauthorised usage,      
+    copying, hiring, and selling prohibited.      
+
+    Send bug reports to                           
+    weickert@mia.uni-saarland.de                  
+
+**************************************************
+
+input image (pgm):                  fabric.pgm      
+standard deviation sigma (> 0.0):   2
+output image (pgm):                 output_2_gc.png
+
+initial image
+minimum:             51.00 
+maximum:            191.00 
+mean:               123.79 
+standard dev.:       20.38 
+
+convolved image
+minimum:             62.57 
+maximum:            180.46 
+mean:               123.79 
+standard dev.:       17.29 
+
+output image output_2_gc.png successfully written
+
+ Camilo  ~  Documentos  Local de Onedrive-Unisaarland [to execute]  Ex01  ./gauss_conv
+
+GAUSSIAN CONVOLUTION FOR GREYSCALE (PGM) IMAGES
+ALGORITHM: TRUNCATED AND RENORMALISED GAUSSIAN
+           WITH TRUNCATION AT +/- 5 * SIGMA
+
+**************************************************
+
+    Copyright 2020 by Joachim Weickert            
+    Dept. of Mathematics and Computer Science     
+    Saarland University, Saarbruecken, Germany    
+
+    All rights reserved. Unauthorised usage,      
+    copying, hiring, and selling prohibited.      
+
+    Send bug reports to                           
+    weickert@mia.uni-saarland.de                  
+
+**************************************************
+
+input image (pgm):                  fabric.pgm
+standard deviation sigma (> 0.0):   3
+output image (pgm):                 output_3_gc.png
+
+initial image
+minimum:             51.00 
+maximum:            191.00 
+mean:               123.79 
+standard dev.:       20.38 
+
+convolved image
+minimum:             67.28 
+maximum:            176.94 
+mean:               123.79 
+standard dev.:       16.08 
+
+output image output_3_gc.png successfully written
+
+ Camilo  ~  Documentos  Local de Onedrive-Unisaarland [to execute]  Ex01  ./gauss_conv
+
+GAUSSIAN CONVOLUTION FOR GREYSCALE (PGM) IMAGES
+ALGORITHM: TRUNCATED AND RENORMALISED GAUSSIAN
+           WITH TRUNCATION AT +/- 5 * SIGMA
+
+**************************************************
+
+    Copyright 2020 by Joachim Weickert            
+    Dept. of Mathematics and Computer Science     
+    Saarland University, Saarbruecken, Germany    
+
+    All rights reserved. Unauthorised usage,      
+    copying, hiring, and selling prohibited.      
+
+    Send bug reports to                           
+    weickert@mia.uni-saarland.de                  
+
+**************************************************
+
+input image (pgm):                  fabric.pgm
+standard deviation sigma (> 0.0):   5        
+output image (pgm):                 output_5_gc.png
+
+initial image
+minimum:             51.00 
+maximum:            191.00 
+mean:               123.79 
+standard dev.:       20.38 
+
+convolved image
+minimum:             74.97 
+maximum:            171.37 
+mean:               123.79 
+standard dev.:       14.24 
+
+output image output_5_gc.png successfully written

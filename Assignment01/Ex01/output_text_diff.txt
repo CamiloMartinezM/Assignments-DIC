@@ -1,0 +1,127 @@
+GAUSSIAN CONVOLUTION FOR GREYSCALE (PGM) IMAGES
+ALGORITHM: TRUNCATED AND RENORMALISED GAUSSIAN
+           WITH TRUNCATION AT +/- 5 * SIGMA
+
+**************************************************
+
+    Copyright 2020 by Joachim Weickert            
+    Dept. of Mathematics and Computer Science     
+    Saarland University, Saarbruecken, Germany    
+
+    All rights reserved. Unauthorised usage,      
+    copying, hiring, and selling prohibited.      
+
+    Send bug reports to                           
+    weickert@mia.uni-saarland.de                  
+
+**************************************************
+
+input image (pgm):                  fabric.pgm
+standard deviation sigma (> 0.0):   4.47213595
+output image (pgm):                 output_t_01x100_gc.pgm
+
+initial image
+minimum:             51.00 
+maximum:            191.00 
+mean:               123.79 
+standard dev.:       20.38 
+
+convolved image
+minimum:             72.86 
+maximum:            172.81 
+mean:               123.79 
+standard dev.:       14.67 
+
+output image output_t_01x100_gc.pgm successfully written
+
+ Camilo  ~  Documentos  Local de Onedrive-Unisaarland [to execute]  Ex01  ./difference
+
+ABSOLUTE DIFFERENCE BETWEEN TWO GREYSCALE (PGM) IMAGES
+
+**************************************************
+
+    Copyright 2020 by Joachim Weickert            
+    Dept. of Mathematics and Computer Science     
+    Saarland University, Saarbruecken, Germany    
+
+    All rights reserved. Unauthorised usage,      
+    copying, hiring, and selling prohibited.      
+
+    Send bug reports to                           
+    weickert@mia.uni-saarland.de                  
+
+**************************************************
+
+input image 1 (pgm):             output_01_100.pgm
+input image 2 (pgm):             output_t_01x100_gc.pgm
+output image (pgm):              output_diff_01_100.pgm
+
+average absolute difference:     0.0065 
+maximum absolute difference:     1 
+
+output image output_diff_01_100.pgm successfully written
+
+ Camilo  ~  Documentos  Local de Onedrive-Unisaarland [to execute]  Ex01  ./gauss_conv
+
+GAUSSIAN CONVOLUTION FOR GREYSCALE (PGM) IMAGES
+ALGORITHM: TRUNCATED AND RENORMALISED GAUSSIAN
+           WITH TRUNCATION AT +/- 5 * SIGMA
+
+**************************************************
+
+    Copyright 2020 by Joachim Weickert            
+    Dept. of Mathematics and Computer Science     
+    Saarland University, Saarbruecken, Germany    
+
+    All rights reserved. Unauthorised usage,      
+    copying, hiring, and selling prohibited.      
+
+    Send bug reports to                           
+    weickert@mia.uni-saarland.de                  
+
+**************************************************
+
+input image (pgm):                  fabric.pgm
+standard deviation sigma (> 0.0):   6.92820323
+output image (pgm):                 output_t_024x100_gc.pgm
+
+initial image
+minimum:             51.00 
+maximum:            191.00 
+mean:               123.79 
+standard dev.:       20.38 
+
+convolved image
+minimum:             79.95 
+maximum:            165.82 
+mean:               123.79 
+standard dev.:       12.87 
+
+output image output_t_024x100_gc.pgm successfully written
+
+ Camilo  ~  Documentos  Local de Onedrive-Unisaarland [to execute]  Ex01  ./difference
+
+ABSOLUTE DIFFERENCE BETWEEN TWO GREYSCALE (PGM) IMAGES
+
+**************************************************
+
+    Copyright 2020 by Joachim Weickert            
+    Dept. of Mathematics and Computer Science     
+    Saarland University, Saarbruecken, Germany    
+
+    All rights reserved. Unauthorised usage,      
+    copying, hiring, and selling prohibited.      
+
+    Send bug reports to                           
+    weickert@mia.uni-saarland.de                  
+
+**************************************************
+
+input image 1 (pgm):             output_024_100.pgm
+input image 2 (pgm):             output_t_024x100_gc.pgm
+output image (pgm):              output_diff_024_100.pgm
+
+average absolute difference:     0.0090 
+maximum absolute difference:     1 
+
+output image output_diff_024_100.pgm successfully written

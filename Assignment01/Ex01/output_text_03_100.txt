@@ -1,0 +1,605 @@
+initial image
+minimum:             51.00 
+maximum:            191.00 
+mean:               123.79 
+standard dev.:       20.38 
+
+iteration:               1
+minimum:             55.00 
+maximum:            188.70 
+mean:               123.79 
+standard dev.:       19.23 
+
+iteration:               2
+minimum:             57.85 
+maximum:            184.82 
+mean:               123.79 
+standard dev.:       18.66 
+
+iteration:               3
+minimum:             59.24 
+maximum:            183.35 
+mean:               123.79 
+standard dev.:       18.25 
+
+iteration:               4
+minimum:             60.29 
+maximum:            182.74 
+mean:               123.79 
+standard dev.:       17.94 
+
+iteration:               5
+minimum:             61.23 
+maximum:            182.36 
+mean:               123.79 
+standard dev.:       17.69 
+
+iteration:               6
+minimum:             62.23 
+maximum:            182.06 
+mean:               123.79 
+standard dev.:       17.49 
+
+iteration:               7
+minimum:             62.83 
+maximum:            182.05 
+mean:               123.79 
+standard dev.:       17.33 
+
+iteration:               8
+minimum:             63.82 
+maximum:            181.91 
+mean:               123.79 
+standard dev.:       17.24 
+
+iteration:               9
+minimum:             64.13 
+maximum:            185.11 
+mean:               123.79 
+standard dev.:       17.24 
+
+iteration:              10
+minimum:             61.98 
+maximum:            188.19 
+mean:               123.79 
+standard dev.:       17.37 
+
+iteration:              11
+minimum:             56.88 
+maximum:            192.28 
+mean:               123.79 
+standard dev.:       17.74 
+
+iteration:              12
+minimum:             44.11 
+maximum:            198.06 
+mean:               123.79 
+standard dev.:       18.50 
+
+iteration:              13
+minimum:             24.64 
+maximum:            217.63 
+mean:               123.79 
+standard dev.:       19.91 
+
+iteration:              14
+minimum:            -11.88 
+maximum:            250.75 
+mean:               123.79 
+standard dev.:       22.32 
+
+iteration:              15
+minimum:            -49.04 
+maximum:            293.17 
+mean:               123.79 
+standard dev.:       26.23 
+
+iteration:              16
+minimum:           -112.87 
+maximum:            349.96 
+mean:               123.79 
+standard dev.:       32.26 
+
+iteration:              17
+minimum:           -182.90 
+maximum:            429.30 
+mean:               123.79 
+standard dev.:       41.15 
+
+iteration:              18
+minimum:           -296.01 
+maximum:            529.96 
+mean:               123.79 
+standard dev.:       53.89 
+
+iteration:              19
+minimum:           -426.29 
+maximum:            676.57 
+mean:               123.79 
+standard dev.:       71.80 
+
+iteration:              20
+minimum:           -629.97 
+maximum:            858.61 
+mean:               123.79 
+standard dev.:       96.66 
+
+iteration:              21
+minimum:           -871.64 
+maximum:           1128.46 
+mean:               123.79 
+standard dev.:      130.98 
+
+iteration:              22
+minimum:          -1242.06 
+maximum:           1461.93 
+mean:               123.79 
+standard dev.:      178.21 
+
+iteration:              23
+minimum:          -1690.89 
+maximum:           1958.58 
+mean:               123.79 
+standard dev.:      243.10 
+
+iteration:              24
+minimum:          -2369.09 
+maximum:           2574.76 
+mean:               123.79 
+standard dev.:      332.23 
+
+iteration:              25
+minimum:          -3204.98 
+maximum:           3490.24 
+mean:               123.79 
+standard dev.:      454.68 
+
+iteration:              26
+minimum:          -4452.74 
+maximum:           4635.95 
+mean:               123.79 
+standard dev.:      622.94 
+
+iteration:              27
+minimum:          -6014.42 
+maximum:           6327.23 
+mean:               123.79 
+standard dev.:      854.26 
+
+iteration:              28
+minimum:          -8318.90 
+maximum:           8467.76 
+mean:               123.79 
+standard dev.:     1172.43 
+
+iteration:              29
+minimum:          -11282.93 
+maximum:          11599.93 
+mean:               123.79 
+standard dev.:     1610.29 
+
+iteration:              30
+minimum:          -15515.50 
+maximum:          15814.48 
+mean:               123.79 
+standard dev.:     2213.18 
+
+iteration:              31
+minimum:          -21504.13 
+maximum:          21429.15 
+mean:               123.79 
+standard dev.:     3043.68 
+
+iteration:              32
+minimum:          -29232.53 
+maximum:          29888.13 
+mean:               123.79 
+standard dev.:     4188.30 
+
+iteration:              33
+minimum:          -40883.50 
+maximum:          40533.69 
+mean:               123.79 
+standard dev.:     5766.53 
+
+iteration:              34
+minimum:          -55553.20 
+maximum:          56574.29 
+mean:               123.79 
+standard dev.:     7943.59 
+
+iteration:              35
+minimum:          -77634.41 
+maximum:          76792.97 
+mean:               123.79 
+standard dev.:    10947.94 
+
+iteration:              36
+minimum:          -105510.45 
+maximum:          107189.31 
+mean:               123.79 
+standard dev.:    15095.59 
+
+iteration:              37
+minimum:          -147350.58 
+maximum:          145631.09 
+mean:               123.79 
+standard dev.:    20823.76 
+
+iteration:              38
+minimum:          -200378.63 
+maximum:          203224.06 
+mean:               123.79 
+standard dev.:    28737.59 
+
+iteration:              39
+minimum:          -279654.42 
+maximum:          276389.79 
+mean:               123.79 
+standard dev.:    39674.82 
+
+iteration:              40
+minimum:          -380632.61 
+maximum:          385515.24 
+mean:               123.79 
+standard dev.:    54795.47 
+
+iteration:              41
+minimum:          -530850.86 
+maximum:          524910.48 
+mean:               123.79 
+standard dev.:    75706.26 
+
+iteration:              42
+minimum:          -723327.02 
+maximum:          731706.96 
+mean:               123.79 
+standard dev.:    104633.11 
+
+iteration:              43
+minimum:          -1008027.07 
+maximum:          997536.95 
+mean:               123.79 
+standard dev.:    144660.52 
+
+iteration:              44
+minimum:          -1375251.90 
+maximum:          1389517.38 
+mean:               123.79 
+standard dev.:    200063.62 
+
+iteration:              45
+minimum:          -1914980.33 
+maximum:          1896921.68 
+mean:               123.79 
+standard dev.:    276769.02 
+
+iteration:              46
+minimum:          -2616226.52 
+maximum:          2640156.84 
+mean:               123.79 
+standard dev.:    382994.47 
+
+iteration:              47
+minimum:          -3639800.81 
+maximum:          3609496.78 
+mean:               123.79 
+standard dev.:    530136.75 
+
+iteration:              48
+minimum:          -4980001.18 
+maximum:          5019301.66 
+mean:               123.79 
+standard dev.:    734004.45 
+
+iteration:              49
+minimum:          -6921992.66 
+maximum:          6872608.94 
+mean:               123.79 
+standard dev.:    1016529.84 
+
+iteration:              50
+minimum:          -9485339.16 
+maximum:          9548001.66 
+mean:               123.79 
+standard dev.:    1408146.19 
+
+iteration:              51
+minimum:          -13171562.25 
+maximum:          13094061.50 
+mean:               123.79 
+standard dev.:    1951089.92 
+
+iteration:              52
+minimum:          -18077945.45 
+maximum:          18173690.32 
+mean:               123.79 
+standard dev.:    2703987.76 
+
+iteration:              53
+minimum:          -25078626.35 
+maximum:          24963390.59 
+mean:               123.79 
+standard dev.:    3748229.97 
+
+iteration:              54
+minimum:          -34476101.32 
+maximum:          34612969.33 
+mean:               123.79 
+standard dev.:    5196825.87 
+
+iteration:              55
+minimum:          -47778731.55 
+maximum:          47621868.33 
+mean:               123.79 
+standard dev.:    7206710.37 
+
+iteration:              56
+minimum:          -65789672.96 
+maximum:          65963126.45 
+mean:               123.79 
+standard dev.:    9995848.03 
+
+iteration:              57
+minimum:          -91081731.16 
+maximum:          90903121.55 
+mean:               123.79 
+standard dev.:    13867007.59 
+
+iteration:              58
+minimum:          -125621401.60 
+maximum:          125785301.75 
+mean:               123.79 
+standard dev.:    19240812.31 
+
+iteration:              59
+minimum:          -173737253.73 
+maximum:          173626235.14 
+mean:               123.79 
+standard dev.:    26701689.49 
+
+iteration:              60
+minimum:          -240010559.64 
+maximum:          240006423.35 
+mean:               123.79 
+standard dev.:    37061760.60 
+
+iteration:              61
+minimum:          -331602015.10 
+maximum:          331825533.73 
+mean:               123.79 
+standard dev.:    51449685.08 
+
+iteration:              62
+minimum:          -458829520.81 
+maximum:          458222885.54 
+mean:               123.79 
+standard dev.:    71434216.29 
+
+iteration:              63
+minimum:          -633286252.73 
+maximum:          634534329.77 
+mean:               123.79 
+standard dev.:    99196047.53 
+
+iteration:              64
+minimum:          -877646025.60 
+maximum:          875360871.89 
+mean:               123.79 
+standard dev.:    137766843.37 
+
+iteration:              65
+minimum:          -1210143101.03 
+maximum:          1214069965.47 
+mean:               123.79 
+standard dev.:    191361752.22 
+
+iteration:              66
+minimum:          -1679680539.77 
+maximum:          1673202522.41 
+mean:               123.79 
+standard dev.:    265841998.24 
+
+iteration:              67
+minimum:          -2316660297.15 
+maximum:          2324168321.21 
+mean:               123.79 
+standard dev.:    369358492.62 
+
+iteration:              68
+minimum:          -3216363527.59 
+maximum:          3208249378.89 
+mean:               123.79 
+standard dev.:    513247371.81 
+
+iteration:              69
+minimum:          -4443526693.81 
+maximum:          4451623703.56 
+mean:               123.79 
+standard dev.:    713276169.80 
+
+iteration:              70
+minimum:          -6179973897.99 
+maximum:          6168708135.25 
+mean:               123.79 
+standard dev.:    991378040.96 
+
+iteration:              71
+minimum:          -8570572267.73 
+maximum:          8589453646.54 
+mean:               123.79 
+standard dev.:    1378065349.76 
+
+iteration:              72
+minimum:          -11938921955.54 
+maximum:          11908381001.26 
+mean:               123.79 
+standard dev.:    1915789002.71 
+
+iteration:              73
+minimum:          -16547120578.31 
+maximum:          16595298945.49 
+mean:               123.79 
+standard dev.:    2663614426.26 
+
+iteration:              74
+minimum:          -23068805308.18 
+maximum:          22994211970.70 
+mean:               123.79 
+standard dev.:    3703730670.80 
+
+iteration:              75
+minimum:          -31955127674.77 
+maximum:          32068961549.42 
+mean:               123.79 
+standard dev.:    5150511875.71 
+
+iteration:              76
+minimum:          -44582471955.30 
+maximum:          44410748136.81 
+mean:               123.79 
+standard dev.:    7163132735.72 
+
+iteration:              77
+minimum:          -61724941720.39 
+maximum:          61981568512.22 
+mean:               123.79 
+standard dev.:    9963132975.07 
+
+iteration:              78
+minimum:          -86174714178.01 
+maximum:          85794202182.64 
+mean:               123.79 
+standard dev.:    13858873787.64 
+
+iteration:              79
+minimum:          -119255776260.34 
+maximum:          119816252878.80 
+mean:               123.79 
+standard dev.:    19279592524.37 
+
+iteration:              80
+minimum:          -166598054321.21 
+maximum:          165780096968.48 
+mean:               123.79 
+standard dev.:    26822825304.76 
+
+iteration:              81
+minimum:          -230476015520.48 
+maximum:          231655254713.94 
+mean:               123.79 
+standard dev.:    37320448727.95 
+
+iteration:              82
+minimum:          -322130729811.72 
+maximum:          320433659775.73 
+mean:               123.79 
+standard dev.:    51930655941.19 
+
+iteration:              83
+minimum:          -445522143332.49 
+maximum:          447960443924.15 
+mean:               123.79 
+standard dev.:    72266058210.43 
+
+iteration:              84
+minimum:          -622966119981.19 
+maximum:          619468123229.65 
+mean:               123.79 
+standard dev.:    100572110283.91 
+
+iteration:              85
+minimum:          -861364311070.04 
+maximum:          866375559141.14 
+mean:               123.79 
+standard dev.:    139975641470.96 
+
+iteration:              86
+minimum:          -1204938032726.45 
+maximum:          1197768170841.57 
+mean:               123.79 
+standard dev.:    194831055011.00 
+
+iteration:              87
+minimum:          -1665621787513.80 
+maximum:          1675867777581.91 
+mean:               123.79 
+standard dev.:    271202600891.51 
+
+iteration:              88
+minimum:          -2330939878528.52 
+maximum:          2316314366553.00 
+mean:               123.79 
+standard dev.:    377536237345.30 
+
+iteration:              89
+minimum:          -3221334678598.00 
+maximum:          3242189896236.28 
+mean:               123.79 
+standard dev.:    525595654250.29 
+
+iteration:              90
+minimum:          -4509845411911.68 
+maximum:          4480135984899.27 
+mean:               123.79 
+standard dev.:    731766380008.15 
+
+iteration:              91
+minimum:          -6231079789009.46 
+maximum:          6273363837574.88 
+mean:               123.79 
+standard dev.:    1018872797546.95 
+
+iteration:              92
+minimum:          -8726793452490.27 
+maximum:          8669377856846.31 
+mean:               123.79 
+standard dev.:    1418709906921.04 
+
+iteration:              93
+minimum:          -12062612283471.70 
+maximum:          12140151612558.93 
+mean:               123.79 
+standard dev.:    1975571137511.13 
+
+iteration:              94
+minimum:          -16889178009138.47 
+maximum:          16784514954378.17 
+mean:               123.79 
+standard dev.:    2751164279133.84 
+
+iteration:              95
+minimum:          -23355545924102.34 
+maximum:          23496745170710.26 
+mean:               123.79 
+standard dev.:    3831462002804.71 
+
+iteration:              96
+minimum:          -32690495108862.08 
+maximum:          32500112861536.24 
+mean:               123.79 
+standard dev.:    5336248675208.32 
+
+iteration:              97
+minimum:          -45226518229609.42 
+maximum:          45483062387673.16 
+mean:               123.79 
+standard dev.:    7432425212789.61 
+
+iteration:              98
+minimum:          -63283737795434.13 
+maximum:          62938256259869.29 
+mean:               123.79 
+standard dev.:    10352552002404.99 
+
+iteration:              99
+minimum:          -87588956933806.34 
+maximum:          88053898967105.97 
+mean:               123.79 
+standard dev.:    14420693049213.13 
+
+iteration:             100
+minimum:          -122523368455836.78 
+maximum:          121898099410075.66 
+mean:               123.79 
+standard dev.:    20088437495767.09
