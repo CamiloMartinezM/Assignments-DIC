@@ -4,6 +4,8 @@
 \usepackage{extramarks}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{tikz}
 \usepackage[plain]{algorithm}
@@ -35,6 +37,8 @@
 \renewcommand\footrulewidth{0.4pt}
 
 \setlength\parindent{0pt}
+
+\newcommand{\setsep}{,    \ }
 
 %
 % Create Problem Sections
@@ -138,7 +142,7 @@
 
     \subsection*{(a)}
     
-    $$D(\nabla u) :=  (v_1 \mid v_2) diag(g(\mu_1), 1) (v_1\mid v_2)^\top$$\\ where $v_1$ and $v_2$ are eigenvectors of $J_\rho(\nabla u_\sigma)$
+    $$D(\nabla u) :=  (v_1 \mid v_2) \ diag(g(\mu_1), 1) (v_1\mid v_2)^\top$$\\ where $v_1$ and $v_2$ are eigenvectors of $J_\rho(\nabla u_\sigma)$
     
     \subsection*{(b)}
     
@@ -148,6 +152,201 @@
 
 \begin{homeworkProblem}{(Directional Splitting of Anisotropic Diffusion)}
 
+    First, we consider the right hand of the equation:
+    \[
+        \sum_{i = 0}^{3} {\partial_{\bm{e_i}} (w_i \partial_{\bm{e_i}} u)}
+    \]
+    Where we know that $\partial_{\bm{n}} u = \bm{n}^\mathsf{T} \nabla u$, the directional diffusivities $w_0$, $w_1$, $w_2$, $w_3$ are given by
+    \[
+        w_0 = a - \delta \setsep w_1 = \delta + b \setsep w_2 = c - \delta \setsep w_3 = \delta - b
+    \]
+    And the directions are given by
+    \[
+        \bm{e_0} = 
+            \begin{pmatrix}
+                1 \\ 
+                0  
+            \end{pmatrix}
+        \setsep
+        \bm{e_1} = \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1 \\ 
+                1  
+            \end{pmatrix}
+        \setsep
+        \bm{e_2} = 
+            \begin{pmatrix}
+                0 \\ 
+                1  
+            \end{pmatrix}
+        \setsep
+        \bm{e_3} = \frac{1}{\sqrt{2}} 
+            \begin{pmatrix}
+                -1 \\ 
+                1  
+            \end{pmatrix}
+    \]
+    
+    For \(i = 0\), we have:
+    \[
+        {\partial_{\bm{e_0}} (w_0 \partial_{\bm{e_0}} u)} = 
+            \begin{pmatrix}
+                1 \\ 
+                0  
+            \end{pmatrix}^\mathsf{T} 
+            \nabla \begin{bmatrix}
+                (a - \delta)
+                \begin{pmatrix}
+                    1 \\ 
+                    0  
+                \end{pmatrix}^\mathsf{T} 
+                \begin{pmatrix}
+                    \partial_x u \\ 
+                    \partial_y u  
+                \end{pmatrix}
+            \end{bmatrix}
+        = \partial_x (a \partial_x u) - \partial_x (\delta \partial_x u)
+    \]
+    \\
+    Similarly, for \(i = 2\), we get:
+    \[
+        {\partial_{\bm{e_2}} (w_2 \partial_{\bm{e_2}} u)} = 
+            \begin{pmatrix}
+                0 \\ 
+                1  
+            \end{pmatrix}^\mathsf{T} 
+            \nabla \begin{bmatrix}
+                (c - \delta)
+                \begin{pmatrix}
+                    0 \\ 
+                    1  
+                \end{pmatrix}^\mathsf{T} 
+                \begin{pmatrix}
+                    \partial_x u \\ 
+                    \partial_y u  
+                \end{pmatrix}
+            \end{bmatrix}
+        = \partial_y (c \partial_y u) - \partial_y (\delta \partial_y u)
+    \]
+    \\
+    For \(i = 1\):
+    \[
+        \begin{split}
+            {\partial_{\bm{e_1}} (w_1 \partial_{\bm{e_1}} u)} &= 
+                \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1 \\ 
+                    1  
+                \end{pmatrix}^\mathsf{T} 
+                \nabla \begin{bmatrix}
+                    \frac{1}{\sqrt{2}}
+                    (\delta + b)
+                    \begin{pmatrix}
+                        1 \\ 
+                        1  
+                    \end{pmatrix}^\mathsf{T} 
+                    \begin{pmatrix}
+                        \partial_x u \\ 
+                        \partial_y u  
+                    \end{pmatrix}
+                \end{bmatrix}
+            \\
+            &= \frac{1}{2} \partial_x (\delta \partial_x u) + \frac{1}{2} \partial_x (b \partial_x u) + \frac{1}{2} \partial_x (\delta \partial_y u) + \frac{1}{2} \partial_x (b \partial_y u) + 
+            \frac{1}{2} \partial_y (\delta \partial_x u) + \frac{1}{2} \partial_y (b \partial_x u) +
+            \frac{1}{2} \partial_y (\delta \partial_y u) + \frac{1}{2} \partial_y (b \partial_y u)
+        \end{split}
+    \]
+    Finally, for \(i = 3\):
+    \[
+        \begin{split}
+            {\partial_{\bm{e_3}} (w_3 \partial_{\bm{e_3}} u)} &= 
+                \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    -1 \\ 
+                    1  
+                \end{pmatrix}^\mathsf{T} 
+                \nabla \begin{bmatrix}
+                    \frac{1}{\sqrt{2}}
+                    (\delta - b)
+                    \begin{pmatrix}
+                        -1 \\ 
+                        1  
+                    \end{pmatrix}^\mathsf{T} 
+                    \begin{pmatrix}
+                        \partial_x u \\ 
+                        \partial_y u  
+                    \end{pmatrix}
+                \end{bmatrix}
+            \\
+            &= \frac{1}{2} \partial_x (\delta \partial_x u) - \frac{1}{2} \partial_x (b \partial_x u) - \frac{1}{2} \partial_x (\delta \partial_y u) + \frac{1}{2} \partial_x (b \partial_y u) - 
+            \frac{1}{2} \partial_y (\delta \partial_x u) + \frac{1}{2} \partial_y (b \partial_x u) +
+            \frac{1}{2} \partial_y (\delta \partial_y u) - \frac{1}{2} \partial_y (b \partial_y u)
+        \end{split}
+    \]
+    Summing up the terms for \(i = 1\) and \(i = 3\), we get:
+    \[
+        \begin{split}
+            {\partial_{\bm{e_2}} (w_2 \partial_{\bm{e_2}} u)} + {\partial_{\bm{e_3}} (w_3 \partial_{\bm{e_3}} u)} 
+            &=
+            \partial_x (\delta \partial_x u) + \partial_x (b \partial_y u) + \partial_y (b \partial_x u) + \partial_y (\delta \partial_y u)
+        \end{split}
+    \]
+    Then, summing up the resulting terms with the ones obtained for \(i = 0\) and \(i = 2\), we get:
+    \begin{equation}\label{first}
+        \begin{split}
+            \sum_{i = 0}^{3} {\partial_{\bm{e_i}} (w_i \partial_{\bm{e_i}} u)} &= {\partial_{\bm{e_0}} (w_0 \partial_{\bm{e_0}} u)} + {\partial_{\bm{e_1}} (w_1 \partial_{\bm{e_1}} u)} + {\partial_{\bm{e_2}} (w_2 \partial_{\bm{e_2}} u)} + {\partial_{\bm{e_3}} (w_3 \partial_{\bm{e_3}} u)} 
+            \\
+            &=
+            \partial_x (\delta \partial_x u) + \partial_x (b \partial_y u) + \partial_y (b \partial_x u) + \partial_y (\delta \partial_y u) \\
+            &+ \partial_x (a \partial_x u) - \partial_x (\delta \partial_x u) + \partial_y (c \partial_y u) - \partial_y (\delta \partial_y u)
+            \\
+            &= \partial_x (a \partial_x u) + \partial_x (b \partial_y u) + \partial_y (b \partial_x u) + \partial_y (c \partial_y u)
+        \end{split}
+    \end{equation}
+    On the other hand, let us consider the following derivation which uses the mathematical definition of the divergence of a vector:
+    \begin{equation}\label{second}
+        \begin{split}
+            \mathbf{div}
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    a & b \\
+                    b & c
+                \end{pmatrix}
+                \nabla u
+            \end{pmatrix}
+            &= \mathbf{div}
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    a & b \\
+                    b & c
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \partial_x u \\ 
+                    \partial_y u  
+                \end{pmatrix}
+            \end{pmatrix}
+            \\
+            &= \mathbf{div}
+            \begin{pmatrix}
+                a \partial_x u + b \partial_y u \\ 
+                b \partial_x u + c \partial_y u  
+            \end{pmatrix}
+            \\
+            &= 
+            \partial_x (a \partial_x u) + \partial_x (b \partial_y u) + \partial_y (b \partial_x u) + \partial_y (c \partial_y u)
+        \end{split}
+    \end{equation}
+    Comparing (\ref{first}) and (\ref{second}) term by term, we see that they are equal. Therefore,
+    \[
+        \sum_{i = 0}^{3} {\partial_{\bm{e_i}} (w_i \partial_{\bm{e_i}} u)} = \mathbf{div}
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    a & b \\
+                    b & c
+                \end{pmatrix}
+                \nabla u
+            \end{pmatrix}
+    \]
 \end{homeworkProblem}
 
 \begin{homeworkProblem}{($\delta$-Stencil for Isotropic Diffusions)}
