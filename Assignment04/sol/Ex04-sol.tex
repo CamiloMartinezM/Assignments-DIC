@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
-
+\usepackage{amsmath}
 
 \usepackage{geometry} 
 \geometry{a4paper}
@@ -14,16 +14,26 @@
 	\and
 	Ma, Honglu\\
 	\texttt{7055053}}
-%\date{} % Activate to display a given date or no date (if empty),
-         % otherwise the current date is printed 
+\date{21.11.2023}
 
 \begin{document}
 \maketitle
 
 \section*{Problem H4.1 (Anisotropic Diffusion Modelling)}
 \subsection*{(a)}
-$$D(\nabla u) :=  (v_1 \mid v_2) diag(g(\mu_1), 1) (v_1\mid v_2)^\top$$\\ where $v_1$ and $v_2$ are eigenvectors of $J_\rho(\nabla u_\sigma)$
+$$D(\nabla u_\sigma) :=  (v_1 \mid v_2)\,diag(g(\mu_1), 1)\,(v_1\mid v_2)^\top$$ where $v_1$ and $v_2$ are eigenvectors of $J_\rho(\nabla u_\sigma)$ and $\mu_1$ is the larger eigenvalue of $J_\rho(\nabla u_\sigma)$.
 \subsection*{(b)}
+When $\rho = 0$ we have $J_0(\nabla u_\sigma) = \nabla u_\sigma\,\nabla u_\sigma^\top$ from Classroom Work C4.1 we know that the two eigenvalues of $J_0(\nabla u_\sigma)$ are $\lambda_1 = 0$ and $\lambda_2 = ||\nabla u_\sigma||^2$ ; the two eigenvectors are $v_1 = \nabla u_\sigma^\perp$ and $v_2 = \nabla u_\sigma$. Since $\lambda_2 > \lambda_1$, $\mu_1 = \lambda_1$ 
+With that, we construct our diffusion filter $D(\nabla u_\sigma) = \frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||} + g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||}$.\\
+\\
+We can derive the diffusion filter: 
+\begin{align}
+&\partial_t u = div ((\frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||} + g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||})\nabla u_\sigma) \\
+& = div (\frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||}\,\nabla u_\sigma +  g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||}\,\nabla u_\sigma) \\
+& = div (0 +  g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma ||\nabla u_\sigma||^2}{||\nabla u_\sigma||^2})\\
+& = div (g(||\nabla u_\sigma||^2)\,\nabla u_\sigma)
+\end{align}\\
+which is the same diffusion filter for non-linear isotropic diffusion.
 \subsection*{(c)}
 
 \section*{Problem H4.2 (Directional Splitting of Anisotropic Diffusion)}
