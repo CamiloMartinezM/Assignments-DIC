@@ -51,5 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# MikTex
-**/*.synctex.gz
+# LaTex Build files
+*.synctex.gz
+*/sol/*.pdf
