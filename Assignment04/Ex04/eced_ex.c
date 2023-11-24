@@ -1033,15 +1033,16 @@ for (i=0; i<=nx+1; i++)
 
 if (dtype == 0)
    /* standard discretisation */
-/*
-   SUPPLEMENT CODE
-*/
+   for (i=1; i<=nx; i++)
+      for (j=1; j<=ny; j++)
+         delta[i][j] = 0;
 else
    /* WWW stencil with beta = (1.0 - 2.0 * alpha) * sgn (dxy[i][j]) */
-/*
-   SUPPLEMENT CODE
-*/
- 
+   for (i=1; i<=nx; i++)
+      for (j=1; j<=ny; j++)
+      {
+          delta[i][j] = alpha * (dxx[i][j] + dyy[i][j]) + (1.0 - 2.0 * alpha) * sgn (dxy[i][j]) * dxy[i][j];
+      }
 
 /* ---- weights ---- */
 
