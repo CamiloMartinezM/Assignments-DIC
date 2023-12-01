@@ -652,9 +652,11 @@ var_v = var_v / (nx * ny);
 
 /* ---- compute the covariance of u and v ---- */
 
-/*
-SUPPLEMENT CODE
-*/
+cov = 0.0;
+for (i=1; i<=nx; i++)
+ for (j=1; j<=ny; j++)
+     cov += (u[i][j] - mu_u) * (v[i][j] - mu_v);
+cov = cov / (nx * ny);
 
 /* ---- compute the correlation coefficient of u and v ---- */
 
