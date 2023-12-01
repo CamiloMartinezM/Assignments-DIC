@@ -54,3 +54,8 @@ dkms.conf
 # LaTex Build files
 *.synctex.gz
 */sol/*.pdf
+*/sol/*.aux
+*/sol/*.bbl
+*/sol/*.fdb_latexmk
+*/sol/*.fls
+*/sol/*.log
