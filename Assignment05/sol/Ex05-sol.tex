@@ -146,6 +146,8 @@
 
     \subsection*{(a)}
 
+Since the area grows 4 times by size and the spatial grid size remains 1, T will have to be 4 times larger as well thus $T'=992$ and since the grey value range scaled down by a factor of 255, the contrast paramter $\lambda$ which usually represents a quantile of the histogram of image gradient magnitude will be scaled down by 255 as well: $\lambda' = 0.016$ and for the smoothing parameter $\sigma$ decreases by half to achieve the same convolution result: $\sigma' = 0.5$.
+
     \subsection*{(b)}
 
 \end{homeworkProblem}
@@ -231,6 +233,9 @@
 
 \begin{homeworkProblem}{(Energy Functional for Nonlinear Diffusion)}
 
+From Lecture 10 Slide 22, we know that minimizing the 2-D energy function $$E(u) = \int_{a}^{b}((u-f)^2+\alpha\Psi(||\nabla u||^2)) \,dx $$ can be seen as an implicit time discretisation of the diffusion process $$\partial_tu = div (\Psi'(||\nabla u||^2) \nabla u)$$ Here we have PDE given in form $$\partial_tu = div (\frac{1}{1+\frac{||\nabla u||^2}{\lambda^2}}\nabla u)$$ so we have $$\Psi'(||\nabla u||^2) = \frac{1}{1+\frac{||\nabla u||^2}{\lambda^2}}$$ we solve the antiderivative of $\Psi'$ we get
+$$\Psi(||\nabla u||^2) = \int(\frac{1}{1+\frac{||\nabla u||^2}{\lambda^2}})\,d||\nabla u||^2 = \frac{1}{\lambda^2} ln|1+\lambda^2||\nabla u||^2| + C $$
+replace this function of $\Psi$ in the energy functional above we will have the energy functional corresponding to the diffusion process.
 
 \end{homeworkProblem}
 
