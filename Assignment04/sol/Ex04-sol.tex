@@ -1,34 +1,420 @@
-\documentclass[11pt]{article}
-\usepackage[utf8]{inputenc}
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
 \usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
 
 
-\usepackage{geometry} 
-\geometry{a4paper}
+%
+% Basic Document Settings
+%
 
-\usepackage{graphicx} % support the \includegraphics command and options
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
 
-\title{Homework Assignment H4}
-\author{Martinez, Camilo\\
-	\texttt{7057573}
-	\and
-	Ma, Honglu\\
-	\texttt{7055053}}
-%\date{} % Activate to display a given date or no date (if empty),
-         % otherwise the current date is printed 
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkTeam}
+\chead{\hmwkClass: \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\setsep}{,    \ }
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[2][-2]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \hmwkNumber.\arabic{homeworkProblemCounter} #2}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+\newcommand{\hmwkNumber}{H4}
+\newcommand{\hmwkTitle}{Homework Assignment \hmwkNumber}
+\newcommand{\hmwkClass}{DIC}
+\newcommand{\hmwkTeam}{Team \#11}
+\newcommand{\hmwkAuthorName}{\hmwkTeam: Camilo Martínez 7057573, Honglu Ma 7055053}
+
+%
+% Title Page
+%
+
+\title{
+    % \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+}
+
+\author{\hmwkAuthorName}
+\date \today
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
 
 \begin{document}
+
 \maketitle
 
-\section*{Problem H4.1 (Anisotropic Diffusion Modelling)}
+\begin{homeworkProblem}{(Anisotropic Diffusion Modelling)}
+
 \subsection*{(a)}
-$$D(\nabla u) :=  (v_1 \mid v_2) diag(g(\mu_1), 1) (v_1\mid v_2)^\top$$\\ where $v_1$ and $v_2$ are eigenvectors of $J_\rho(\nabla u_\sigma)$
+$$D(\nabla u_\sigma) :=  (v_1 \mid v_2)\,diag(g(\mu_1), 1)\,(v_1\mid v_2)^\top$$ where $v_1$ and $v_2$ are eigenvectors of $J_\rho(\nabla u_\sigma)$ and $\mu_1$ is the larger eigenvalue of $J_\rho(\nabla u_\sigma)$.
 \subsection*{(b)}
+When $\rho = 0$ we have $J_0(\nabla u_\sigma) = \nabla u_\sigma\,\nabla u_\sigma^\top$ from Classroom Work C4.1 we know that the two eigenvalues of $J_0(\nabla u_\sigma)$ are $\lambda_1 = 0$ and $\lambda_2 = ||\nabla u_\sigma||^2$ ; the two eigenvectors are $v_1 = \nabla u_\sigma^\perp$ and $v_2 = \nabla u_\sigma$. Since $\lambda_2 > \lambda_1$, $\mu_1 = \lambda_1$ 
+With that, we construct our diffusion filter $D(\nabla u_\sigma) = \frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||} + g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||}$.\\
+\\
+We can derive the diffusion filter: 
+\begin{align}
+&\partial_t u = div ((\frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||} + g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||})\nabla u_\sigma) \\
+& = div (\frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||}\,\nabla u_\sigma +  g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||}\,\nabla u_\sigma) \\
+& = div (0 +  g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma ||\nabla u_\sigma||^2}{||\nabla u_\sigma||^2})\\
+& = div (g(||\nabla u_\sigma||^2)\,\nabla u_\sigma)
+\end{align}\\
+which is the same diffusion filter for non-linear isotropic diffusion.
+\subsection*{(c)}  
+    When $\rho$ is large and the contrast parameter $\lambda$ is small, the effect on an image would be an overall smoothing effect. For a large $\rho$, the kernel $K_\rho$ would be more spread out, therefore taking into account more neighbouring pixels for the convolution. In other words, a large $\rho$ implies a more globalized effect, instead of a more localized one. Furthermore, given a small $\lambda$, $g(|\nabla u_\sigma|^2)$ will tend to $1$ which means both the direction along the edge and across will have diffusivity of $1$ it implies that the filter is less sensitive to intensity variations, leading to more isotropic diffusion. Since the algorithm becomes less sensitive to edges and high-contrast features, it tends to smooth the image more uniformly instead of taking into account regions with high-contrast variations (edges). Smoothing then becomes more isotropic, affecting both high and low-contrast regions similarly. Both parameters will then lead to the image being smoothed more. In practical terms, this results in an overall blurring effect.
+
+    In an image with a pattern of bright and dark stripes, the diffusion process will smooth along the edges of the stripes. Within regions of uniform intensity, the diffusion process will be more pronounced, leading to smoother and less textured areas. We would have a tendency for more uniform smoothing across the entire image and fine image structures, such as the stripes in the pattern, would be blurred out overall.
+    \subsection*{(a)}
+    By definition of the diffusion tensor from lecture slides 7, we can state:
+    $$D(\nabla u_\sigma) :=  (v_1 \mid v_2)\,diag(g(\mu_1), 1)\,(v_1\mid v_2)^\top$$ 
+    Where $v_1$ and $v_2$ are eigenvectors of $J_\rho(\nabla u_\sigma)$ and $\mu_1$ is the larger eigenvalue of $J_\rho(\nabla u_\sigma)$.
+    \subsection*{(b)}
+    When $\rho \rightarrow 0$, we have $J_{\rho \rightarrow 0}(\nabla u_\sigma) = K_{\rho \rightarrow 0} * (\nabla u_\sigma\,\nabla u_\sigma^\top) = \nabla u_\sigma\,\nabla u_\sigma^\top$. We know from Classroom Work C4.1 that the two eigenvalues of the resulting matrix are $\lambda_1 = 0$ and $\lambda_2 = ||\nabla u_\sigma||^2$; the two eigenvectors are $v_1 = \nabla u_\sigma^\perp$ and $v_2 = \nabla u_\sigma$ respectively. Since $\lambda_2 > \lambda_1$, $\mu_1 = \lambda_1$. 
+    With that, we construct our diffusion filter $D(\nabla u_\sigma) = \lambda_1 v_1 v_{1}^\top + \lambda_2 v_2 v_{2}^\top = \frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||} + g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||}$.\\
+    \\
+    We can derive the diffusion filter: 
+    \[
+        \begin{split}
+        \partial_t u &= div ((\frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||} + g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||})\nabla u_\sigma) \\
+        &= div (\frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||}\,\nabla u_\sigma +  g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||}\,\nabla u_\sigma) \\
+        &= div (0 +  g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma ||\nabla u_\sigma||^2}{||\nabla u_\sigma||^2})\\
+        &= div (g(||\nabla u_\sigma||^2)\,\nabla u_\sigma)
+        \end{split}
+    \]
+    which is the same diffusion filter for non-linear isotropic diffusion.
+   
+>>>>>>> 204942f86f33d47f8ad56d194c0f3e9a90393603
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{(Directional Splitting of Anisotropic Diffusion)}
+
+    First, we consider the right hand of the equation:
+    \[
+        \sum_{i = 0}^{3} {\partial_{\bm{e_i}} (w_i \partial_{\bm{e_i}} u)}
+    \]
+    Where we know that $\partial_{\bm{n}} u = \bm{n}^\mathsf{T} \nabla u$, the directional diffusivities $w_0$, $w_1$, $w_2$, $w_3$ are given by
+    \[
+        w_0 = a - \delta \setsep w_1 = \delta + b \setsep w_2 = c - \delta \setsep w_3 = \delta - b
+    \]
+    And the directions are given by
+    \[
+        \bm{e_0} = 
+            \begin{pmatrix}
+                1 \\ 
+                0  
+            \end{pmatrix}
+        \setsep
+        \bm{e_1} = \frac{1}{\sqrt{2}}
+            \begin{pmatrix}
+                1 \\ 
+                1  
+            \end{pmatrix}
+        \setsep
+        \bm{e_2} = 
+            \begin{pmatrix}
+                0 \\ 
+                1  
+            \end{pmatrix}
+        \setsep
+        \bm{e_3} = \frac{1}{\sqrt{2}} 
+            \begin{pmatrix}
+                -1 \\ 
+                1  
+            \end{pmatrix}
+    \]
+    
+    For \(i = 0\), we have:
+    \[
+        {\partial_{\bm{e_0}} (w_0 \partial_{\bm{e_0}} u)} = 
+            \begin{pmatrix}
+                1 \\ 
+                0  
+            \end{pmatrix}^\mathsf{T} 
+            \nabla \begin{bmatrix}
+                (a - \delta)
+                \begin{pmatrix}
+                    1 \\ 
+                    0  
+                \end{pmatrix}^\mathsf{T} 
+                \begin{pmatrix}
+                    \partial_x u \\ 
+                    \partial_y u  
+                \end{pmatrix}
+            \end{bmatrix}
+        = \partial_x (a \partial_x u) - \partial_x (\delta \partial_x u)
+    \]
+    \\
+    Similarly, for \(i = 2\), we get:
+    \[
+        {\partial_{\bm{e_2}} (w_2 \partial_{\bm{e_2}} u)} = 
+            \begin{pmatrix}
+                0 \\ 
+                1  
+            \end{pmatrix}^\mathsf{T} 
+            \nabla \begin{bmatrix}
+                (c - \delta)
+                \begin{pmatrix}
+                    0 \\ 
+                    1  
+                \end{pmatrix}^\mathsf{T} 
+                \begin{pmatrix}
+                    \partial_x u \\ 
+                    \partial_y u  
+                \end{pmatrix}
+            \end{bmatrix}
+        = \partial_y (c \partial_y u) - \partial_y (\delta \partial_y u)
+    \]
+    \\
+    For \(i = 1\):
+    \[
+        \begin{split}
+            {\partial_{\bm{e_1}} (w_1 \partial_{\bm{e_1}} u)} &= 
+                \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1 \\ 
+                    1  
+                \end{pmatrix}^\mathsf{T} 
+                \nabla \begin{bmatrix}
+                    \frac{1}{\sqrt{2}}
+                    (\delta + b)
+                    \begin{pmatrix}
+                        1 \\ 
+                        1  
+                    \end{pmatrix}^\mathsf{T} 
+                    \begin{pmatrix}
+                        \partial_x u \\ 
+                        \partial_y u  
+                    \end{pmatrix}
+                \end{bmatrix}
+            \\
+            &= \frac{1}{2} \partial_x (\delta \partial_x u) + \frac{1}{2} \partial_x (b \partial_x u) + \frac{1}{2} \partial_x (\delta \partial_y u) + \frac{1}{2} \partial_x (b \partial_y u) + 
+            \frac{1}{2} \partial_y (\delta \partial_x u) + \frac{1}{2} \partial_y (b \partial_x u) +
+            \frac{1}{2} \partial_y (\delta \partial_y u) + \frac{1}{2} \partial_y (b \partial_y u)
+        \end{split}
+    \]
+    Finally, for \(i = 3\):
+    \[
+        \begin{split}
+            {\partial_{\bm{e_3}} (w_3 \partial_{\bm{e_3}} u)} &= 
+                \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    -1 \\ 
+                    1  
+                \end{pmatrix}^\mathsf{T} 
+                \nabla \begin{bmatrix}
+                    \frac{1}{\sqrt{2}}
+                    (\delta - b)
+                    \begin{pmatrix}
+                        -1 \\ 
+                        1  
+                    \end{pmatrix}^\mathsf{T} 
+                    \begin{pmatrix}
+                        \partial_x u \\ 
+                        \partial_y u  
+                    \end{pmatrix}
+                \end{bmatrix}
+            \\
+            &= \frac{1}{2} \partial_x (\delta \partial_x u) - \frac{1}{2} \partial_x (b \partial_x u) - \frac{1}{2} \partial_x (\delta \partial_y u) + \frac{1}{2} \partial_x (b \partial_y u) - 
+            \frac{1}{2} \partial_y (\delta \partial_x u) + \frac{1}{2} \partial_y (b \partial_x u) +
+            \frac{1}{2} \partial_y (\delta \partial_y u) - \frac{1}{2} \partial_y (b \partial_y u)
+        \end{split}
+    \]
+    Summing up the terms for \(i = 1\) and \(i = 3\), we get:
+    \[
+        \begin{split}
+            {\partial_{\bm{e_2}} (w_2 \partial_{\bm{e_2}} u)} + {\partial_{\bm{e_3}} (w_3 \partial_{\bm{e_3}} u)} 
+            &=
+            \partial_x (\delta \partial_x u) + \partial_x (b \partial_y u) + \partial_y (b \partial_x u) + \partial_y (\delta \partial_y u)
+        \end{split}
+    \]
+    Then, summing up the resulting terms with the ones obtained for \(i = 0\) and \(i = 2\), we get:
+    \begin{equation}\label{first}
+        \begin{split}
+            \sum_{i = 0}^{3} {\partial_{\bm{e_i}} (w_i \partial_{\bm{e_i}} u)} &= {\partial_{\bm{e_0}} (w_0 \partial_{\bm{e_0}} u)} + {\partial_{\bm{e_1}} (w_1 \partial_{\bm{e_1}} u)} + {\partial_{\bm{e_2}} (w_2 \partial_{\bm{e_2}} u)} + {\partial_{\bm{e_3}} (w_3 \partial_{\bm{e_3}} u)} 
+            \\
+            &=
+            \partial_x (\delta \partial_x u) + \partial_x (b \partial_y u) + \partial_y (b \partial_x u) + \partial_y (\delta \partial_y u) \\
+            &+ \partial_x (a \partial_x u) - \partial_x (\delta \partial_x u) + \partial_y (c \partial_y u) - \partial_y (\delta \partial_y u)
+            \\
+            &= \partial_x (a \partial_x u) + \partial_x (b \partial_y u) + \partial_y (b \partial_x u) + \partial_y (c \partial_y u)
+        \end{split}
+    \end{equation}
+    On the other hand, let us consider the following derivation which uses the mathematical definition of the divergence of a vector:
+    \begin{equation}\label{second}
+        \begin{split}
+            \mathbf{div}
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    a & b \\
+                    b & c
+                \end{pmatrix}
+                \nabla u
+            \end{pmatrix}
+            &= \mathbf{div}
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    a & b \\
+                    b & c
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \partial_x u \\ 
+                    \partial_y u  
+                \end{pmatrix}
+            \end{pmatrix}
+            \\
+            &= \mathbf{div}
+            \begin{pmatrix}
+                a \partial_x u + b \partial_y u \\ 
+                b \partial_x u + c \partial_y u  
+            \end{pmatrix}
+            \\
+            &= 
+            \partial_x (a \partial_x u) + \partial_x (b \partial_y u) + \partial_y (b \partial_x u) + \partial_y (c \partial_y u)
+        \end{split}
+    \end{equation}
+    Comparing (\ref{first}) and (\ref{second}) term by term, we see that they are equal. Therefore,
+    \[
+        \sum_{i = 0}^{3} {\partial_{\bm{e_i}} (w_i \partial_{\bm{e_i}} u)} = \mathbf{div}
+            \begin{pmatrix}
+                \begin{pmatrix}
+                    a & b \\
+                    b & c
+                \end{pmatrix}
+                \nabla u
+            \end{pmatrix}
+    \]
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{($\delta$-Stencil for Isotropic Diffusions)}
+<<<<<<< HEAD
+\subsection*{(a)}
+The stencil for homogenous diffusion by setting $a = 1, b = 0, c = 1$ is:
+\begin{center}
+$\frac{1}{h^2}$
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ $\frac{\delta}{2}$ & $1 - \delta$ & $\frac{\delta}{2}$ \\
+ \hline
+ $1 - \delta$ & $-4 + 2\delta$ & $1 - \delta$ \\ 
+ \hline
+ $\frac{\delta}{2}$ & $1 - \delta$ & $\frac{\delta}{2}$ \\ 
+\hline 
+\end{tabular}
+\end{center}
+which is the same stencil in C2.2.
+\subsection*{(b)}
+From Problem H4.1b we get the diffusion tensor for non-linear isotropic diffusion: 
+$$D(\nabla u_\sigma) = \frac{\nabla u_\sigma^\perp}{||\nabla u_\sigma||}  \frac{(\nabla u_\sigma^\perp)^\top}{||\nabla u_\sigma||} + g(||\nabla u_\sigma||^2)\,\frac{\nabla u_\sigma}{||\nabla u_\sigma||}\,\frac{\nabla u_\sigma^\top}{||\nabla u_\sigma||}$$\\
+by expanding the gradient with its components, we get:
+$a = \frac{u_y^2 + gu_x^2}{u_x^2+u_y^2}, b = \frac{(1-g)u_xu_y}{u_x^2+u_y^2}, c = \frac{u_x^2 + gu_y^2}{u_x^2+u_y^2}$ where $g = g(||u||^2)$. For simplification I omit $\sigma$. By plugging in the $a, b, c$ terms, we get the $\delta$-stencil. When $\delta = b$ it makes the top left weight 0.
+\end{homeworkProblem}
+\begin{homeworkProblem}{(Anisotropic Diffusion)}
+\subsection*{(a)}
+Naming for output files:\\
+\textit{out1.pgm} corresponds to the output of part b $\sigma = 2, \rho = 0$\\
+\textit{out2.pgm} corresponds to the output of part b $\sigma = 0, \rho = 2$ \\
+\textit{out3.pgm} corresponds to the output of part c using standard discretisation \\
+\textit{out4.pgm} corresponds to the output of part c using WWW \\
+\subsection*{(b)}
+When $\sigma = 0$ the noise of the original image is not removed thus some noise are treated as edges which give an unfulfilling result thus de-noise is important.
 \subsection*{(c)}
-
-\section*{Problem H4.2 (Directional Splitting of Anisotropic Diffusion)}
-
-\section*{Problem H4.3 ($\delta$-Stencil for Isotropic Diffusions)}
-\section*{Problem H4.4 (Anisotropic Diffusion)}
-
+The WWW stencil is prefered.
+\end{homeworkProblem}
 \end{document}
