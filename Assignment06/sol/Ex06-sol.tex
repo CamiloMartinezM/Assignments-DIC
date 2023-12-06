@@ -127,6 +127,10 @@
 % Integral dx
 \newcommand{\dx}{\mathrm{d}x}
 
+% Define argmax and argmin
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
 % Alias for the Solution section header
 \newcommand{\solution}{\textbf{\large Solution}}
 
@@ -203,7 +207,7 @@
 
     Assuming \( \max |a_{i,i}| > \frac{1}{\alpha} \), we divide through by \( (\max |a_{i,i}| - \frac{1}{\alpha}) \):
 
-    \[ \tau \leq \frac{1}{\max |a_{i,i}| - \frac{1}{\alpha}} \]
+    \[ \tau < \frac{1}{\max |a_{i,i}| - \frac{1}{\alpha}} \]
 
     If \( \max |a_{i,i}| \) is less than \( \frac{1}{\alpha} \), the explicit scheme could be unstable. \\
     Finally, as done in subsection (c), we know that in 2D, for $h_1 = h_2 = 1$, $0 < g(s^2) \leq 5$, we get $\lvert a_{i,i} \rvert \leq 20$. Thus, for $\alpha = 10$, the \textit{fully explicit scheme} must satisfy
@@ -216,6 +220,56 @@
 
 \begin{homeworkProblem}{(Primal-Dual Hybrid Gradient Algorithm)}
 
+    Consider the equations of the primal-dual hybrid gradient (PDHG) algorithm for the primal variable \( u \) and the dual variable \( b \):
+    
+    \[
+        b^{k+1} = \argmax_{b \in \mathbb{R}^{2N}} \left\{ -\iota_\alpha (b) + \langle b, D u^k \rangle - \frac{1}{2\tau} \| b - b^k \|^2 \right\} \tag*{(1)}\label{H6.2:first}
+    \]
+    \[
+        u^{k+1} = \argmin_{u \in \mathbb{R}^N} \left\{ \frac{1}{2} \| u - f \|^2 + \langle D^T b^{k+1}, u \rangle + \frac{1}{2\sigma} \| u - u^k \|^2 \right\} \tag*{(2)}\label{H6.2:second}
+    \]
+
+    Let us define $P_{C_\alpha} ( \bar{b}^{k+1} )$ as follows:
+
+    \[
+        P_{C_\alpha} ( \bar{b}^{k+1} ) := \argmin_{b \in \mathbb{R}^{2N}} \left\{ \iota_\alpha (b) + \frac{1}{2} \| b - \bar{b}^{k+1} \|^2 \right\}
+         = \argmin_{b \in C_\alpha} \left\{ \frac{1}{2} \| b - \bar{b}^{k+1} \|^2 \right\} 
+    \]
+
+    With that definition, consider the following derivation:
+    \[
+        \begin{split}
+            P_{C_\alpha} (b^k + \tau D u^k)
+            &= \argmin_{b \in C_\alpha} \left\{ \frac{1}{2} \| b - (b^k + \tau D u^k)\|^2 \right\} \\
+            &= \argmin_{b \in C_\alpha} \left\{ \frac{1}{2} \left[\| b \|^2 - 2 \langle b, b^k + \tau D u^k \rangle + \| b^k + \tau D u^k \|^2 \right] \right\} \\
+            &= \argmin_{b \in C_\alpha} \left\{ \frac{1}{2} \left[\| b \|^2 - 2 \langle b, b^k \rangle - 2 \langle b, \tau D u^k \rangle \right] \right\} \\
+            &= \argmin_{b \in C_\alpha} \left\{ \frac{1}{2} \left[\| b \|^2 - 2 \langle b, b^k \rangle + \| b^k \|^2 - 2 \langle b, \tau D u^k \rangle \right] \right\} \\
+            &= \argmin_{b \in C_\alpha} \left\{ \frac{1}{2} \left[\| b - b^k \|^2 - 2 \langle b, \tau D u^k \rangle \right] \right\} \\
+            &= \argmin_{b \in C_\alpha} \left\{ \frac{1}{2} \| b - b^k \|^2 - \tau \langle b, D u^k \rangle \right\} \\
+            &= \argmin_{b \in \mathbb{R}^{2N}} \left\{ \iota_\alpha (b) + \frac{1}{2} \| b - b^k \|^2 - \tau \langle b, D u^k \rangle \right\} \\
+            &= \argmax_{b \in \mathbb{R}^{2N}} \left\{ - \frac{1}{\tau} \left[ \iota_\alpha (b) + \frac{1}{2} \| b - b^k \|^2 - \tau \langle b, D u^k \rangle \right] \right\} \\
+            &= \argmax_{b \in \mathbb{R}^{2N}} \left\{ - \iota_\alpha (b) - \frac{1}{2\tau} \| b - b^k \|^2 + \langle b, D u^k \rangle \right\}
+        \end{split}
+    \]
+
+    Which is the same expression given by \ref{H6.2:first}. \\ 
+    On the other hand, consider \ref{H6.2:second}. The $\argmin_{u \in \mathbb{R}^N}$ operator implies taking the gradient with respect to $u$ and setting it to zero. Thus, 
+
+    \[
+        \begin{split}
+            0 &= \nabla_u \left\{ \frac{1}{2} \| u - f \|^2 + \langle D^T b^{k+1}, u \rangle + \frac{1}{2\sigma} \| u - u^k \|^2 \right\} \\ 
+            &= \| u - f \| + D^T b^{k+1} + \frac{1}{\sigma} \| u - u^k \| \\ 
+            \rightarrow u \left( 1 + \frac{1}{\sigma}\right) &= f - D^T b^{k+1} + \frac{1}{\sigma} u^k
+        \end{split}
+    \]
+
+    Where, in this resulting equation, $u$ can be seen as the next step after $u^k$, that is $u^{k+1}$. Therefore,
+
+    \[
+        u^{k+1} = \frac{1}{1 + \frac{1}{\sigma}} \left( f - D^T b^{k+1} + \frac{1}{\sigma} u^k \right) \tag*{(3)}\label{H6.2:third}
+    \]
+
+    Finally, we can note that \ref{H6.2:second} is composed of a sum of convex functions, where two of them are parabolas (which are convex) and the remaining one, the dot product, can been as a plane (also convex). Since the sum of convex functions is also convex, we can safely conclude that the expression \ref{H6.2:third} gives us a unique minimizer of equation \ref*{H6.2:second}.
 
 \end{homeworkProblem}
 
