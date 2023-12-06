@@ -1,0 +1,231 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkTeam}
+\chead{\hmwkClass: \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\setsep}{,    \ }
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[2][-2]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \hmwkNumber.\arabic{homeworkProblemCounter} #2}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+\newcommand{\hmwkNumber}{H6}
+\newcommand{\hmwkTitle}{Homework Assignment \hmwkNumber}
+\newcommand{\hmwkClass}{DIC}
+\newcommand{\hmwkTeam}{Team \#11}
+\newcommand{\hmwkAuthorName}{\hmwkTeam: \\ Camilo Martínez 7057573, cama00005@stud.uni-saarland.de \\ Honglu Ma 7055053, homa00001@stud.uni-saarland.de \\ Maria Sibi 7058469, mama00047@stud.uni-saarland.de}
+
+%
+% Title Page
+%
+
+\title{
+    % \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+}
+
+\author{\hmwkAuthorName}
+\date \today
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\nocite{*}
+
+\begin{document}
+
+\maketitle
+
+\begin{homeworkProblem}{(Stability of Diffusion-Reaction Discretisations)}
+
+    Consider the diffusion-reaction equation
+    \[
+    \frac{\partial u}{\partial t} = \text{div} \left( g(|\nabla u|^2) \nabla u \right) - \frac{u - f}{\alpha} \tag*{(1)}\label{first}
+    \]
+    with \(\alpha > 0\).
+
+    With discretisation with the \textit{modified explicit scheme}
+    \[
+    \frac{u^{k+1} - u^k}{\tau} = A^k(u^k) u^k - \frac{1}{\alpha}(u^{k+1} - f) \tag*{(2)}\label{second}
+    \]
+    and the \textit{fully explicit scheme}
+    \[
+    \frac{u^{k+1} - u^k}{\tau} = A^k(u^k) u^k - \frac{1}{\alpha}(u^k - f) \tag*{(3)}\label{third}
+    \]
+
+    \subsection*{(a)}
+
+    \subsection*{(b)}
+
+    \subsection*{(c)}
+
+    We learned from Lecture 11 that the \textit{modified explicit scheme} has the same stability limit as an \textit{explicit diffusion scheme} without reaction term. And from Lecture 5, we know that the latter has an stability criterion for $\tau$ given by:
+    
+    \[
+        \tau < \frac{1}{\max_i {\lvert a_{i,i}(\bar{u}(t)^k) \rvert}}  
+    \]
+
+    In this case, for $h_1 = h_2 = 1$, $0 < g(s^2) \leq 5$
+    
+    \[
+        |a_{i,j}| = \sum_{n=1}^{2} \sum_{k \in N_n(i)} \frac{g_k + g_i}{2h_n^2} \leq \sum_{n=1}^{2} \sum_{k \in N_n(i)} \frac{5 + 5}{2} \leq \sum_{n=1}^{2} \sum_{k \in N_n(i)} 5
+    \]
+
+    In 2D, every pixel has at most four neighbours. This gives $\lvert a_{i,i} \rvert \leq 20$. Thus, the \textit{modified explicit scheme} must satisfy
+
+    \[
+        \tau < \frac{1}{20}   
+    \]
+
+    Note that this does not depend on $\alpha$.
+
+    \subsection*{(d)}
+
+    We can set up the \textit{fully explicit scheme} given by \ref{second} as follows: 
+
+    \[
+        u^{k+1} = \biggl(I + \tau A^k(u^k) - \frac{\tau}{\alpha} I\biggr) u^k + \frac{\tau}{\alpha} f
+    \]
+
+    Since $\tau > 0$ and $\alpha > 0$, $(\tau / \alpha) f$ is not of importance regarding stability. Thus, the stability of this equation is governed by the factor of $u^k$. From it, we get an inequality of the form:
+
+    \[ 1 + \tau a_{i,i} - \frac{\tau}{\alpha} > 0 \]
+
+    Where $a_{i,i}$ is a diagonal element of $A^k(u^k)$. We can rearrange the inequality to solve for \( \tau \), noting that the worst-case scenario would be when \( \lvert a_{i,i} \rvert \) is at its most. So, isolating $\tau$ on one side of the inequality gives us:
+
+    \[ \tau \biggl(\max |a_{i,i}| - \frac{1}{\alpha}\biggr) < 1 \]
+
+    Assuming \( \max |a_{i,i}| > \frac{1}{\alpha} \), we divide through by \( (\max |a_{i,i}| - \frac{1}{\alpha}) \):
+
+    \[ \tau \leq \frac{1}{\max |a_{i,i}| - \frac{1}{\alpha}} \]
+
+    If \( \max |a_{i,i}| \) is less than \( \frac{1}{\alpha} \), the explicit scheme could be unstable. \\
+    Finally, as done in subsection (c), we know that in 2D, for $h_1 = h_2 = 1$, $0 < g(s^2) \leq 5$, we get $\lvert a_{i,i} \rvert \leq 20$. Thus, for $\alpha = 10$, the \textit{fully explicit scheme} must satisfy
+
+    \[
+        \tau < \frac{1}{20 - \frac{1}{10}} =  \frac{10}{199}
+    \]
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{(Primal-Dual Hybrid Gradient Algorithm)}
+
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{(Primal-Dual Methods for TV Regularisation)}
+
+\subsection*{(a)-(c)}
+See attached images.
+
+\subsection*{(d)}
+
+\end{homeworkProblem}
+
+\end{document}
