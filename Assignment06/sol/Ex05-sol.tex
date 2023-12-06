@@ -1,0 +1,272 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkTeam}
+\chead{\hmwkClass: \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\setsep}{,    \ }
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[2][-2]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \hmwkNumber.\arabic{homeworkProblemCounter} #2}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+\newcommand{\hmwkNumber}{H5}
+\newcommand{\hmwkTitle}{Homework Assignment \hmwkNumber}
+\newcommand{\hmwkClass}{DIC}
+\newcommand{\hmwkTeam}{Team \#11}
+\newcommand{\hmwkAuthorName}{\hmwkTeam: Camilo Martínez 7057573, cama00005@stud.uni-saarland.de \\ Honglu Ma 7055053, homa00001@stud.uni-saarland.de \\ Maria Sibi 7058469, mama00047@stud.uni-saarland.de}
+
+%
+% Title Page
+%
+
+\title{
+    % \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+}
+
+\author{\hmwkAuthorName}
+\date \today
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\nocite{*}
+
+\begin{document}
+
+\maketitle
+
+\begin{homeworkProblem}{(Parameter Adaptation Under Rescaling)}
+
+    \subsection*{(a)}
+
+Since the area grows 4 times by size and the spatial grid size remains 1, T will have to be 4 times larger as well thus $T'=992$ and since the grey value range scaled down by a factor of 255, the contrast paramter $\lambda$ which usually represents a quantile of the histogram of image gradient magnitude will be scaled down by 255 as well: $\lambda' = 0.016$ and for the smoothing parameter $\sigma$ decreases by half to achieve the same convolution result: $\sigma' = 0.5$.
+
+    \subsection*{(b)}
+    
+    We found from the lectures the computational effort becomes 16 times more which results in 198.4 seconds
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{(Continuous Variational Regularisation)}
+
+    \subsection*{(a)}
+    Given the following energy functional $E(u)$
+    \begin{equation}\label{first}
+        E(u) = \frac{1}{2}\int_\Omega {\biggl((u-f)^2 - 2\alpha\lambda^2\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}\biggr)d\bm{x}}
+    \end{equation}
+    We can define $G(u) = 2E(u)$, another energy functional so that we get a familiar equation. For trivial reasons, a minimizer for $G(u)$ is also a minimizer for $E(u)$, since we are only multiplying by a constant of $2$. Thus,
+    \begin{equation}\label{second}
+        G(u) = 2E(u) = \int_\Omega {\biggl((u-f)^2 - 2\alpha\lambda^2\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}\biggr)d\bm{x}}
+    \end{equation}
+    From \eqref{second}, we can derive 
+    \begin{equation}\label{third}
+        F_u = 2(u - f)
+    \end{equation}
+    \begin{equation}\label{fourth}
+        F_{u_x} = 2\alpha u_x\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}
+    \end{equation}
+    \begin{equation}\label{fifth}
+        F_{u_y} = 2\alpha u_y\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}
+    \end{equation}
+    Plugging \eqref{third}, \eqref{fourth} and \eqref{fifth} onto the Euler-Lagrange Equation, we get
+    \begin{equation}\label{sixth}
+        \begin{split}
+            0 &= F_u - \frac{\partial}{\partial_x}F_{u_x} - \frac{\partial}{\partial_y}F_{u_y} \\ 
+            &= (u - f) - \partial_x\biggl(2\alpha u_x\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}\biggr) - \partial_y\biggl(2\alpha u_y\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}\biggr) \\ 
+            &= (u - f) - \alpha\biggl[\frac{\partial}{\partial x}\biggl(u_x\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}\biggr) + \frac{\partial}{\partial y}\biggl(u_y\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}\biggr)\biggr] \\ 
+            &= (u - f) - \alpha \, \mathrm{div}\biggl(\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)} \, \nabla u\biggr) 
+        \end{split} 
+    \end{equation}
+    With the following boundary condition
+    \begin{equation}\label{seven}
+        \begin{split}
+            0 &= n^\top \begin{pmatrix}
+                    F_{u_x} \\ 
+                    F_{u_y}
+                \end{pmatrix} \\
+              &= n^\top \, 2\alpha \exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}
+              \begin{pmatrix}
+                u_x \\ 
+                u_y
+                \end{pmatrix} \\
+              &= n^\top 2\alpha \exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)} \nabla u
+        \end{split}
+    \end{equation}
+    Since $\alpha > 0$ and $\exp{(-\lvert\nabla u\rvert^2 / 2\lambda^2)} > 0$, we obtain the reflecting boundary condition 
+    \begin{equation}\label{eigth}
+        0 = n^\top \nabla u = \partial_n u
+    \end{equation}
+    Where $n$ denotes a normal vector to the image boundary $\partial\Omega$. For a rectangular domain $\Omega$, these boundary conditions imply that: $F_{u_x} = 0$ at the left and right boundaries, where $n = (1, 0)^T$ and $n = (-1, 0)^T$; and$F_{u_y} = 0$ at the top and bottom boundaries, where $n = (0, 1)^\top$ and $n = (0, -1)^\top$. \\
+
+    From \eqref{sixth}, we can conclude that the Perona-Malik diffusion filter is approximated by this energy functional, where the diffusivity \(g(s^2)\) is given by the following familiar term
+    \[
+        g(s^2) = \exp{\biggl(-\frac{s^2}{2\lambda^2}\biggr)}
+    \]
+    
+    \subsection*{(b)}
+
+    The expression we got can be rewritten as 
+    \[
+        \frac{(u - f)}{\alpha} = \mathrm{div}\biggl(\exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)} \, \nabla u\biggr) 
+    \]
+    Which is very similar to the following expression that we studied in Lecture 4 (Nonlinear Isotropic Diffusion Filtering I)
+    \[
+        \partial_t u = \mathrm{div}(g(\lvert\nabla u\rvert^2) \nabla u)
+    \] 
+    \[
+        \partial_n u = 0
+    \]
+    Where the diffusivity $g$ satisfies (C1) and (C3), smoothness and positivity. And we know the theoretical results of this model, mainly Well-Posedness and Regularity, in particular, the existence of a unique solution $u$. \\
+
+    Moreover, we learned from the lecture that these kinds of variational methods do not involve a stopping time $T$, unlike the diffusion models we studied. For these, what we want to achieve is the steady-state solution (the unique minimiser) the fastest way possible, but the iterative process can go on without resulting in a final flat image. 
+
+    \subsection*{(c)}
+    In (a) we saw that the the Perona-Malik diffusion filter is approximated by this energy functional, and the diffusivity \(g\) would be given by
+    \[
+        g(\lvert\nabla u\rvert^2) = \exp{\biggl(-\frac{\lvert\nabla u\rvert^2}{2\lambda^2}\biggr)}
+    \]
+    Let us now consider the flux function 
+    \[
+        \varPhi(s) = s g(s) = s \exp{\biggl(-\frac{s^2}{2\lambda^2}\biggr)}
+    \]
+    And its derivative
+    \[
+        \begin{split}
+            \varPhi'(s) &= \exp{\biggl(-\frac{s^2}{2\lambda^2}\biggr)} - \frac{s^2}{\lambda^2} \exp{\biggl(-\frac{s^2}{2\lambda^2}\biggr)} \\
+            &= \exp{\biggl(-\frac{s^2}{2\lambda^2}\biggr)} - \frac{s^2}{\lambda^2} \exp{\biggl(-\frac{s^2}{2\lambda^2}\biggr)} \\
+            &= \exp{\biggl(-\frac{s^2}{2\lambda^2}\biggr)} \biggl(1 - \frac{s^2}{\lambda^2}\biggr)
+        \end{split}
+    \]
+    From there, it is apparent that the term $1 - s^2 / \lambda^2$ controls the sign of the flux. If $\lambda > s$, $\varPhi'(s) > 0$ thus having forward diffusion. And if $\lambda < s$, $\varPhi'(s) < 0$ thus having backward diffusion. It is clear that $\lambda$ itself separates both types of diffusion processes.
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{(Energy Functional for Nonlinear Diffusion)}
+
+From Lecture 10 Slide 22, we know that minimizing the 2-D energy functional $$E(u) = \int_{a}^{b}((u-f)^2+\alpha\Psi(||\nabla u||^2)) \,dx $$ can be seen as an implicit time discretisation of the diffusion process $$\partial_tu = \mathrm{div}\biggl(\Psi'(||\nabla u||^2) \nabla u\biggr)$$ Here we have PDE given in form $$\partial_tu = \mathrm{div} \biggl(\frac{1}{1+\frac{||\nabla u||^2}{\lambda^2}}\nabla u\biggr)$$ so we have $$\Psi'(||\nabla u||^2) = \frac{1}{1+\frac{||\nabla u||^2}{\lambda^2}}$$ we solve the antiderivative of $\Psi'$ we get
+$$\Psi(||\nabla u||^2) = \int\biggl(\frac{1}{1+\frac{||\nabla u||^2}{\lambda^2}}\biggr)\,d||\nabla u||^2 = \frac{1}{\lambda^2} \ln{|1+\lambda^2|}|\nabla u||^2| + C $$
+replace this function of $\Psi$ in the energy functional above we will have the energy functional corresponding to the diffusion process.
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{(Decorrelation Criterion)}
+
+\subsection*{(a)}
+We know that the diffusion process can be seen as a energy functional minimisation. Thus we can calculate the smoothness term for Charbonnier ($\Psi_{cb}$) and TV flow ($\Psi_{tv}$).
+$$\Psi_{cb} = 2\lambda(\sqrt{\lambda^2 + |\nabla u|^2})$$
+$$\Psi_{tv} = 2\sqrt{|\nabla u|^2}$$
+we know that in the energy functional, the $\alpha$ in front of the smoothness term can be seen as the stopping time. To achieve the same result when $\lambda$ is small, the stopping time of TV flow should be $\lambda$ times the stopping time of Charbonnier
+\subsection*{(b)}
+See attached code file
+\subsection*{(c)}
+We find the optimal $\lambda$ when the correlation is minimal with least iterations. For acros.pgm we get $\lambda = 0.1$ with $corr = 0.029$ and for pepper-noise we get $\lambda = 4$ with $corr = 0.063$
+\end{homeworkProblem}
+
+\end{document}
