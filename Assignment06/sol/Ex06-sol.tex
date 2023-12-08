@@ -184,50 +184,50 @@
     \textbf{Base step, $u^0$}\\
     $u^0 = f$ so\\
     \[
-        \forall i, \underset{j}{min}f_j \leq f_i \leq \underset{j}{max}f_j
+        \forall i, \underset{j}{\min}f_j \leq f_i \leq \underset{j}{\max}f_j
         \Leftrightarrow 
-        \forall i, \underset{j}{min}f_j \leq u^0_i \leq \underset{j}{max}f_j
+        \forall i, \underset{j}{\min}f_j \leq u^0_i \leq \underset{j}{\max}f_j
     \]\\
     \textbf{Induction Step}\\
     Assume that at time $k$
     \[
-        \forall i, \underset{j}{min}f_j \leq u^k_i \leq \underset{j}{max}f_j
+        \forall i, \underset{j}{\min}f_j \leq u^k_i \leq \underset{j}{\max}f_j
     \]
     At time $k+1$, we have $\forall i$
     \[
         \begin{aligned}
             &           &u^{k+1}_i &= \frac{\alpha v^{k+1}_i + \tau f_i}{\alpha + \tau}\\
-            &\Rightarrow&u^{k+1}_i - \underset{j}{min}f_j &= \frac{\alpha v^{k+1}_i + \tau f_i}{\alpha + \tau} - \underset{j}{min}f_j\\
-            &           &                                 &= \frac{\alpha (v^{k+1}_i - \underset{j}{min}f_j) + \tau (f_i - \underset{j}{min}f_j)}{\alpha + \tau}\\
+            &\Rightarrow&u^{k+1}_i - \underset{j}{\min}f_j &= \frac{\alpha v^{k+1}_i + \tau f_i}{\alpha + \tau} - \underset{j}{\min}f_j\\
+            &           &                                 &= \frac{\alpha (v^{k+1}_i - \underset{j}{\min}f_j) + \tau (f_i - \underset{j}{\min}f_j)}{\alpha + \tau}\\
         \end{aligned}
     \]
     and 
     \[
         \begin{aligned}
             &           &u^{k+1}_i &= \frac{\alpha v^{k+1}_i + \tau f_i}{\alpha + \tau}\\
-            &\Rightarrow&u^{k+1}_i - \underset{j}{max}f_j &= \frac{\alpha v^{k+1}_i + \tau f_i}{\alpha + \tau} - \underset{j}{max}f_j\\
-            &           &                                 &= \frac{\alpha (v^{k+1}_i - \underset{j}{max}f_j) + \tau (f_i - \underset{j}{max}f_j)}{\alpha + \tau}\\
+            &\Rightarrow&u^{k+1}_i - \underset{j}{\max}f_j &= \frac{\alpha v^{k+1}_i + \tau f_i}{\alpha + \tau} - \underset{j}{\max}f_j\\
+            &           &                                 &= \frac{\alpha (v^{k+1}_i - \underset{j}{\max}f_j) + \tau (f_i - \underset{j}{\max}f_j)}{\alpha + \tau}\\
         \end{aligned}
     \]
-    We know that $v_i^{k+1} \geq \underset{j}{min} u_j^k$ and by our induction hypothesis $u_i^k \geq \underset{j}{min}f_j$ so $v^{k+1}_i - \underset{j}{min}f_j \geq 0$\\
-    and apparently, $f_i \geq \underset{j}{min}f_j$ so $f_i - \underset{j}{min}f_j \geq 0$.\\
+    We know that $v_i^{k+1} \geq \underset{j}{\min} u_j^k$ and by our induction hypothesis $u_i^k \geq \underset{j}{\min}f_j$ so $v^{k+1}_i - \underset{j}{\min}f_j \geq 0$\\
+    and apparently, $f_i \geq \underset{j}{\min}f_j$ so $f_i - \underset{j}{\min}f_j \geq 0$.\\
     
-    Similarly, $v_i^{k+1} \leq \underset{j}{max} u_j^k$ and by our induction hypothesis $u_i^k \leq \underset{j}{max}f_j$ so $v^{k+1}_i - \underset{j}{max}f_j \leq 0$\\
-    and apparently, $f_i \leq \underset{j}{max}f_j$ so $f_i - \underset{j}{max}f_j \leq 0$.\\
+    Similarly, $v_i^{k+1} \leq \underset{j}{\max} u_j^k$ and by our induction hypothesis $u_i^k \leq \underset{j}{\max}f_j$ so $v^{k+1}_i - \underset{j}{\max}f_j \leq 0$\\
+    and apparently, $f_i \leq \underset{j}{\max}f_j$ so $f_i - \underset{j}{\max}f_j \leq 0$.\\
 
     Thus
     \[
-        \frac{\alpha (v^{k+1}_i - \underset{j}{min}f_j) + \tau (f_i - \underset{j}{min}f_j)}{\alpha + \tau} \geq 0
+        \frac{\alpha (v^{k+1}_i - \underset{j}{\min}f_j) + \tau (f_i - \underset{j}{\min}f_j)}{\alpha + \tau} \geq 0
     \]
     \[
-        \Leftrightarrow u_i^{k+1} \geq \underset{j}{min}f_j
+        \Leftrightarrow u_i^{k+1} \geq \underset{j}{\min}f_j
     \]
     and 
     \[
-        \frac{\alpha (v^{k+1}_i - \underset{j}{max}f_j) + \tau (f_i - \underset{j}{max}f_j)}{\alpha + \tau} \leq 0
+        \frac{\alpha (v^{k+1}_i - \underset{j}{\max}f_j) + \tau (f_i - \underset{j}{\max}f_j)}{\alpha + \tau} \leq 0
     \]
     \[
-        \Leftrightarrow u_i^{k+1} \leq \underset{j}{max}f_j
+        \Leftrightarrow u_i^{k+1} \leq \underset{j}{\max}f_j
     \]
 
     \subsection*{(c)}
