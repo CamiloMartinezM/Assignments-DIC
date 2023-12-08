@@ -623,6 +623,7 @@ fast iterative shrinkage thresholding algorithm (FISTA)
     /* update step sizes t and theta */
     tk1 = (1 + sqrt(1 + 4 * tk * tk))/2;
     theta = (tk - 1)/tk1;
+    tk = tk1;
 
     /*
     SUPPLEMENT CODE
