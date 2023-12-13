@@ -522,10 +522,6 @@ Implicit stabilisation of the reaction terms.
       /*
       SUPPLEMENT CODE
       */
-    //  laplacian_u = (uo[i+1][j] - 2 * uo[i][j] + uo[i-1][j]) / (hx * hx) +
-    //                (uo[i][j+1] - 2 * uo[i][j] + uo[i][j-1]) / (hy * hy);
-
-    //  u[i][j] = aux2 * ((rxx + ryy) * dc[i][j] * laplacian_u + aux1 * f[i][j] + uo[i][j]);
 
      u[i][j] = aux2 * (rxx * ( (dc[i+1][j] + dc[i][j]) * (uo[i+1][j] - uo[i][j])
                              + (dc[i-1][j] + dc[i][j]) * (uo[i-1][j] - uo[i][j]) )

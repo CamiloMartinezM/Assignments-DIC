@@ -162,8 +162,64 @@
 \end{homeworkProblem}
 
 \begin{homeworkProblem}{(Half-Quadratic Regularisation)}
+ 
+    Given the following energy functional
 
-   
+    \begin{equation}\label{HQR(1)}
+    E_{f}(u) = \int_{\Omega} \left( (u-f)^2 + \alpha \lambda^2 \ln{\left(1 + \frac{|\nabla u|^2}{\lambda^2}\right)} \right) dx, \quad \text{with } \alpha, \lambda > 0
+    \end{equation}
+    
+    We can identify that
+
+    \begin{equation}\label{HQR(2)}
+    \Psi(\lvert \nabla u \rvert^2) = \lambda^2 \ln{\left(1 + \frac{|\nabla u|^2}{\lambda^2}\right)}
+    \end{equation}
+
+    And we know that \eqref{HQR(1)} has the following Euler-Lagrange equation:
+
+    \begin{equation}\label{HQR(3)}
+        0 = (u-f) - \alpha \, \text{div}(\Psi'(\lvert \nabla u \rvert^2) \nabla u)
+    \end{equation}
+
+    Now, consider the characteristic Euler-Lagrange equations of the Half-Quadratic Regularisation functional $E_{HQ}$:
+    
+    \begin{equation}\label{HQR(4)}
+        0 = (u-f) - \alpha \, \text{div}(v \nabla u)
+    \end{equation}
+    \begin{equation}\label{HQR(5)}
+        0 = \lvert \nabla u \rvert^2 + \eta'(v)
+    \end{equation}
+
+    Comparing \eqref{HQR(3)} and \eqref{HQR(4)}, we know that 
+
+    \[
+        v := \Psi'(\lvert \nabla u \rvert^2) = \lambda^2 \ln{\left(1 + \frac{|\nabla u|^2}{\lambda^2}\right)}
+    \]
+
+    From there, we can isolate the term $\lvert \nabla u \rvert^2$ and we get
+
+    \[
+        \lvert \nabla u \rvert^2 = \lambda^2 \left(\exp{\left(\frac{v}{\lambda^2}\right)} - 1\right)    
+    \]
+
+    Then, \eqref{HQR(5)} becomes 
+    
+    \[
+        0 = \lvert \nabla u \rvert^2 + \lambda^2 \left(1 - \exp{\left(\frac{v}{\lambda^2}\right)}\right)
+    \]
+
+    This yields 
+    
+    \[
+        \eta'(v) = \lambda^2 \left(1 - \exp{\left(\frac{v}{\lambda^2}\right)}\right) \rightarrow \eta'(v) = \lambda^2 \left(1 - \lambda^2 \exp{\left(\frac{v}{\lambda^2}\right)}\right)
+    \]
+
+    Finally, we get the following Half-Quadratic Regularisation formulation
+
+    \[
+        E_{HQ}(u,v) = \int_{\Omega} \left( (u-f)^2 + \alpha \left(v \lvert \nabla u \rvert^2 + \lambda^2 \left(1 - \lambda^2 \exp{\left(\frac{v}{\lambda^2}\right)}\right)\right)\right) dx  
+    \]
+
 \end{homeworkProblem}
 
 \begin{homeworkProblem}{(Matrix-Valued Diffusion Filtering)}
@@ -196,7 +252,7 @@
             \end{split}
         \]
 
-        where $u = (u_1, \ldots, u_N)^T$, and the $N \times N \text{ matrix } A(u) = (a_{k,\ell}(u))$ satisfies
+        where $u = (u_1, \ldots, u_N)^T$, and the $N \times N \text{ matrix } A(u) = (a_{k,\ell}(u))$ is a space discretization of the term $\text{div}(v^2 \nabla u)$ that satisfies
         \[
             a_{k,\ell} := 
             \begin{cases}[r]

@@ -8,9 +8,9 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/Assignment07/Ex07/ambrosio",
+            "program": "${workspaceFolder}/Assignment07/Ex07/ambrosio_debug",
             "args": [],
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}/Assignment07/Ex07"
         }
     ]
 }
