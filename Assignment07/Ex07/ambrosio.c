@@ -515,19 +515,23 @@ Implicit stabilisation of the reaction terms.
   aux4 = c * tau / (hy * hy);
   aux5 = tau / (4.0 * c);
   aux6 = tau / alpha;
-
+  double lap;
   /* update u and v */
   for (i = 1; i <= nx; i++)
     for (j = 1; j <= ny; j++) {
       /*
       SUPPLEMENT CODE
       */
+     
 
-     u[i][j] = aux2 * (rxx * ( (dc[i+1][j] + dc[i][j]) * (uo[i+1][j] - uo[i][j])
-                             + (dc[i-1][j] + dc[i][j]) * (uo[i-1][j] - uo[i][j]) )
-                     + ryy * ( (dc[i][j+1] + dc[i][j]) * (uo[i][j+1] - uo[i][j])
-                             + (dc[i][j-1] + dc[i][j]) * (uo[i][j-1] - uo[i][j]) ) 
-                             + aux1 * f[i][j] + uo[i][j]);
+    //  u[i][j] = aux2 * (rxx * ( (vo[i+1][j] + vo[i-1][j]) * (uo[i+1][j] - uo[i][j])
+    //                          - (dc[i-1][j] + dc[i][j]) * (uo[i][j] - uo[i-1][j]))
+    //                  + ryy * ( (dc[i][j+1] + dc[i][j]) * (uo[i][j+1] - uo[i][j])
+    //                          - (dc[i][j-1] + dc[i][j]) * (uo[i][j] - uo[i][j-1])) 
+    //                          + aux1 * f[i][j] + uo[i][j]);
+     lap = (u[i+1][j] - 2*u[i][j] + u[i-1][j]) / (hx * hx) + (u[i][j+1] - 2*u[i][j] + u[i][j-1]) / (hy * hy);
+     u[i][j] = (tau * aux2) * (vo[i][j] * ((vo[i+1][j] - vo[i-1][j])*(u[i+1][j] - u[i-1][j])/hx + (vo[i][j+1] - vo[i][j-1])*(u[i][j+1] - u[i][j-1])/hy) + dc[i][j]*lap)
+      + aux2 * (aux1 * f[i][j] + uo[i][j]);
 
      v[i][j] = vo[i][j] + aux3 * (vo[i+1][j] - 2 * vo[i][j] + vo[i-1][j]) +
                           aux4 * (vo[i][j+1] - 2 * vo[i][j] + vo[i][j-1]) -
@@ -583,33 +587,44 @@ int main()
 
   /* ---- read input image f (pgm format P5) ---- */
 
-  printf("input image (pgm):                  ");
-  read_string(in);
+  // printf("input image (pgm):                  ");
+  // read_string(in);
+  strcpy(in, "house.pgm");
   read_pgm_to_double(in, &nx, &ny, &f);
 
   /* ---- read other parameters ---- */
 
-  printf("data term weight beta (>0.0):       ");
-  read_double(&beta);
+  // printf("data term weight beta (>0.0):       ");
+  // read_double(&beta);
 
-  printf("boundary term weight alpha (>0.0):  ");
-  read_double(&alpha);
+  // printf("boundary term weight alpha (>0.0):  ");
+  // read_double(&alpha);
 
-  printf("parameter c (>0.0, <<1.0):          ");
-  read_double(&c);
+  // printf("parameter c (>0.0, <<1.0):          ");
+  // read_double(&c);
 
-  printf("time step size tau (<=0.25):        ");
-  read_double(&tau);
+  // printf("time step size tau (<=0.25):        ");
+  // read_double(&tau);
 
-  printf("number of iterations:               ");
-  read_long(&kmax);
+  // printf("number of iterations:               ");
+  // read_long(&kmax);
 
-  printf("output image u:                     ");
-  read_string(out1);
+  // printf("output image u:                     ");
+  // read_string(out1);
 
-  printf("edge map v:                         ");
-  read_string(out2);
-  printf("\n");
+  // printf("edge map v:                         ");
+  // read_string(out2);
+  // printf("\n");
+
+
+  beta = 0.007;
+  alpha = 1;
+  c = 0.05;
+  tau = 0.2;
+  kmax = 10;
+  strcpy(out1, "out1u.pgm");
+  strcpy(out2, "out1v.pgm");
+
 
   /* ---- allocate memory ---- */
 
