@@ -246,7 +246,7 @@
         A simple modified explicit scheme for \eqref{AT(1)} can be written as follows:
         \[
             \begin{split}
-                \frac{u_{i,j}^{k+1} - u_{i,j}^k}{\tau} &= \left[2 v_{i,j}^k \left[\frac{(v_{i+1,j}^k - v_{i-1,j}^k)(u_{i+1,j}^k - u_{i-1,j}^k)}{2h_x} + \frac{(v_{i,j+1}^k - v_{i,j-1}^k)(u_{i,j+1}^k - u_{i,j-1}^k)}{2h_y}\right] + (v_{i,j}^k)^2 \Delta u^k\right] - \dots \\ 
+                \frac{u_{i,j}^{k+1} - u_{i,j}^k}{\tau} &= \left[2 v_{i,j}^k \left[\frac{(v_{i+1,j}^k - v_{i-1,j}^k)(u_{i+1,j}^k - u_{i-1,j}^k)}{2h_x^2} + \frac{(v_{i,j+1}^k - v_{i,j-1}^k)(u_{i,j+1}^k - u_{i,j-1}^k)}{2h_y^2}\right] + (v_{i,j}^k)^2 \Delta u^k\right] - \dots \\ 
                 &\quad \beta (u_{i,j}^{k+1} - f_{i,j}) \\
                 \rightarrow u_{i,j}^{k+1} (1 + \beta \tau) &= \tau \left(2 v_{i,j}^k A^k + (v_{i,j}^k)^2 \Delta u^k + \beta f_{i,j}\right) + u_{i,j}^k \\
                 \rightarrow u_{i,j}^{k+1} &= \frac{\tau}{1 + \beta \tau} \left(2 v_{i,j}^k A^k + (v_{i,j}^k)^2 \Delta u^k + \beta f_{i,j}\right) + \frac{1}{1 + \beta \tau} u_{i,j}^k
@@ -256,7 +256,7 @@
         where $A^k$ and $\Delta u^k$ are defined at iteration $k$ as follows 
 
         \[
-            A^k = \frac{(v_{i+1,j}^k - v_{i-1,j}^k)(u_{i+1,j}^k - u_{i-1,j}^k)}{2h_x} + \frac{(v_{i,j+1}^k - v_{i,j-1}^k)(u_{i,j+1}^k - u_{i,j-1}^k)}{2h_y}
+            A^k = \frac{(v_{i+1,j}^k - v_{i-1,j}^k)(u_{i+1,j}^k - u_{i-1,j}^k)}{2h_x^2} + \frac{(v_{i,j+1}^k - v_{i,j-1}^k)(u_{i,j+1}^k - u_{i,j-1}^k)}{2h_y^2}
         \]
         \[
             \Delta u^k = \frac{u_{i+1,j}^{k} - 2u_{i,j}^{k} + u_{i-1,j}^{k}}{h_x^2} + \frac{u_{i,j+1}^{k} - 2u_{i,j}^{k} + u_{i,j-1}^{k}}{h_y^2}
