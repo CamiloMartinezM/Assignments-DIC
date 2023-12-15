@@ -246,23 +246,21 @@
         A simple modified explicit scheme for \eqref{AT(1)} can be written as follows:
         \[
             \begin{split}
-                \frac{u_{i,j}^{k+1} - u_{i,j}^k}{\tau} &= A^k(u_{i,j}^k) u_{i,j}^k - \beta (u_{i,j}^{k+1} - f_{i,j}) \\
-                \rightarrow u_{i,j}^{k+1} (1 + \beta \tau) &= \tau \left[A^k(u_{i,j}^k) u_{i,j}^k + \beta f_{i,j}\right] + u_{i,j}^k \\
-                \rightarrow u_{i,j}^{k+1} &= \frac{\tau}{1 + \beta \tau} \left[A^k(u_{i,j}^k) u_{i,j}^k + \beta f_{i,j}\right] + \frac{1}{1 + \beta \tau} u_{i,j}^k
+                \frac{u_{i,j}^{k+1} - u_{i,j}^k}{\tau} &= \left[2 v_{i,j}^k \left[\frac{(v_{i+1,j}^k - v_{i-1,j}^k)(u_{i+1,j}^k - u_{i-1,j}^k)}{2h_x} + \frac{(v_{i,j+1}^k - v_{i,j-1}^k)(u_{i,j+1}^k - u_{i,j-1}^k)}{2h_y}\right] + (v_{i,j}^k)^2 \Delta u^k\right] - \dots \\ 
+                &\quad \beta (u_{i,j}^{k+1} - f_{i,j}) \\
+                \rightarrow u_{i,j}^{k+1} (1 + \beta \tau) &= \tau \left(2 v_{i,j}^k A^k + (v_{i,j}^k)^2 \Delta u^k + \beta f_{i,j}\right) + u_{i,j}^k \\
+                \rightarrow u_{i,j}^{k+1} &= \frac{\tau}{1 + \beta \tau} \left(2 v_{i,j}^k A^k + (v_{i,j}^k)^2 \Delta u^k + \beta f_{i,j}\right) + \frac{1}{1 + \beta \tau} u_{i,j}^k
             \end{split}
         \]
 
-        where $u = (u_1, \ldots, u_N)^T$, and the $N \times N \text{ matrix } A(u) = (a_{k,\ell}(u))$ is a space discretization of the term $\text{div}(v^2 \nabla u)$ that satisfies
-        \[
-            a_{k,\ell} := 
-            \begin{cases}[r]
-                \frac{(v_{k}^2 + v_{\ell}^2)}{2h^2} & (\ell \in N(k)), \\
-                -\sum\limits_{n \in N(k)} \frac{(v_{k}^2 + v_{n}^2)}{2h^2} & (\ell = k), \\
-                0 & (\text{else}).
-            \end{cases} 
-        \]
+        where $A^k$ and $\Delta u^k$ are defined at iteration $k$ as follows 
 
-        Here, \( N(k) \) are the neighbors of pixel \( k \), and \( h \) is the distance between pixels (assuming we took $h_1 = h_2 = h$ in both $x$ and $y$ directions to simplify the equations above).\\
+        \[
+            A^k = \frac{(v_{i+1,j}^k - v_{i-1,j}^k)(u_{i+1,j}^k - u_{i-1,j}^k)}{2h_x} + \frac{(v_{i,j+1}^k - v_{i,j-1}^k)(u_{i,j+1}^k - u_{i,j-1}^k)}{2h_y}
+        \]
+        \[
+            \Delta u^k = \frac{u_{i+1,j}^{k} - 2u_{i,j}^{k} + u_{i-1,j}^{k}}{h_x^2} + \frac{u_{i,j+1}^{k} - 2u_{i,j}^{k} + u_{i,j-1}^{k}}{h_y^2}
+        \]
 
         For \eqref{AT(2)}, we can use an explicit approach:
 
@@ -276,10 +274,10 @@
         where 
         
         \[
-            \Delta v_{i,j}^k = \frac{v_{i+1,j}^{k} - 2v_{i,j}^{k} + v_{i-1,j}^{k}}{h^2} + \frac{v_{i,j+1}^{k} - 2v_{i,j}^{k} + v_{i,j-1}^{k}}{h^2}
+            \Delta v_{i,j}^k = \frac{v_{i+1,j}^{k} - 2v_{i,j}^{k} + v_{i-1,j}^{k}}{h_x^2} + \frac{v_{i,j+1}^{k} - 2v_{i,j}^{k} + v_{i,j-1}^{k}}{h_y^2}
         \]
         \[
-            \lvert \nabla u_{i,j}^k \rvert^2 = \frac{(u_{i+1,j}^k - u_{i-1,j}^k)^2 + (u_{i,j+1}^k - u_{i,j-1}^k)^2}{4h^2}
+            \lvert \nabla u_{i,j}^k \rvert^2 = \frac{(u_{i+1,j}^k - u_{i-1,j}^k)^2}{4h_x^2} + \frac{(u_{i+1,j}^k - u_{i-1,j}^k)^2}{4h_y^2}
         \]
 
     \end{adjustwidth}
