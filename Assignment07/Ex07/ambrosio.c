@@ -515,27 +515,31 @@ Implicit stabilisation of the reaction terms.
   aux4 = c * tau / (hy * hy);
   aux5 = tau / (4.0 * c);
   aux6 = tau / alpha;
-  double lap;
+  double tau_lap;
   /* update u and v */
   for (i = 1; i <= nx; i++)
     for (j = 1; j <= ny; j++) {
       /*
       SUPPLEMENT CODE
       */
-     
+      tau_lap = 2 * rxx * (uo[i + 1][j] - 2 * uo[i][j] + uo[i - 1][j]) +
+                2 * ryy * (uo[i][j + 1] - 2 * uo[i][j] + uo[i][j - 1]);
 
-    //  u[i][j] = aux2 * (rxx * ( (vo[i+1][j] + vo[i-1][j]) * (uo[i+1][j] - uo[i][j])
-    //                          - (dc[i-1][j] + dc[i][j]) * (uo[i][j] - uo[i-1][j]))
-    //                  + ryy * ( (dc[i][j+1] + dc[i][j]) * (uo[i][j+1] - uo[i][j])
-    //                          - (dc[i][j-1] + dc[i][j]) * (uo[i][j] - uo[i][j-1])) 
-    //                          + aux1 * f[i][j] + uo[i][j]);
-     lap = (u[i+1][j] - 2*u[i][j] + u[i-1][j]) / (hx * hx) + (u[i][j+1] - 2*u[i][j] + u[i][j-1]) / (hy * hy);
-     u[i][j] = (tau * aux2) * (vo[i][j] * ((vo[i+1][j] - vo[i-1][j])*(u[i+1][j] - u[i-1][j])/hx + (vo[i][j+1] - vo[i][j-1])*(u[i][j+1] - u[i][j-1])/hy) + dc[i][j]*lap)
-      + aux2 * (aux1 * f[i][j] + uo[i][j]);
+    //   A = rxx * ((vo[i + 1][j] + vo[i - 1][j]) * (uo[i + 1][j] - uo[i][j]) -
+    //              (vo[i - 1][j] + vo[i][j]) * (uo[i][j] - uo[i - 1][j])) +
+    //       ryy * ((vo[i][j + 1] + vo[i][j]) * (uo[i][j + 1] - uo[i][j]) -
+    //              (vo[i][j - 1] + vo[i][j]) * (uo[i][j] - uo[i][j - 1]));
 
-     v[i][j] = vo[i][j] + aux3 * (vo[i+1][j] - 2 * vo[i][j] + vo[i-1][j]) +
-                          aux4 * (vo[i][j+1] - 2 * vo[i][j] + vo[i][j-1]) -
-                          aux6 * grad_sqr[i][j] * vo[i][j] + aux5 * (1 - vo[i][j]);
+      u[i][j] = aux2 * (2 * vo[i][j] *
+                            (rxx * (vo[i + 1][j] - vo[i - 1][j]) *
+                                 (uo[i + 1][j] - uo[i - 1][j]) +
+                             ryy * (vo[i][j + 1] - vo[i][j - 1]) *
+                                 (uo[i][j + 1] - uo[i][j - 1])) +
+                        dc[i][j] * tau_lap + aux1 * f[i][j] + uo[i][j]);
+
+      v[i][j] = vo[i][j] + aux3 * (vo[i + 1][j] - 2 * vo[i][j] + vo[i - 1][j]) +
+                aux4 * (vo[i][j + 1] - 2 * vo[i][j] + vo[i][j - 1]) -
+                aux6 * grad_sqr[i][j] * vo[i][j] + aux5 * (1 - vo[i][j]);
     }
 
   /* ---- free memory ---- */
@@ -616,7 +620,6 @@ int main()
   // read_string(out2);
   // printf("\n");
 
-
   beta = 0.007;
   alpha = 1;
   c = 0.05;
@@ -624,7 +627,6 @@ int main()
   kmax = 10;
   strcpy(out1, "out1u.pgm");
   strcpy(out2, "out1v.pgm");
-
 
   /* ---- allocate memory ---- */
 
