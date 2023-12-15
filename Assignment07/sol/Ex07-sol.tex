@@ -158,7 +158,18 @@
 \maketitle
 
 \begin{homeworkProblem}{(Multiple Choice)}
-
+    \subsection*{(a)}
+    Yes. Because time size $\tau$ has to satisfy $ \tau < \frac{1}{\underset{i}{|a_{i,i}(\bar{u}(t)^k)|}}$. One can observe that the larger the max of the diagnal element of $A$ is, the smaller the upperbound of $\tau$ is.
+    \subsection*{(b)}
+    Yes it does because a positive diffusivity will smooth the image.
+    \subsection*{(c)}
+    Yes, they are stable because neither of them the weights on the four corners of the stencils are 0.
+    \subsection*{(d)}
+    No because the diffusion process in this case is influenced by space.
+    \subsection*{(e)}
+    Yes because the regularisation parameter determine the one big time-step, i.e. how much the image diffuse.
+    \subsection*{(f)}
+    Yes it does.
 \end{homeworkProblem}
 
 \begin{homeworkProblem}{(Half-Quadratic Regularisation)}
@@ -223,8 +234,13 @@
 \end{homeworkProblem}
 
 \begin{homeworkProblem}{(Matrix-Valued Diffusion Filtering)}
-
-   
+    \subsection*{(a)}
+    Yes, it remins positive semidefinite. From Assignment 4 we know that the eigenvalue of the diffusion tensor is $g(|\nabla u|^2)$ and $g(0)$ which are both positive.
+    This result in a positive semidefinite matrix.
+    \subsection*{(b)}
+    \[
+        \frac{u^{k+1}_{i,j} - u^k_{i,j}}{\alpha} = div(\Psi'(|\nabla u^k_{i,j}|^2)\nabla u^k_{i,j}), \forall i,j \in \{1, ..., m\}
+    \]
 \end{homeworkProblem}
 
 \begin{homeworkProblem}{(Ambrosio–Tortorelli Approximation)}
