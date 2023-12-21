@@ -624,7 +624,7 @@ int main()
   alpha = 1;
   c = 0.05;
   tau = 0.2;
-  kmax = 10;
+  kmax = 50000;
   strcpy(out1, "out1u.pgm");
   strcpy(out2, "out1v.pgm");
 
