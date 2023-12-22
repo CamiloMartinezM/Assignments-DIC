@@ -156,6 +156,38 @@
 \begin{document}
 
 \maketitle
-
-
+\begin{homeworkProblem}{Anisotropic Image-Driven Regularisation with Robustified Data Term}
+For this energy functional, the data term is $\Psi(u^TJu)$ we have
+\begin{align*}
+    \partial_{u_1} \Psi(u^TJu)  &= \Psi'(u^TJu)\partial_{u_1} u^TJu\\
+                                &= \Psi'(u^TJu)\partial_{u_1} (
+                                    \begin{pmatrix}
+                                        u_1 & u_2 & 1\\
+                                    \end{pmatrix}
+                                    \begin{pmatrix}
+                                        J_{1,1} & J_{1,2} & J_{1,3}\\
+                                        J_{2,1} & J_{2,2} & J_{2,3}\\
+                                        J_{3,1} & J_{3,2} & J_{3,3}
+                                    \end{pmatrix}
+                                    \begin{pmatrix}
+                                        u_1\\
+                                        u_2\\
+                                        1
+                                    \end{pmatrix}
+                                )\\
+                                &= \Psi'(u^TJu)\partial_{u_1} (
+                                    \begin{pmatrix}
+                                        u_1J_{1,1} + u_2J_{2,1} + J_{3,1} & u_1J_{1,2} + u_2J_{2,2} + J_{3,2} & u_1J_{1,3} + u_2J_{2,3} + J_{3,3}\\
+                                    \end{pmatrix}
+                                    \begin{pmatrix}
+                                        u_1\\
+                                        u_2\\
+                                        1
+                                    \end{pmatrix}
+                                    )\\
+                                &= \Psi'(u^TJu)\partial_{u_1} (u_1^2J_{1,1} + u_1u_2(J_{1,2} + J_{2,1})+ u_1(J_{1,3} + J_{3,1}) + u_2^2J_{2,2} + u_2(J_{2,3}+J_{3,3}) + J_{3,3})\\
+                                &= \Psi'(u^TJu)((J_{1,1} + J_{1,1})u_1 + (J_{1,2} + J_{2,1})u2 + (J_{1,3} + J_{3,1}))
+\end{align*}
+The above derivation is the same for $u_2$ and the smoothness term is provided in Lecture 15 Slide 17
+\end{homeworkProblem}
 \end{document}
