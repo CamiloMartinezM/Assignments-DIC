@@ -160,7 +160,7 @@
 For this energy functional, the data term is $\Psi(u^TJu)$ we have
 \begin{align*}
     \partial_{u_1} \Psi(u^TJu)  &= \Psi'(u^TJu)\partial_{u_1} u^TJu\\
-                                &= \Psi'(u^TJu)\partial_{u_1} (
+                                &= \Psi'(u^TJu)\partial_{u_1} \left[
                                     \begin{pmatrix}
                                         u_1 & u_2 & 1\\
                                     \end{pmatrix}
@@ -174,8 +174,8 @@ For this energy functional, the data term is $\Psi(u^TJu)$ we have
                                         u_2\\
                                         1
                                     \end{pmatrix}
-                                )\\
-                                &= \Psi'(u^TJu)\partial_{u_1} (
+                                \right]\\
+                                &= \Psi'(u^TJu)\partial_{u_1} \left[
                                     \begin{pmatrix}
                                         u_1J_{1,1} + u_2J_{2,1} + J_{3,1} & u_1J_{1,2} + u_2J_{2,2} + J_{3,2} & u_1J_{1,3} + u_2J_{2,3} + J_{3,3}\\
                                     \end{pmatrix}
@@ -184,11 +184,11 @@ For this energy functional, the data term is $\Psi(u^TJu)$ we have
                                         u_2\\
                                         1
                                     \end{pmatrix}
-                                    )\\
+                                    \right]\\
                                 &= \Psi'(u^TJu)\partial_{u_1} (u_1^2J_{1,1} + u_1u_2(J_{1,2} + J_{2,1})+ u_1(J_{1,3} + J_{3,1}) + u_2^2J_{2,2} + u_2(J_{2,3}+J_{3,3}) + J_{3,3})\\
                                 &= \Psi'(u^TJu)((J_{1,1} + J_{1,1})u_1 + (J_{1,2} + J_{2,1})u_2 + (J_{1,3} + J_{3,1}))\\
-                                \intertext{As we know the motion tensor $J = K_\sigma\ast(\nabla_3f\nabla_3f^T)$ which is symmetry so we can simplify the equation as}\\
-                                &= 2\Psi'(u^TJu)(J_{1,1}u_1 + J_{1,2}u_2 + J_{1,3})\\
+                                \intertext{As we know the motion tensor $J = K_\sigma\ast(\nabla_3f\nabla_3f^T)$ which is symmetry so we can simplify the equation as}
+                                &= 2\Psi'(u^TJu)(J_{1,1}u_1 + J_{1,2}u_2 + J_{1,3})
 \end{align*}
 The smoothness term is provided in Lecture 15 Slide 17.
 By plugging in the equation we got from the data term above we have
@@ -197,7 +197,7 @@ By plugging in the equation we got from the data term above we have
 \]
 The derivation is similar for $u_2$ except the result because we take the partial w.r.t. $u_2$ this time
 \[
-    \partial_{u_2} \Psi(u^TJu) = 2\Psi'(u^TJu)(J_{1,2}u_1 + J_{2,2}u_2 + J_{2,3})
+    \partial_{u_2} \Psi(u^TJu) = 2 \, \Psi'(u^TJu)(J_{1,2}u_1 + J_{2,2}u_2 + J_{2,3})
 \]
 and similarily we have
 \[
@@ -225,8 +225,8 @@ and similarily we have
             \intertext{Using Hint 4 again}
             &= 2\sum_{i=1}^2\partial_{x_i}e_i^T\Psi'(M)\nabla u_1 - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
             \intertext{Using Hint 2}
-            &= 2\mathrm{div}(\Psi'(M)\nabla u_1) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
-            &= 2\mathrm{div}(D\nabla u_1) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            &= 2 \, \mathrm{div}(\Psi'(M)\nabla u_1) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            &= 2 \, \mathrm{div}(D\nabla u_1) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
             &= \mathrm{div}(D\nabla u_1) - \frac{1}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
         \end{align*}
     So we have 
