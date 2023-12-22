@@ -287,5 +287,13 @@ and similarily we have
             &= u^T\sum_{i=1}^{3}(\nabla_3 ({f_i}_{x_1}^2 + {f_i}_{x_2}^2)(\nabla_3 ({f_i}_{x_1}^2 + {f_i}_{x_2}^2))^T)u\\
             \intertext{thus we have the motion tensor $\sum_{i=1}^{3}(\nabla_3 ({f_i}_{x_1}^2 + {f_i}_{x_2}^2)(\nabla_3 ({f_i}_{x_1}^2 + {f_i}_{x_2}^2))^T)$}
     \end{align*}
+    \subsection*{(b)}
+    \begin{align*}
+        M   &= \sum_{i=1}^{2}\sum_{j=1}^{2}(u^\top \nabla_3 f_{x_i x_j})^2\\
+            &= \sum_{i=1}^{2}\sum_{j=1}^{2}(u^\top \nabla_3 f_{x_i x_j} \nabla_3 f_{x_i x_j}^\top u) \\
+            &= u^\top \sum_{i=1}^{2}\sum_{j=1}^{2} (\nabla_3 f_{x_i x_j} \nabla_3 f_{x_i x_j}^\top) u \\
+            &= u^\top \sum_{i=1}^{2}(\nabla_3 (f_{x_i x_1} + f_{x_i x_1})(\nabla_3 (f_{x_i x_2} + f_{x_i x_2}))^\top) u\\
+            \intertext{thus we have the motion tensor $\sum_{i=1}^{2}(\nabla_3 (f_{x_i x_1} + f_{x_i x_1})(\nabla_3 (f_{x_i x_2} + f_{x_i x_2}))^\top)$}
+    \end{align*}
 \end{homeworkProblem}
 \end{document}
