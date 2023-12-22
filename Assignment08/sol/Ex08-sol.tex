@@ -205,6 +205,37 @@ and similarily we have
 \]
 \end{homeworkProblem}
 \begin{homeworkProblem}{Flow-Driven Anisotropic Regularisation}
-    
+    Let $M = \sum_{i=1}^2\nabla u_i\nabla u_i^T$ we have the following Euler-Lagrange Equation
+    \begin{align*}
+        0   &= \sum_{i=1}^2\partial_{x_i}\partial{{u_1}_{x_i}}\mathrm{tr}(\Psi(M)) - \frac{1}{\alpha}\partial_{u_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})^2\\
+            &= \sum_{i=1}^2\partial_{x_i}\partial{{u_1}_{x_i}}\mathrm{tr}(\Psi(M)) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\ 
+            &= \sum_{i=1}^2\partial_{x_i}\mathrm{tr}(\partial{{u_1}_{x_i}}\Psi(M)) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\ 
+            &= \sum_{i=1}^2\partial_{x_i}\mathrm{tr}(\Psi'(M)\partial{{u_1}_{x_i}}M) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\ 
+            \intertext{Using Hint 1}
+            &= \sum_{i=1}^2\partial_{x_i}\mathrm{tr}(\Psi'(M)(e_i\nabla u_1^T + \nabla u_1e_i^T)) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\ 
+            \intertext{Let $\mu_j$ and $v_j$ denote the j-th eigenvalue and eigenvector of M, using Hint 4}
+            &= \sum_{i=1}^2\partial_{x_i}\mathrm{tr}(\sum_{j}\Psi'(\mu_j)(v_jv_j^T)(e_i\nabla u_1^T + \nabla u_1e_i^T)) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\ 
+            &= \sum_{i=1}^2\partial_{x_i}\mathrm{tr}(\sum_{j}\Psi'(\mu_j)(v_jv_j^Te_i\nabla u_1^T + v_jv_j^T\nabla u_1e_i^T)) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\ 
+            \intertext{$v_j^Te_i$ and $v_j^T\nabla u_1$ are scalar we can put them in the front}
+            &= \sum_{i=1}^2\partial_{x_i}\mathrm{tr}(\sum_{j}\Psi'(\mu_j)(v_j^Te_iv_j\nabla u_1^T + v_j^T\nabla u_1v_je_i^T)) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            &= \sum_{i=1}^2\partial_{x_i}\mathrm{tr}(\sum_{j}\Psi'(\mu_j)(v_j^Te_iv_j\nabla u_1^T)) + \mathrm{tr}(\sum_{j}\Psi'(\mu_j)(v_j^T\nabla u_1v_je_i^T)) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            \intertext{Using Hint 2}
+            &= 2\sum_{i=1}^2\partial_{x_i}\sum_{j}\Psi'(\mu_j)(e_i^Tv_jv_j^T\nabla u_1) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            &= 2\sum_{i=1}^2\partial_{x_i}e_i^T(\sum_{j}\Psi'(\mu_j)(v_jv_j^T))\nabla u_1 - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            \intertext{Using Hint 4 again}
+            &= 2\sum_{i=1}^2\partial_{x_i}e_i^T\Psi'(M)\nabla u_1 - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            \intertext{Using Hint 2}
+            &= 2\mathrm{div}(\Psi'(M)\nabla u_1) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            &= 2\mathrm{div}(D\nabla u_1) - \frac{2}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+            &= \mathrm{div}(D\nabla u_1) - \frac{1}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})\\   
+        \end{align*}
+    So we have 
+    \[
+        \partial_tu_1 = \mathrm{div}(D\nabla u_1) - \frac{1}{\alpha}f_{x_1}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})
+    \]
+    The same derivation works for $u_2$ as well with 
+    \[
+        \partial_tu_2 = \mathrm{div}(D\nabla u_2) - \frac{1}{\alpha}f_{x_2}(f_{x_1}u_1 + f_{x_2}u_2 + f_{x_3})
+    \]
 \end{homeworkProblem}
 \end{document}
