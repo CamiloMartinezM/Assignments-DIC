@@ -190,4 +190,44 @@ For this energy functional, the data term is $\Psi(u^TJu)$ we have
 \end{align*}
 The above derivation is the same for $u_2$ and the smoothness term is provided in Lecture 15 Slide 17
 \end{homeworkProblem}
+
+\begin{homeworkProblem}{Design of Global Optic Flow Methods}
+
+    According to Lecture 16, we can define the following data term \(M(D^1 H, \mathbf{u})\) given the cosine and sine of the hue channel \(H\) with an equal weight of $1/2$ for both:
+    \begin{equation}\label{H8.2.1}
+        M(D^1 H, \bm{u}) = \frac{1}{2} (\bm{u}^\top \nabla_3 \cos H)^2 + \frac{1}{2} (\bm{u}^\top \nabla_3 \sin H)^2
+    \end{equation}
+    
+    Since the hue channel $H$ of the HSV Colour Space is invariant under global or local multiplicative changes and local additive changes. Moreover, since the value of the hue channel $H$ is an angle, problems arise at the transition $2\pi \leftrightarrow 0$. Therefore, we use the vector $(\cos{H}, \sin{H})^\top$ instead, i.e. two features $\cos{H}$ and $\sin{H}$. This implies that, for an RGB image, we calculate the hue channel $H$ using the corresponding conversion and we discard the information given by the saturation $S$ which denotes the radius (distance to next grey tone); and the value $V$ which is the height (brightness). We do this because those two channels do not have invariance under local additive changes. This is of course a trade-off, i.e losing information in exchange for invariance. \\
+
+    On the other hand, we follow Lecture 15 to incorporate Isotropic Flow-Driven Regularisation, we define the following smoothness term:
+    \begin{equation}\label{H8.2.2}
+        S_{IF}(\nabla f, \nabla \bm{u}) = \Psi(\lvert \nabla u_1 \rvert^2 + \lvert \nabla u_2 \rvert^2)
+    \end{equation}
+    and we choose \( \Psi(s^2) \) to be the Charbonnier penaliser:
+    \begin{equation}\label{H8.2.3}
+        \Psi(s^2) = 2\lambda^2 \left( \sqrt{1 + \frac{s^2}{\lambda^2}} - 1 \right)
+    \end{equation}
+    
+    Finally, combining \eqref{H8.2.1} and \eqref{H8.2.2}, the energy functional becomes:
+    \begin{equation}
+        E(\bm{u}) = \int_\Omega \left[ \frac{1}{2} (\bm{u}^\top \nabla_3 \cos{H})^2 + \frac{1}{2} (\bm{u}^\top \nabla_3 \sin{H})^2 + \alpha \Psi(\lvert \nabla u_1 \rvert^2 + \lvert \nabla u_2 \rvert^2) \right] \, d\bm{x} \, d\bm{y} \, dt
+    \end{equation}
+
+    where the domain of integration \(\Omega\) spans the spatial dimensions \(x, y\) and the temporal dimension \(t\) over which the image sequence is defined. \\
+
+    Following Lecture 15, we know the Euler-Lagrange equations take the form:
+    \begin{align*}
+    \partial_t u_1 &= \partial_{x_1} S_{\partial x_1 u_1} + \partial_{x_2} S_{\partial x_2 u_1} - \frac{1}{\alpha} \partial_{u_1} M, \\
+    \partial_t u_2 &= \partial_{x_1} S_{\partial x_1 u_2} + \partial_{x_2} S_{\partial x_2 u_2} - \frac{1}{\alpha} \partial_{u_2} M
+    \end{align*}    
+
+    From the same lecture, we learned that, for Isotropic Flow-Driven Regularisation, the terms involving the smoothness term $S$ become $\text{div} \left( \Psi'(\lvert \nabla u_1 \rvert^2 + \lvert \nabla u_2 \rvert^2) \nabla u_i \right)$. Thus, the Euler-Lagrange equations for the designed energy functional end up being:
+    \begin{align*}
+        \partial_t u_1 &= \text{div} \left( \Psi'(\lvert \nabla u_1 \rvert^2 + \lvert \nabla u_2 \rvert^2) \nabla u_1 \right) - \frac{1}{2 \alpha} \left(\cos{H}_{x_1}(\bm{u}^\top \nabla_3 \cos{H}) + \sin{H}_{x_1}(\bm{u}^\top \nabla_3 \sin{H})\right), \\
+        \partial_t u_2 &= \text{div} \left( \Psi'(\lvert \nabla u_1 \rvert^2 + \lvert \nabla u_2 \rvert^2) \nabla u_2 \right) - \frac{1}{2 \alpha} \left(\cos{H}_{x_2}(\bm{u}^\top \nabla_3 \cos{H}) + \sin{H}_{x_2}(\bm{u}^\top \nabla_3 \sin{H})\right)
+    \end{align*}  
+        
+    
+\end{homeworkProblem}
 \end{document}
