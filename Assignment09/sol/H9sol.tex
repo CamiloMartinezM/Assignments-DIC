@@ -15,6 +15,9 @@
 
 \usetikzlibrary{automata,positioning}
 
+\usepackage{biblatex} 
+\addbibresource{bibliography.bib} % Import the bibliography file
+
 % 
 % Renewal of commands
 %
@@ -151,12 +154,11 @@
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Bias}{\mathrm{Bias}}
 
-\nocite{*}
-
 \begin{document}
 
 \maketitle
-\begin{homeworkProblem}{Joint Image- and Flow-driven Regularisation}
+
+\begin{homeworkProblem}{(Joint Image- and Flow-driven Regularisation)}
     \subsection*{(a)}
     We can expand $S$ given the fact $\partial_vu := v^T\nabla u$
     \begin{align*}
@@ -200,4 +202,68 @@
         \partial_t u_1 = \gamma(2\mathrm{div}(\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)vv^T\nabla u_1) - \partial_{u_1}M)
     \]
 \end{homeworkProblem}
+
+\begin{homeworkProblem}{(Algorithms for the Parabolic and Elliptic Problem)}
+    For the following energy functional:
+
+    \[
+    E(u, v) = \frac{1}{2} \int_{\Omega} \left( \bm{w}^\top \bm{J} \bm{w} + \alpha (\lvert \nabla u\ \rvert ^2 + \lvert \nabla v \rvert ^2) \right) dx dy
+    \]
+
+    where $\bm{w} = (u, v, 1)^\top$ denotes the optic flow, and $\bm{J} = (J_{i,k}) : \Omega \rightarrow \mathbb{R}^{3 \times 3}$ is some motion tensor field, its minimiser satisfies the Euler--Lagrange equations:
+    \[
+    \begin{aligned}
+    \Delta u_i - \frac{1}{\alpha} (J_{1,1,i} u_i + J_{1,2,i} v_i + J_{1,3,i}) &= 0, \\
+    \Delta v_i - \frac{1}{\alpha} (J_{2,1,i} u_i + J_{2,2,i} v_i + J_{2,3,i}) &= 0,
+    \end{aligned}
+    \]
+
+    where \( J_{n,m,i} \) is the component \( (n, m) \) of the structure tensor $\bm{J}$ for some pixel $i$ for $i = 1,\dots, N$. This constitutes a linear system of equations for the $2N$ unknowns $(u_i)$ and $(v_i)$.
+
+    \subsection*{(a)} 
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+
+    We discretize with a \textit{modified explicit scheme} with an \textit{implicitly stabilised} data term:
+    \begin{align*}
+    \frac{u_i^{k+1} - u_i^k}{\tau} &= \Delta u_i^k - \frac{1}{\alpha} \left( J_{1,1,i} u_i^{k+1} + J_{1,2,i} v_i^{k} + J_{1,3,i} \right), \\
+    \frac{v_i^{k+1} - v_i^k}{\tau} &= \Delta v_i^k - \frac{1}{\alpha} \left( J_{2,1,i} u_i^{k} + J_{2,2,i} v_i^{k+1} + J_{2,3,i} \right)
+    \end{align*}
+
+    where $\Delta u_i^k$ and $\Delta v_i^k$ are defined at iteration $k$ and pixel $i$ as follows 
+    \begin{align*}
+        \Delta u_i^k &= \sum_{j \in N(i)} \frac{u_j^k - u_i^k}{h^2}, \\
+        \Delta v_i^k &= \sum_{j \in N(i)} \frac{v_j^k - v_i^k}{h^2}
+    \end{align*}
+
+    Thus, the Gauss--Seidel method for the Parabolic problem can be written as
+    \begin{align*}
+        u_i^{k+1} &= \frac{\tau \left[ \Delta u_i^k - \frac{1}{\alpha} \left( J_{1,2,i} v_i^{k} + J_{1,3,i} \right)\right] + u_i^k}{1 + \frac{\tau}{\alpha} J_{1,1,i}}, \\
+        v_i^{k+1} &= \frac{\tau \left[ \Delta v_i^k - \frac{1}{\alpha} \left( J_{2,1,i} u_i^{k} + J_{2,3,i} \right)\right] + v_i^k}{1 + \frac{\tau}{\alpha} J_{2,2,i}}
+    \end{align*}
+    \end{adjustwidth}
+
+    \subsection*{(b)} 
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+
+    Following Lecture 18 and taking into account that the Jacobi method is the same as the Gauss--Seidel method, except that in the latter one uses at each stage the values $u_i^{k+1}$ when available \cite*{book:IterativeSolutionLargeLinearSystems}, the Jacobi iterative scheme for the Elliptic problem is given by
+    \begin{align*}
+        u_i^{k+1} &= \frac{\sum\limits_{j \in N(i)} u_j^{k} - \frac{h^2}{\alpha} \left( J_{1,2,i} v_i^k + J_{1,3,i} \right)}{|N(i)| + \frac{h^2}{\alpha} J_{1,1,i}}, \\
+        v_i^{k+1} &= \frac{\sum\limits_{j \in N(i)} v_j^{k} - \frac{h^2}{\alpha} \left( J_{2,1,i} u_i^k + J_{2,3,i} \right)}{|N(i)| + \frac{h^2}{\alpha} J_{2,2,i}}
+    \end{align*}
+    where \( N(i) \) are the pixel indices of the neighbours of pixel $i$ and consecuently $\lvert N(i) \rvert$ denotes the number of neighbours of pixel $i$ that belong to the image domain. Note that, in contrast to the derivation shown in Lecture 18, we do not use either \( N^-(i) := \{j \in N(i) \, | \, j < i\} \) or \( N^+(i) := \{j \in N(i) \, | \, j > i\} \), since, in the Jacobi method, all the \( u_j^{k+1} \) and \( v_j^{k+1} \) in the sums are replaced with \( u_j^{k} \) and \( v_j^{k} \) respectively.
+
+    \end{adjustwidth}
+
+    \subsection*{(c)} 
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+    The Gauss--Seidel method should converge faster, since we are using recent values of the current $k+1$ iteration, that have already been calculated for the neighbours $j$ of the current pixel $i$. This also means that the order we choose to traverse the vector $u$ and $v$ matters, and each step depends on the previous one being completed, making it not parallelizable. In contrast, in the Jacobi method, the computations for $u_i^{k+1}$ and $v_i^{k+1}$ are decoupled within an iteration, that is, all new $k+1$ values are computed independently of each other based on the previous $k$-th iteration's values. 
+    \end{adjustwidth}
+
+\end{homeworkProblem}
+
+\printbibliography
+
 \end{document}

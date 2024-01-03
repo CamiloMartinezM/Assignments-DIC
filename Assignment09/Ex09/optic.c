@@ -749,6 +749,11 @@ for (i=1; i<=nx; i++)
      /* SUPPLEMENT CODE */
 
      /* u[i][j] = ... */
+    u[i][j] = f[i][j]
+        + rxx * ( (g[i+1][j] + g[i][j]) * (f[i+1][j] - f[i][j])
+                + (g[i-1][j] + g[i][j]) * (f[i-1][j] - f[i][j]) )
+        + ryy * ( (g[i][j+1] + g[i][j]) * (f[i][j+1] - f[i][j])
+                + (g[i][j-1] + g[i][j]) * (f[i][j-1] - f[i][j]) );
 
      /* v[i][j] = ... */
      }
