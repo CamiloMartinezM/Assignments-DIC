@@ -1,0 +1,203 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath,siunitx}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{changepage}
+
+\usetikzlibrary{automata,positioning}
+
+% 
+% Renewal of commands
+%
+\makeatletter
+\renewenvironment{cases}[1][l]{\matrix@check\cases\env@cases{#1}}{\endarray\right.}
+\def\env@cases#1{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace\def\arraystretch{1.2}%
+  \array{@{}#1@{\quad}l@{}}}
+\makeatother
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkTeam}
+\chead{\hmwkClass: \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\setsep}{,    \ }
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[2][-2]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \hmwkNumber.\arabic{homeworkProblemCounter} #2}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+\newcommand{\hmwkNumber}{H9}
+\newcommand{\hmwkTitle}{Homework Assignment \hmwkNumber}
+\newcommand{\hmwkClass}{DIC}
+\newcommand{\hmwkTeam}{Team \#11}
+\newcommand{\hmwkAuthorName}{\hmwkTeam: \\ Camilo Martínez 7057573, cama00005@stud.uni-saarland.de \\ Honglu Ma 7055053, homa00001@stud.uni-saarland.de \\ Maria Sibi 7058469, mama00047@stud.uni-saarland.de}
+
+%
+% Title Page
+%
+
+\title{
+    % \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+}
+
+\author{\hmwkAuthorName}
+\date \today
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Define argmax and argmin
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\nocite{*}
+
+\begin{document}
+
+\maketitle
+\begin{homeworkProblem}{Joint Image- and Flow-driven Regularisation}
+    \subsection*{(a)}
+    We can expand $S$ given the fact $\partial_vu := v^T\nabla u$
+    \begin{align*}
+        S   &=  |\partial_vu_1|^2 + |\partial_vu_2|^2\\
+            &=  |v^T\nabla u_1|^2 + |v^T\nabla u_2|^2\\
+            &=  v^T\nabla u_1v^T\nabla u_1 + v^T\nabla u_2v^T\nabla u_2\\
+            &= ({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)^2 + ({u_2}_{x_1}v_1+{u_2}_{x_2}v_2)^2
+    \end{align*}
+    We calculate ${S}_{{u_1}_{x_1}}$ and ${S}_{{u_1}_{x_2}}$
+    \begin{align*}
+        {S}_{{u_1}_{x_1}}   &=  2v_1({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)\\
+                            &=  2v_1(v^T\nabla u_1)\\
+        {S}_{{u_1}_{x_2}}   &=  2v_2({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)\\
+                            &=  2v_2(v^T\nabla u_1)
+    \end{align*}
+    We have the gradient descent equation
+    \begin{align*}
+        \partial_t u_1  &=  -\gamma\nabla_{u_1}E\\
+                        &=  -\gamma(F_{u_1} - \partial_{x_1}F_{{u_1}_{x_1}} - \partial_{x_2}F_{{u_1}_{x_2}})\\
+                        &=  \gamma(\partial_{x_1}F_{{u_1}_{x_1}} + \partial_{x_2}F_{{u_1}_{x_2}} - F_{u_1})\\
+        \intertext{where $F := M(u, f) + \alpha S(\nabla u)$ so}\\
+        \partial_t u_1  &=  \gamma(\partial_{x_1}{S}_{{u_1}_{x_1}}  + \partial_{x_2}{S}_{{u_1}_{x_2}} - \partial_{u_1}M)\\
+                        &=  \gamma(2v_1(v^T\nabla u_1)  + 2v_2(v^T\nabla u_1) - \partial_{u_1}M)\\
+                        &=  \gamma(\partial_{x_1}(2v_1(v^T\nabla u_1))  + \partial_{x_2}(2v_2(v^T\nabla u_1)) - \partial_{u_1}M)\\
+                        &=  \gamma(2\mathrm{div}(vv^T\nabla u_1) - \partial_{u_1}M)\\
+    \end{align*}
+    One can observe that $vv^T$ is a diffusion tensor
+    The derivation is similar for $\partial_t u_2$.
+    \subsection*{(b)}
+    The derivation of the gradient descent equation is similar to the one above.
+    The changes are the ${S}_{{u_1}_{x_1}}$ and ${S}_{{u_1}_{x_2}}$ terms in $\partial_t u_1$
+    because now we have $S = \Psi(|\partial_vu_1|^2 + |\partial_vu_2|^2)$
+    \begin{align*}
+        {S}_{{u_1}_{x_1}}   &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_1({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)\\
+                            &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_1(v^T\nabla u_1)\\
+        {S}_{{u_1}_{x_2}}   &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_2({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)\\
+                            &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_2(v^T\nabla u_1)    
+    \end{align*}
+    we have
+    \[
+        \partial_t u_1 = \gamma(2\mathrm{div}(\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)vv^T\nabla u_1) - \partial_{u_1}M)
+    \]
+\end{homeworkProblem}
+\end{document}
