@@ -160,47 +160,55 @@
 
 \begin{homeworkProblem}{(Joint Image- and Flow-driven Regularisation)}
     \subsection*{(a)}
-    We can expand $S$ given the fact $\partial_vu := v^T\nabla u$
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+
+    We can expand $S$ given the fact $\partial_vu := v^\top\nabla u$
     \begin{align*}
         S   &=  |\partial_vu_1|^2 + |\partial_vu_2|^2\\
-            &=  |v^T\nabla u_1|^2 + |v^T\nabla u_2|^2\\
-            &=  v^T\nabla u_1v^T\nabla u_1 + v^T\nabla u_2v^T\nabla u_2\\
+            &=  |v^\top\nabla u_1|^2 + |v^\top\nabla u_2|^2\\
+            &=  v^\top\nabla u_1v^\top\nabla u_1 + v^\top\nabla u_2v^\top\nabla u_2\\
             &= ({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)^2 + ({u_2}_{x_1}v_1+{u_2}_{x_2}v_2)^2
     \end{align*}
     We calculate ${S}_{{u_1}_{x_1}}$ and ${S}_{{u_1}_{x_2}}$
     \begin{align*}
         {S}_{{u_1}_{x_1}}   &=  2v_1({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)\\
-                            &=  2v_1(v^T\nabla u_1)\\
+                            &=  2v_1(v^\top\nabla u_1)\\
         {S}_{{u_1}_{x_2}}   &=  2v_2({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)\\
-                            &=  2v_2(v^T\nabla u_1)
+                            &=  2v_2(v^\top\nabla u_1)
     \end{align*}
     We have the gradient descent equation
     \begin{align*}
         \partial_t u_1  &=  -\gamma\nabla_{u_1}E\\
                         &=  -\gamma(F_{u_1} - \partial_{x_1}F_{{u_1}_{x_1}} - \partial_{x_2}F_{{u_1}_{x_2}})\\
                         &=  \gamma(\partial_{x_1}F_{{u_1}_{x_1}} + \partial_{x_2}F_{{u_1}_{x_2}} - F_{u_1})\\
-        \intertext{where $F := M(u, f) + \alpha S(\nabla u)$ so}\\
+        \intertext{where $F := M(u, f) + \alpha S(\nabla u)$ so}
         \partial_t u_1  &=  \gamma(\partial_{x_1}{S}_{{u_1}_{x_1}}  + \partial_{x_2}{S}_{{u_1}_{x_2}} - \partial_{u_1}M)\\
-                        &=  \gamma(2v_1(v^T\nabla u_1)  + 2v_2(v^T\nabla u_1) - \partial_{u_1}M)\\
-                        &=  \gamma(\partial_{x_1}(2v_1(v^T\nabla u_1))  + \partial_{x_2}(2v_2(v^T\nabla u_1)) - \partial_{u_1}M)\\
-                        &=  \gamma(2\mathrm{div}(vv^T\nabla u_1) - \partial_{u_1}M)\\
+                        &=  \gamma(2v_1(v^\top\nabla u_1)  + 2v_2(v^\top\nabla u_1) - \partial_{u_1}M)\\
+                        &=  \gamma(\partial_{x_1}(2v_1(v^\top\nabla u_1))  + \partial_{x_2}(2v_2(v^\top\nabla u_1)) - \partial_{u_1}M)\\
+                        &=  \gamma(2 \, \mathrm{div}(vv^\top\nabla u_1) - \partial_{u_1}M)
     \end{align*}
-    One can observe that $vv^T$ is a diffusion tensor
-    The derivation is similar for $\partial_t u_2$.
+    One can observe that $vv^\top$ is a diffusion tensor. The derivation is similar for $\partial_t u_2$.
+    \end{adjustwidth}
+    
     \subsection*{(b)}
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
     The derivation of the gradient descent equation is similar to the one above.
     The changes are the ${S}_{{u_1}_{x_1}}$ and ${S}_{{u_1}_{x_2}}$ terms in $\partial_t u_1$
     because now we have $S = \Psi(|\partial_vu_1|^2 + |\partial_vu_2|^2)$
     \begin{align*}
         {S}_{{u_1}_{x_1}}   &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_1({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)\\
-                            &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_1(v^T\nabla u_1)\\
+                            &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_1(v^\top\nabla u_1)\\
         {S}_{{u_1}_{x_2}}   &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_2({u_1}_{x_1}v_1+{u_1}_{x_2}v_2)\\
-                            &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_2(v^T\nabla u_1)    
+                            &=  2\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)v_2(v^\top\nabla u_1)    
     \end{align*}
-    we have
+    Thus
     \[
-        \partial_t u_1 = \gamma(2\mathrm{div}(\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)vv^T\nabla u_1) - \partial_{u_1}M)
+        \partial_t u_1 = \gamma(2\mathrm{div}(\Psi'(|\partial_vu_1|^2 + |\partial_vu_2|^2)vv^\top\nabla u_1) - \partial_{u_1}M)
     \]
+    \end{adjustwidth}
+
 \end{homeworkProblem}
 
 \begin{homeworkProblem}{(Algorithms for the Parabolic and Elliptic Problem)}
