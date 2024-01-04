@@ -209,6 +209,64 @@
     \]
     \end{adjustwidth}
 
+    \subsection*{(c)}
+    we construct such diffusion tensor for $\partial_t u_1$ as
+    \[
+        \begin{pmatrix}
+            \nabla_2f & | & \nabla_2f^\perp
+        \end{pmatrix}
+        \begin{pmatrix}
+            \Psi'((\nabla_2f^T\nabla u_1)^2)    &   0\\
+            0                                   &   \Psi'(({\nabla_2f^\perp}^T\nabla u_1)^2)
+        \end{pmatrix}
+        \begin{pmatrix}
+            \nabla_2f^T \\
+            {\nabla_2f^\perp}^T
+        \end{pmatrix}
+    \]
+    and for $\partial_t u_2$ as 
+    \[
+        \begin{pmatrix}
+            \nabla_2f & | & \nabla_2f^\perp
+        \end{pmatrix}
+        \begin{pmatrix}
+            \Psi'((\nabla_2f^T\nabla u_2)^2)    &   0\\
+            0                                   &   \Psi'(({\nabla_2f^\perp}^T\nabla u_2)^2)
+        \end{pmatrix}
+        \begin{pmatrix}
+            \nabla_2f^T \\
+            {\nabla_2f^\perp}^T
+        \end{pmatrix}
+    \]
+    \subsection*{(d)}
+    We have the corresponding regulariser term as
+    \[
+        S = \Psi((\nabla_2f^T\nabla u_1)^2) + \Psi(({\nabla_2f^\perp}^T\nabla u_1)^2) + \Psi((\nabla_2f^T\nabla u_2)^2) + \Psi(({\nabla_2f^\perp}^T\nabla u_2)^2)
+    \]
+    For calculation we express $\nabla_2f$ and $\nabla_2 f^\perp$ as the following vector components:
+    \[
+        \nabla_2f = \begin{pmatrix}
+            \nabla_2f_1\\
+            \nabla_2f_2
+        \end{pmatrix}
+        \qquad
+        \nabla_2 f^\perp = \begin{pmatrix}
+            \nabla_2 f^\perp_1\\
+            \nabla_2 f^\perp_2
+        \end{pmatrix}
+    \]
+    Now we calculate $S_{{u_1}_{x_1}}$ and $S_{{u_1}_{x_2}}$
+    \begin{align*}
+        S_{{u_1}_{x_1}} &=  2\Psi'((\nabla_2f^T\nabla u_2)^2)\cdot(\nabla_2f^T\nabla u_2)\cdot(\nabla_2f_1) +\\
+                        &   2\Psi'(({\nabla_2f^\perp}^T\nabla u_1)^2)\cdot({\nabla_2f^\perp}^T\nabla u_1)\cdot(\nabla_2 f^\perp_1)\\
+        S_{{u_1}_{x_2}} &=  2\Psi'((\nabla_2f^T\nabla u_2)^2)\cdot(\nabla_2f^T\nabla u_2)\cdot(\nabla_2f_2) +\\
+                        &   2\Psi'(({\nabla_2f^\perp}^T\nabla u_1)^2)\cdot({\nabla_2f^\perp}^T\nabla u_1)\cdot(\nabla_2 f^\perp_2)
+    \end{align*}
+    and we get the corresponding divergence term as
+    \[
+        2\mathrm{div}((\Psi'((\nabla_2f^T\nabla u_2)^2)\nabla_2f\nabla_2f^T + \Psi'(({\nabla_2f^\perp}^T\nabla u_1)^2)\nabla_2f^\perp{\nabla_2f^\perp}^T)\nabla u_1)
+    \]
+    in which one can observe that there is the tensor we defined above and the case is similar for $\partial_t u_2$.
 \end{homeworkProblem}
 
 \begin{homeworkProblem}{(Algorithms for the Parabolic and Elliptic Problem)}
