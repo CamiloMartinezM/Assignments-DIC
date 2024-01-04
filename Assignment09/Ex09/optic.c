@@ -751,17 +751,17 @@ void flow
             /* u[i][j] = ... */
                 u[i][j] = 1 / (1 + aux * fx[i][j] * fx[i][j]) * (uold[i][j]
                     + rxx * ((g[i + 1][j] + g[i][j]) * (uold[i + 1][j] - uold[i][j])
-                        + (g[i - 1][j] + g[i][j]) * (uold[i - 1][j] - uold[i][j]))
+                           + (g[i - 1][j] + g[i][j]) * (uold[i - 1][j] - uold[i][j]))
                     + ryy * ((g[i][j + 1] + g[i][j]) * (uold[i][j + 1] - uold[i][j])
-                        + (g[i][j - 1] + g[i][j]) * (uold[i][j - 1] - uold[i][j]))
+                           + (g[i][j - 1] + g[i][j]) * (uold[i][j - 1] - uold[i][j]))
                     - aux * fx[i][j] * (fy[i][j] * vold[i][j] + fz[i][j]));
 
                  /* v[i][j] = ... */
                 v[i][j] = 1 / (1 + aux * fy[i][j] * fy[i][j]) * (vold[i][j]
                     + rxx * ((g[i + 1][j] + g[i][j]) * (vold[i + 1][j] - vold[i][j])
-                        + (g[i - 1][j] + g[i][j]) * (vold[i - 1][j] - vold[i][j]))
+                           + (g[i - 1][j] + g[i][j]) * (vold[i - 1][j] - vold[i][j]))
                     + ryy * ((g[i][j + 1] + g[i][j]) * (vold[i][j + 1] - vold[i][j])
-                        + (g[i][j - 1] + g[i][j]) * (vold[i][j - 1] - vold[i][j]))
+                           + (g[i][j - 1] + g[i][j]) * (vold[i][j - 1] - vold[i][j]))
                     - aux * fy[i][j] * (fx[i][j] * uold[i][j] + fz[i][j]));
             }
         }
