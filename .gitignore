@@ -51,6 +51,9 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+#VsCode Temp Folder
+*/vscode/
+
 # LaTex Build files
 *.synctex.gz
 */sol/*.pdf
