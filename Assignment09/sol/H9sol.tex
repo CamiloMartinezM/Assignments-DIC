@@ -302,12 +302,26 @@
         \Delta v_i^k &= \sum_{j \in N(i)} \frac{v_j^k - v_i^k}{h^2}
     \end{align*}
 
-    Thus, the Gauss--Seidel method for the Parabolic problem can be written as
+    Thus, the Parabolic problem can be written as
     \begin{align*}
         u_i^{k+1} &= \frac{\tau \left[ \Delta u_i^k - \frac{1}{\alpha} \left( J_{1,2,i} v_i^{k} + J_{1,3,i} \right)\right] + u_i^k}{1 + \frac{\tau}{\alpha} J_{1,1,i}}, \\
         v_i^{k+1} &= \frac{\tau \left[ \Delta v_i^k - \frac{1}{\alpha} \left( J_{2,1,i} u_i^{k} + J_{2,3,i} \right)\right] + v_i^k}{1 + \frac{\tau}{\alpha} J_{2,2,i}}
     \end{align*}
+    % \begin{align*}
+    %     u_i^{k+1} &= \frac{(I+\frac{\tau}{h^2}A)u^k - \frac{\tau}{\alpha} \left(J_{1,2,i} v_i^{k} + J_{1,3,i} \right)}{1 + \frac{\tau}{\alpha} J_{1,1,i}}, \\
+    %     v_i^{k+1} &= \frac{(I+\frac{\tau}{h^2}A)v^k - \frac{\tau}{\alpha} \left(J_{2,1,i} u_i^{k} + J_{2,3,i} \right)}{1 + \frac{\tau}{\alpha} J_{2,2,i}}, \\
+    % \end{align*}
+    % where $u^k$ and $v^k$ are vectors that contain $u^k_i$ and $v^k_i$ for all pixel $i$ and A is a $N\times N$ matrix where $N$ is the total number of pixel and $a_{k,l}$ is defined by
+    % \begin{equation*}
+    %     a_{k,l} := \begin{cases}
+    %         1   & \text{$l \in \mathcal{N}(k)$}\\
+    %         -4  & \text{$l = k$}\\
+    %         0   & \text{otherwise}
+    %       \end{cases} 
+    % \end{equation*}
+    % where $\mathcal{N}(k)$ denotes neighbours of pixel $k$ in all 4 directions
     \end{adjustwidth}
+    
 
     \subsection*{(b)} 
     \vspace*{-1.9em}
@@ -328,6 +342,13 @@
     The Gauss--Seidel method should converge faster, since we are using recent values of the current $k+1$ iteration, that have already been calculated for the neighbours $j$ of the current pixel $i$. This also means that the order we choose to traverse the vector $u$ and $v$ matters, and each step depends on the previous one being completed, making it not parallelizable. In contrast, in the Jacobi method, the computations for $u_i^{k+1}$ and $v_i^{k+1}$ are decoupled within an iteration, that is, all new $k+1$ values are computed independently of each other based on the previous $k$-th iteration's values. 
     \end{adjustwidth}
 
+\end{homeworkProblem}
+\begin{homeworkProblem}{Flow-driven Isotropic Optic Flow}
+    \subsection*{(a)}
+    See file \textbf{optic.c}
+    \subsection*{(b)}
+    A larger $\alpha$ smooths the flow between frames more.
+    The role of $\lambda$ is to decrease smoothing at flow edges.
 \end{homeworkProblem}
 
 \printbibliography
