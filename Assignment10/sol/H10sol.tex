@@ -175,7 +175,7 @@
 \begin{homeworkProblem}{Analysis of the Explicit Osmosis Scheme}
     \subsection*{(a)}
     By SLO2 we know that $|d_1(x)| < \frac{2}{h_1}$ and $|d_2(x)| < \frac{2}{h_2}$
-    we want show that all diagonal element of $A$ are non-positive
+    and we want to show that all diagonal elements of $A$ are non-positive
     \[
         a_{i,i} := -\frac{2}{h_1^2} - \frac{2}{h_2^2} - \frac{{d_1}_{i+\frac{1}{2}, j} - {d_1}_{i-\frac{1}{2}, j}}{2h_1} - \frac{{d_2}_{i, j+\frac{1}{2}} - {d_2}_{i, j-\frac{1}{2}}}{2h_2}
     \]
@@ -197,13 +197,13 @@
     \]
     \subsection*{(b)}
     Consider the corner pixel which has boundaries in the up and left direction.
-    It's weight weight in $A$ can be express as
+    Its weight contribution to itself in $A$ can be express as
     \begin{align*}
         &   -\frac{2}{h_1^2} - \frac{2}{h_2^2} - \frac{{d_1}_{i+\frac{1}{2}, j} - {d_1}_{i-\frac{1}{2}, j}}{2h_1} - \frac{{d_2}_{i, j+\frac{1}{2}} - {d_2}_{i, j-\frac{1}{2}}}{2h_2}
             + (\frac{1}{h_1^2} + \frac{{d_1}_{i-\frac{1}{2}, j}}{2h_1}) + (\frac{1}{h_2^2} + \frac{{d_2}_{i, j-\frac{1}{2}}}{2h_2})\\
             &=  -\frac{1}{h_1^2} - \frac{1}{h_2^2} - \frac{{d_1}_{i+\frac{1}{2}, j} - 2{d_1}_{i-\frac{1}{2}, j}}{2h_1} - \frac{{d_2}_{i, j+\frac{1}{2}} - 2{d_2}_{i, j-\frac{1}{2}}}{2h_2}\\
             &=  -\frac{1}{h_1^2} - \frac{1}{h_2^2} - \frac{{d_1}_{i+\frac{1}{2}, j} - 0}{2h_1} - \frac{{d_2}_{i, j+\frac{1}{2}} - 0}{2h_2}\\  
-            \intertext{In boundary ${d_2}_{i, j-\frac{1}{2}} = 0$ and ${d_1}_{i-\frac{1}{2}, j} = 0$}\\
+            \intertext{At boundary, ${d_2}_{i, j-\frac{1}{2}} = 0$ and ${d_1}_{i-\frac{1}{2}, j} = 0$}\\
             &=  -\frac{1}{h_1^2} - \frac{1}{h_2^2} - \frac{{d_1}_{i+\frac{1}{2}, j}}{2h_1} - \frac{{d_2}_{i, j+\frac{1}{2}}}{2h_2}\\        
             &=  -\frac{1}{h_1^2} - \frac{1}{h_2^2} - \frac{{d_1}_{i+\frac{1}{2}, j}}{2h_1} - \frac{{d_2}_{i, j+\frac{1}{2}}}{2h_2}\\        
             &=  -(\frac{1}{h_1^2} + \frac{{d_1}_{i+\frac{1}{2}, j}}{2h_1})  - (\frac{1}{h_2^2} + \frac{{d_2}_{i, j+\frac{1}{2}}}{2h_2})\\
