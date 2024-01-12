@@ -495,13 +495,14 @@ for (i=0; i<=nx+1; i++)
  for (j=0; j<=ny+1; j++)
      d1[i][j] = d2[i][j] = 0.0;
 
-for (i=0; i<=nx+1; i++)
- for (j=0; j<=ny+1; j++)
+for (i=0; i<nx+1; i++)
+ for (j=0; j<ny+1; j++)
      {
 /* ---- compute x component of canonical drift vector field ---- */
 
 /* index [i,j] refers to intergrid location [i+1/2,j] */
-      d1[i][j] = (d1[i][j] + d1[i+1][j])/(2*hx);
+
+      d1[i][j] = (2 * (v[i+1][j] - v[i][j])) / (hx * (v[i+1][j] + v[i][j]));
 
 /* SUPPLEMENT CODE */
 
@@ -509,7 +510,7 @@ for (i=0; i<=nx+1; i++)
 /* ---- compute y component of canonical drift vector field ---- */
 
 /* index [i,j] refers to intergrid location [i,j+1/2] */
-       d2[i][j] = (d2[i][j] + d2[i][j+1])/(2*hy);
+      d2[i][j] = (2 * (v[i][j+1] - v[i][j])) / (hy * (v[i][j+1] + v[i][j]));
 
 /* SUPPLEMENT CODE */
      }
