@@ -15,9 +15,6 @@
 
 \usetikzlibrary{automata,positioning}
 
-\usepackage{biblatex} 
-\addbibresource{bibliography.bib} % Import the bibliography file
-
 % 
 % Renewal of commands
 %
@@ -181,8 +178,21 @@
 
     \subsection*{(c)}
 
+    \begin{itemize}
+        \item Unit column sums (DLO1) come from vanishing column sums of $A$ (SLO1).
+        \item For off-diagonal elements, nonnegativity (DLO2) follows from $q_{i,j} = \tau a_{i,j}$ and the nonnegative off-diagonals of $A$ (SLO2). See also last item.
+        \item Irreducibility of $Q$ (DLO3) comes from irreducibility of $A$ (SLO3).
+        \item From Lecture 5, we learned that nonnegativity (DLO2) and positivity of diagonal entries (DLO4) are satisfied if
+        \[
+            q_{i,i} = 1 + \tau a_{i,i} > 0 \quad \forall i
+        \]
+        
+        This yields (note that $a_{i,i} \leq 0$, which we proved above):
+        \[
+            \tau < \frac{1}{\max\limits_i |a_{i,i}| \left(u(t)^k\right)}.
+        \]
     
-
+    \end{itemize}
 \end{homeworkProblem}
 
 \end{document}
