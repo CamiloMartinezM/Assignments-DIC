@@ -486,6 +486,8 @@ long    i, j;             /* loop variables */
 
 dummies_double (v, nx, ny);
 
+printf("The value of myFloatValue is: %ld\n", nx);
+printf("The value of myFloatValue is: %ld\n", ny);
 
 /* ---- initialise drift vector field with 0 ---- */
 
@@ -493,11 +495,13 @@ for (i=0; i<=nx+1; i++)
  for (j=0; j<=ny+1; j++)
      d1[i][j] = d2[i][j] = 0.0;
 
-
+for (i=0; i<=nx+1; i++)
+ for (j=0; j<=ny+1; j++)
+     {
 /* ---- compute x component of canonical drift vector field ---- */
 
 /* index [i,j] refers to intergrid location [i+1/2,j] */
-    
+      d1[i][j] = (d1[i][j] + d1[i+1][j])/(2*hx);
 
 /* SUPPLEMENT CODE */
 
@@ -505,14 +509,23 @@ for (i=0; i<=nx+1; i++)
 /* ---- compute y component of canonical drift vector field ---- */
 
 /* index [i,j] refers to intergrid location [i,j+1/2] */
-    
+       d2[i][j] = (d2[i][j] + d2[i][j+1])/(2*hy);
+
 /* SUPPLEMENT CODE */
+     }
 
 
 /* ---- modification at the shadow boundaries between i=128 and i=129 ---- */
 
 /* SUPPLEMENT CODE */
 
+for (i=128; i<=129; i++)
+ for (j=0; j<=ny+1; j++)
+ {
+    d1[i][j] = 0;
+    d2[i][j] = 0;
+ }
+ 
 return;
 
 }  /* canonical_drift_vectors */
