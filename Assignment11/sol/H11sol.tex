@@ -12,6 +12,7 @@
 \usepackage[plain]{algorithm}
 \usepackage{algpseudocode}
 \usepackage{changepage}
+\usepackage{parskip}
 
 \usetikzlibrary{automata,positioning}
 
@@ -142,6 +143,9 @@
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
 
+% Declare stat function
+\DeclareMathOperator*{\stat}{stat}
+
 % Alias for the Solution section header
 \newcommand{\solution}{\textbf{\large Solution}}
 
@@ -205,6 +209,59 @@
     \vspace*{-1.9em}
     \begin{adjustwidth}{2.5em}{0pt}
 
+    \end{adjustwidth}
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{Slope Transform and Paraboloids}
+    Let $p(\bm{x})$ be a paraboloid of the form 
+    \[
+        p(\bm{x}) = -\frac{\bm{x}^\top\bm{x}}{4t} \text{, \quad for $\bm{x} \in \mathbb{R}^n, t > 0$}
+    \]
+
+    \subsection*{(a)}
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+    For $\bm{v} \in \mathbb{R}^n$, the Slope transform of $p$ is given by
+    \[
+        S[p](\bm{v}) = \stat\limits_{\bm{x} \in \mathbb{R}^n}{(p(\bm{x}) - \bm{v}^\top \bm{x})} = \left\lbrace p(\bm{x}) - \bm{v}^\top \bm{x} \, | \, \nabla p(\bm{x}) = \bm{v} \right\rbrace
+    \] 
+    The condition $\nabla p(\bm{x}) = \bm{v}$ entails the following:
+    \[
+        \nabla p(\bm{x}) = -\frac{\bm{x}}{2t} = \bm{v} \rightarrow \bm{x} = -2t\bm{v}
+    \]
+    Therefore, the set of $p(\bm{x}) - \bm{v}^\top \bm{x}$ would be given by
+    \[
+        p(\bm{x}) - \bm{v}^\top \bm{x} = -\frac{(-2t\bm{v})^\top (-2t\bm{v})}{4t} - \bm{v}^\top (-2t\bm{v}) = -t\bm{v}^\top\bm{v} + 2t\bm{v}^\top\bm{v} = t\bm{v}^\top\bm{v} 
+    \]
+    Which is a paraboloid in $\bm{v}$-space scaled by $t$.
+    \end{adjustwidth}
+
+    \subsection*{(b)}
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+    In (max, +)-algebra, the following operations of standard algebra (left) are defined as follows:
+    \begin{equation}\label{first}
+        x \oplus y = \max\{x, y\},
+    \end{equation}
+    \begin{equation}\label{second}
+        x \otimes y = x + y.
+    \end{equation}
+    On the other hand, for a 2-D function $p(x, y)$ to be separable in standard algebra, the following condition must be respected: 
+    \begin{equation}\label{third}
+        p(x, y) = m(x) \otimes n(y)
+    \end{equation}
+    Where $m$ is only a function of $x$ and $n$ is only a function of $y$.
+    
+    In (max, +)-algebra, according to \eqref{first}, the condition \eqref{third} would be given by:
+    \[
+        p(x, y) = m(x) + n(y)
+    \]
+    Naturally, in 2-D, $p(x, y)$ is given by:
+    \[
+        p(x, y) = -\frac{x^2}{4t} - \frac{y^2}{4t} = \left(-\frac{x^2}{4t}\right) + \left(-\frac{y^2}{4t}\right)
+    \]
+    If we pick a function $m(x) = -\frac{x^2}{4t}$, it is easy to see that $p(x, y) = m(x) + m(y)$, thus the separability property holds in (max, +)-algebra.
     \end{adjustwidth}
 
 \end{homeworkProblem}
