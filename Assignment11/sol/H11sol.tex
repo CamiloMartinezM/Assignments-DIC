@@ -170,14 +170,31 @@
     \[
         \bm{A} = a^2 \bm{v_1}\bm{v_1}^\top + b^2 \bm{v_2}\bm{v_2}^\top = \bm{R} \bm{\Lambda} \bm{R}^\top
     \]
+    The entries of $\bm{A}$ after performing the mathematical operations are given by:
+    \[
+        \bm{A} = \begin{pmatrix}
+            a^2 v_{1,1}^2 + b^2 v_{1,2}^2 && v_{1,1}v_{1,2}(a^2-b^2) \\ 
+            v_{1,1}v_{1,2}(a^2-b^2) && a^2 v_{1,2}^2 + b^2 v_{1,1}^2
+        \end{pmatrix}
+    \]
+    And the determinant is given by:
+    \[
+        \text{det}(A) = a^2 b^2 (v_{1,1}^2 + v_{1,2}^2)
+    \]
     \end{adjustwidth}
-
     \subsection*{(b)}
     \vspace*{-1.9em}
     \begin{adjustwidth}{2.5em}{0pt}
     Based on the previous derivation of $\bm{A}$ and that by definition $\bm{R}$ is an orthogonal matrix, i.e $\bm{R}^\top = \bm{R}^{-1}$. Thus,
     \[
         \bm{A}^{-1} = (\bm{R} \bm{\Lambda} \bm{R}^\top)^{-1} = (\bm{R}^\top)^{-1} \bm{\Lambda}^{-1} \bm{R}^{-1} = \bm{R} \bm{\Lambda}^{-1} \bm{R}^\top
+    \]
+    On the other hand, the entries of $\bm{A}^{-1}$ would be given by:
+    \[
+        \bm{A}^{-1} = \frac{1}{\text{det}(A)} \, \text{adj}(A) = \frac{1}{a^2 b^2 (v_{1,1}^2 + v_{1,2}^2)}\begin{pmatrix}
+            a^2 v_{1,2}^2 + b^2 v_{1,1}^2  && v_{1,1}v_{1,2}(b^2 - a^2) \\ 
+            v_{1,1}v_{1,2}(b^2 - a^2) && a^2 v_{1,1}^2 + b^2 v_{1,2}^2
+        \end{pmatrix}
     \]
     \end{adjustwidth}
 
@@ -193,7 +210,7 @@
             \frac{1}{a^2} & 0 \\
             0 & \frac{1}{b^2}
         \end{pmatrix} (a \cos{(t)}, b \sin{(t)})^\top \\ 
-        \intertext{Since the inverse of any diagonal matrix such as $\bm{\Lambda}$ is $1/\lambda_{ii}$ and $0$ otherwise}
+        \intertext{Since the inverse of any diagonal matrix such as $\bm{\Lambda}$ is $1/\lambda_{ii}$ and $0$ when $i \neq j$}
         &= \left(\frac{\cos{(t)}}{a}, \frac{\sin{(t)}}{b}\right) (a \cos{(t)}, b \sin{(t)})^\top \\
         &= \sin^{2}(t) + \cos^{2}(t) = 1 \text{, \quad which is the Pythagorean trigonometric identity}
     \end{align*}
