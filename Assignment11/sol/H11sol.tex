@@ -155,6 +155,58 @@
 
 \maketitle
 
-\begin{homeworkProblem}{}
+\begin{homeworkProblem}{Ellipses as Structuring Elements}
+
+    With $\bm{A} \in \mathbb{R}^{2 \times 2}$ being a symmetric matrix with normalised eigenvectors $\bm{v_1} := (v_{1,1}, v_{1,2})^\top$ and $\bm{v_2} := (-v_{1,2}, v_{1,1})^\top$ in direction of the half-axes $a$ and $b$ of an ellipse, and its eigenvalues given by $\lambda_1 = a^2$ and $\lambda_2 = b^2$, respectively.
+
+    \subsection*{(a)}
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+    Let $\bm{R} := (\bm{v_1} | \bm{v_2})$, then $\bm{A}$ can be eigendecomposed as follows:
+    \[
+        \bm{A} = a^2 \bm{v_1}\bm{v_1}^\top + b^2 \bm{v_2}\bm{v_2}^\top = \bm{R} \bm{\Lambda} \bm{R}^\top
+    \]
+    \end{adjustwidth}
+
+    \subsection*{(b)}
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+    Based on the previous derivation of $\bm{A}$ and that by definition $\bm{R}$ is an orthogonal matrix, i.e $\bm{R}^\top = \bm{R}^{-1}$. Thus,
+    \[
+        \bm{A}^{-1} = (\bm{R} \bm{\Lambda} \bm{R}^\top)^{-1} = (\bm{R}^\top)^{-1} \bm{\Lambda}^{-1} \bm{R}^{-1} = \bm{R} \bm{\Lambda}^{-1} \bm{R}^\top
+    \]
+    \end{adjustwidth}
+
+    \subsection*{(c)}
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+    Let $\bm{x}(t) = (x_1(t), x_2(t))^\top = \bm{R} \, (a \cos{(t)}, b \sin{(t)})^\top$, then the following derivation follows:
+    \begin{align*}
+        \bm{x}^\top \bm{A}^{-1} \bm{x} &= (\bm{R} \, (a \cos{(t)}, b \sin{(t)})^\top)^\top \bm{R} \bm{\Lambda}^{-1} \bm{R}^\top (\bm{R} \, (a \cos{(t)}, b \sin{(t)})^\top) \\ 
+        &= (a \cos{(t)}, b \sin{(t)}) \bm{R}^\top \bm{R} \bm{\Lambda}^{-1} \bm{R}^\top \bm{R} \, (a \cos{(t)}, b \sin{(t)})^\top \text{, \quad since $(ab^\top)^\top = b a^\top$} \\
+        &= (a \cos{(t)}, b \sin{(t)}) \bm{\Lambda}^{-1} (a \cos{(t)}, b \sin{(t)})^\top \text{, \quad since $\bm{R}^\top = \bm{R}^{-1} \rightarrow \bm{R}^\top \bm{R} = \bm{I}$} \\ 
+        &= (a \cos{(t)}, b \sin{(t)}) \begin{pmatrix}
+            \frac{1}{a^2} & 0 \\
+            0 & \frac{1}{b^2}
+        \end{pmatrix} (a \cos{(t)}, b \sin{(t)})^\top \\ 
+        \intertext{Since the inverse of any diagonal matrix such as $\bm{\Lambda}$ is $1/\lambda_{ii}$ and $0$ otherwise}
+        &= \left(\frac{\cos{(t)}}{a}, \frac{\sin{(t)}}{b}\right) (a \cos{(t)}, b \sin{(t)})^\top \\
+        &= \sin^{2}(t) + \cos^{2}(t) = 1 \text{, \quad which is the Pythagorean trigonometric identity}
+    \end{align*}
+    \end{adjustwidth}
+
+    \subsection*{(d)}
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+
+    \end{adjustwidth}
+
+    \subsection*{(e)}
+    \vspace*{-1.9em}
+    \begin{adjustwidth}{2.5em}{0pt}
+
+    \end{adjustwidth}
+
+\end{homeworkProblem}
 
 \end{document}
