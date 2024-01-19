@@ -622,7 +622,8 @@ for (i=1; i<=nx; i++)
 /*
   SUPPLEMENT YOUR CODE HERE
 */
-
+erosion_2d (5, nx, ny, hx, hy, u);
+    
 
 /* ---- analyse processed image ---- */
 

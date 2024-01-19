@@ -555,6 +555,9 @@ for (i=1; i<=nx; i++)
 /*
      SUPPLEMENT YOUR CODE HERE
 */
+     u[i][j] = f[i][j] - tau * sqrt ( sqr (max3 (0.0, fxm, -fxp))
+                                    + sqr (max3 (0.0, fym, -fyp)) );
+
      }
 
 
