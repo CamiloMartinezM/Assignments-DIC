@@ -12,6 +12,7 @@
 \usepackage[plain]{algorithm}
 \usepackage{algpseudocode}
 \usepackage{changepage}
+\usepackage{mathtools}
 \usepackage{parskip}
 
 \usetikzlibrary{automata,positioning}
@@ -220,6 +221,40 @@
     \vspace*{-1.9em}
     \begin{adjustwidth}{2.5em}{0pt}
 
+    We can set up the following constrained optimization problem with a lagrangian multiplier $\lambda$ like so:
+    \begin{equation}\label{H11.1d.first}
+        \mathcal{L}(x, \lambda) = \bm{x}^\top \bm{n} + \lambda (1 - \bm{x}
+        ^\top \bm{A}^{-1} \bm{x})
+    \end{equation}
+    Where $\bm{x}^\top \bm{n}$ is our optimization objective and $\bm{x}
+    ^\top \bm{A}^{-1} \bm{x} = 1 \rightarrow 1 - \bm{x}
+    ^\top \bm{A}^{-1} \bm{x} = 0$ is the constraint.
+
+    Then, we consider $\nabla_x \mathcal{L}(x, \lambda)$ and set it to $0$:
+    \begin{equation}\label{H11.1d.second}
+        \nabla_x \mathcal{L}(x, \lambda) = \bm{n} - 2\lambda \bm{A}^{-1}\bm{x} = 0 \rightarrow \bm{x} = \frac{1}{2\lambda}\bm{A}\bm{n}
+    \end{equation}
+    We replace \eqref{H11.1d.second} back on our original constraint:
+    \begin{equation}\label{H11.1d.third}
+        \begin{split}
+            1 &= \bm{x}^\top \bm{A}^{-1} \bm{x} \\ 
+            &= \left(\frac{1}{2\lambda}\bm{A}\bm{n}\right)^\top \bm{A}^{-1} \left(\frac{1}{2\lambda}\bm{A}\bm{n}\right) \\
+            &= \frac{1}{4\lambda^2}\bm{n}^\top \bm{A}\bm{A}^{-1}\bm{A}\bm{n} \\
+            &= \frac{1}{4\lambda^2}\bm{n}^\top \bm{A}\bm{n}
+        \end{split}
+    \end{equation}
+    From \eqref{H11.1d.third}, we can derive an expression for $\lambda$:
+    \begin{equation}\label{H11.1d.fourth}
+        \lambda = \frac{1}{2}\sqrt{\bm{n}^\top \bm{A} \bm{n}}
+    \end{equation}
+    We replace \eqref{H11.1d.fourth} back on \eqref{H11.1d.second}. Thus,
+    \begin{equation}\label{H11.1d.fifth}
+        \bm{x} = \frac{1}{2\lambda}\bm{A}\bm{n} = \frac{1}{2 \left(\frac{1}{2}\sqrt{\bm{n}^\top \bm{A} \bm{n}}\right)}\bm{A}\bm{n} = \frac{\bm{A}\bm{n}}{\sqrt{\bm{n}^\top \bm{A} \bm{n}}}
+    \end{equation}
+    Finally, we consider our original optimization objective function and use the result on \eqref{H11.1d.fifth} like so:
+    \[
+        \beta = \adjustlimits\sup_{\bm{x} \in B}(\bm{x}^\top \bm{n}) = \left(\frac{\bm{A}\bm{n}}{\sqrt{\bm{n}^\top \bm{A} \bm{n}}}\right)^\top \bm{n} = \frac{\bm{n}^\top \bm{A} \bm{n}}{\sqrt{\bm{n}^\top \bm{A} \bm{n}}} = \sqrt{\bm{n}^\top \bm{A} \bm{n}}
+    \]
     \end{adjustwidth}
 
     \subsection*{(e)}
