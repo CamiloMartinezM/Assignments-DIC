@@ -260,7 +260,11 @@
     \subsection*{(e)}
     \vspace*{-1.9em}
     \begin{adjustwidth}{2.5em}{0pt}
-
+        \begin{align*}
+            \partial_t u    &=  -(\nabla u^T) \partial_t c\\
+                            &=  -(\nabla u^T) \sqrt[]{\frac{\nabla u^T}{|\nabla u|}A\frac{\nabla u^T}{|\nabla u|}}\,(-\frac{\nabla u^T}{|\nabla u|})\\
+                            &=  \sqrt[]{\frac{\nabla u^T}{|\nabla u|}A\frac{\nabla u^T}{|\nabla u|}}\,|\nabla u|\\
+        \end{align*}
     \end{adjustwidth}
 
 \end{homeworkProblem}
