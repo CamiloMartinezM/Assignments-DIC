@@ -188,4 +188,49 @@
     \end{align*}
 \end{homeworkProblem}
 
+\begin{homeworkProblem}{Affine Invariant Arc-length}
+    Consider matrix $A$ and vector $b$:
+    \[
+        A := \begin{pmatrix}
+            a_{11} & a_{12}\\
+            a_{21} & a_{22}\\
+        \end{pmatrix}
+        \qquad
+        b := \begin{pmatrix}
+            b_1\\
+            b_2
+        \end{pmatrix}
+    \]
+    such that $\mathrm{det}A = 1$.\\
+
+    After affine transform ($c' = Ac + b$) we have 
+    \[
+        c'(p) = \begin{pmatrix}
+            a_{11}x(p) + a_{12}y(p) + b_1\\
+            a_{21}x(p) + a_{22}y(p) + b_2
+        \end{pmatrix}
+    \]
+    We calculate the derivatives of $c$ after the transformation, i.e. $c'_p(p)$ and $c'_{pp}(p)$
+    \[
+        c'_p(p) = \begin{pmatrix}
+            a_{11}x_p(p) + a_{12}y_p(p)\\
+            a_{21}x_p(p) + a_{22}y_p(p)
+        \end{pmatrix}
+    \]
+    One can observe that $c'_p(p) = Ac_p(p)$.
+    Similarily we have $c'_{pp}(p) = Ac_{pp}(p)$.\\
+
+    Now the new arc length function can be written as:
+    \begin{align*}
+        s'(p)   &= \int_{0}^{p} (\mathrm{det}(c'_p(p),c'_{pp}(p)))^\frac{1}{3}\,dp\\
+                &= \int_{0}^{p} (\mathrm{det}(Ac_p(p),Ac_{pp}(p)))^\frac{1}{3}\,dp\\
+                \intertext{Considering $(c_p(p),c_{pp}(p))$ is a matrix, $(Ac_p(p),Ac_{pp}(p))$ is the same as $A(c_p(p),c_{pp}(p))$}\\
+                &= \int_{0}^{p} (\mathrm{det}(A(c_p(p),c_{pp}(p))))^\frac{1}{3}\,dp\\
+                &= \int_{0}^{p} (\mathrm{det}(A)\mathrm{det}(c_p(p),c_{pp}(p)))^\frac{1}{3}\,dp\\
+                &= \int_{0}^{p} (1\cdot\mathrm{det}(c_p(p),c_{pp}(p)))^\frac{1}{3}\,dp\\
+                &= \int_{0}^{p} (\mathrm{det}(c_p(p),c_{pp}(p)))^\frac{1}{3}\,dp\\
+    \end{align*}
+    which is the same as the one before the transformation
+\end{homeworkProblem}
+
 \end{document}
