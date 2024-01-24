@@ -1,0 +1,191 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath,siunitx}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{changepage}
+
+\usetikzlibrary{automata,positioning}
+
+% 
+% Renewal of commands
+%
+\makeatletter
+\renewenvironment{cases}[1][l]{\matrix@check\cases\env@cases{#1}}{\endarray\right.}
+\def\env@cases#1{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace\def\arraystretch{1.2}%
+  \array{@{}#1@{\quad}l@{}}}
+\makeatother
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkTeam}
+\chead{\hmwkClass: \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\setsep}{,    \ }
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1} (continued)}{Problem \hmwkNumber.\arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \hmwkNumber.\arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[2][-2]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \hmwkNumber.\arabic{homeworkProblemCounter} #2}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+\newcommand{\hmwkNumber}{H12}
+\newcommand{\hmwkTitle}{Homework Assignment \hmwkNumber}
+\newcommand{\hmwkClass}{DIC}
+\newcommand{\hmwkTeam}{Team \#11}
+\newcommand{\hmwkAuthorName}{\hmwkTeam: \\ Camilo Martínez 7057573, cama00005@stud.uni-saarland.de \\ Honglu Ma 7055053, homa00001@stud.uni-saarland.de \\ Maria Sibi 7058469, mama00047@stud.uni-saarland.de}
+
+%
+% Title Page
+%
+
+\title{
+    % \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+}
+
+\author{\hmwkAuthorName}
+\date \today
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Define argmax and argmin
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\begin{homeworkProblem}{Curvature-Based Morphology}
+    We have $\xi = \frac{1}{|\nabla u|}(-u_y, u_x)^\top$, 
+    plug it in the formula we got in C12.1a:
+    \begin{align*}
+        \partial_{\xi\xi}u  &=  \xi^\top \mathrm{Hess}(u) \xi\\
+                            &=  \frac{1}{|\nabla u|}(-u_y, u_x)\begin{pmatrix}
+                                u_{xx}  &   u_{xy}\\
+                                u_{yx}  &   u_{yy}
+                            \end{pmatrix}\frac{1}{|\nabla u|}(-u_y, u_x)^\top\\
+                            &=  \frac{1}{|\nabla u|^2}(-u_yu_{xx}+u_xu_{yx}, -u_yu_{xy}+u_xu_{yy})(-u_y, u_x)^\top\\
+                            &=  \frac{1}{|\nabla u|^2}(u_y^2u_{xx}-u_yu_xu_{yx} + -u_xu_yu_{xy}+u_x^2u_{yy})\\
+                            &=  \frac{u_y^2u_{xx} - 2u_xu_yu_{xy} + u_x^2u_{yy}}{u_x^2 + u_y^2}\\
+    \end{align*}
+    and from C12.1b we know that laplacian of u can be expressed by sum of second derivative of u in any two orthogonal normal vector direction,
+    in the lecture we have $\Delta u = \partial_{\xi\xi}u + \partial_{\eta\eta}u$ where $\eta = \frac{1}{|\nabla u|}\nabla u$. We get:
+    \begin{align*}
+        \partial_{\xi\xi}u  &=  \Delta u - \partial_{\eta\eta}u\\
+                            &=  \Delta u - \eta^\top\mathrm{Hess}(u)\eta\\
+                            &=  \Delta u - \frac{1}{|\nabla u|}\nabla u^\top\mathrm{Hess}(u)\frac{1}{|\nabla u|}\nabla u\\
+                            &=  \Delta u - \frac{1}{|\nabla u|^2}\nabla u^\top\mathrm{Hess}(u)\nabla u\\
+    \end{align*}
+    and for the third term we have:
+    \begin{align*}
+        |\nabla u|\mathrm{div}(\frac{\nabla u}{|\nabla u|}) &=  |\nabla u|(\partial_x\frac{u_x}{|\nabla u|} + \partial_y\frac{u_y}{|\nabla u|})\\
+                                                            &=  |\nabla u|(\frac{|\nabla u|u_{xx} - u_x\partial_x|\nabla u|}{|\nabla u|^2} + \frac{|\nabla u|u_{yy} - u_y\partial_y|\nabla u|}{|\nabla u|^2})\\
+                                                            &=  |\nabla u|(\frac{|\nabla u|u_{xx} - u_x\frac{u_xu_{xx} + u_yu_{yx}}{|\nabla u|} + |\nabla u|u_{yy} - u_y\frac{u_yu_{yy} + u_xu_{xy}}{|\nabla u|}}{|\nabla u|^2})\\
+                                                            &=  \frac{|\nabla u|^2u_{xx} - u_x(u_xu_{xx} + u_yu_{yx}) + |\nabla u|^2u_{yy} - u_y(u_yu_{yy} + u_xu_{xy})}{|\nabla u|^2}\\
+                                                            &=  \frac{(u_x^2+u_y^2)u_{xx} - u_x^2u_{xx} - u_xu_yu_{yx} + (u_x^2+u_y^2)u_{yy} - u_y^2u_{yy} - u_xu_yu_{xy}}{|\nabla u|^2}\\
+                                                            &=  \frac{u_x^2u_{xx}+u_y^2u_{xx} - u_x^2u_{xx} - u_xu_yu_{yx} + u_x^2u_{yy}+u_y^2u_{yy} - u_y^2u_{yy} - u_xu_yu_{xy}}{|\nabla u|^2}\\
+                                                            &=  \frac{u_y^2u_{xx} - 2u_xu_yu_{yx} + u_x^2u_{yy}}{u_x^2+u_y^2}\\
+    \end{align*}
+\end{homeworkProblem}
+
+\end{document}
