@@ -589,6 +589,7 @@ for (i=1; i<=nx; i++)
 /*
      SUPPLEMENT YOUR CODE HERE
 */
+      u[i][j] = ((a - delta) * f00 + (delta + b) * f11 + (c - delta) * f22 + (delta - b) * f33) * tau + f[i][j];
      }
 
 
