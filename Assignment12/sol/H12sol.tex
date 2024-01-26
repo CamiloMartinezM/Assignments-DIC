@@ -242,4 +242,59 @@
     This does not contradict to the theory that topologically connected objects remain connected under MCM (Lecture 23, Slide 10)
 \end{homeworkProblem}
 
+\begin{homeworkProblem}{Corner Detection of Alvarez/Morales}
+    \subsection*{(a)}
+    Result for \textbf{corner01.pgm}:
+    \begin{verbatim}
+        filtered image
+        minimum:             -9.79 
+        maximum:            264.60 
+        mean:               128.48 
+        standard dev.:      126.13 
+        corner location:    (129.00, 64.44)
+        evolution vector:   (-0.00, 0.98)
+        velocity:             0.98
+        corner angle:        92.78
+    \end{verbatim}
+    Result for \textbf{corner02.pgm}:
+    \begin{verbatim}
+        filtered image
+        minimum:             -0.04 
+        maximum:            263.03 
+        mean:               204.53 
+        standard dev.:       99.08 
+        corner location:    (129.00, 64.39)
+        evolution vector:   (-0.00, 1.38)
+        velocity:             1.38
+        corner angle:        55.26
+    \end{verbatim}
+    Corner's location does not change throughout the evolution.
+    The error of the angle prediction increases as the iteration number increases.
+    \subsection*{(b)}
+    Result for \textbf{corner01\_50.pgm}:
+    \begin{verbatim}
+        filtered image
+        minimum:             11.70 
+        maximum:            244.42 
+        mean:               128.96 
+        standard dev.:      111.79 
+        corner location:    (129.00, 64.47)
+        evolution vector:   (-0.00, 0.98)
+        velocity:             0.98
+        corner angle:        92.69
+    \end{verbatim}
+    Result for \textbf{corner02\_50.pgm}:
+    \begin{verbatim}
+        filtered image
+        minimum:             12.13 
+        maximum:            244.42 
+        mean:               196.07 
+        standard dev.:       87.75 
+        corner location:    (129.24, 62.44)
+        evolution vector:   (-0.01, 1.45)
+        velocity:             1.45
+        corner angle:        50.86
+    \end{verbatim}
+    It is quite robust under noise. Corner location and corner angle does vary but not dramatrically.
+\end{homeworkProblem}
 \end{document}
