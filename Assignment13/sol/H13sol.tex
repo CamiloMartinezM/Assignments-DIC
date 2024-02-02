@@ -190,7 +190,16 @@
     which resembles a shock filter.
 \end{homeworkProblem}
 \begin{homeworkProblem}{Minmod Scheme for SILD}
-    
+    \subsection*{(a)}
+    \[
+        \frac{du_i}{dt} = -\frac{1}{h} (\mathrm{MM}(u^x_{i+1}, u^x_i, u^x_{i-1}) - \mathrm{MM}(u^x_{i}, u^x_{i-1}, u^x_{i-2}))
+    \]
+    \subsection*{(b)}
+    It will make the derivative 0 at signal extrema (i.e. no change for $u$).
+
+    \subsection*{(c)}
+    Monotonically increasing concave? Isn't that always increasing and there is no extrema?
+    Why do we still need Minmod?
 \end{homeworkProblem}
 
 \end{document}
