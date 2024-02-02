@@ -155,4 +155,42 @@
 
 \maketitle
 
+\begin{homeworkProblem}{Self-snakes}
+    \subsection*{(a)}
+    \begin{align*}
+        \partial_tu &= |\nabla u|\mathrm{div}\bigl(g(|\nabla u|^2)\frac{\nabla u}{|\nabla u|}\bigr)\\
+                    &= |\nabla u|\bigl((g(|\nabla u|^2)\frac{u_x}{|\nabla u|})_x + (g(|\nabla u|^2)\frac{u_y}{|\nabla u|})_y\bigr)\\
+                    &= |\nabla u|\bigl(g(|\nabla u|^2)(\frac{u_x}{|\nabla u|})_x + \frac{u_x}{|\nabla u|}(g(|\nabla u|^2))_x + g(|\nabla u|^2)(\frac{u_y}{|\nabla u|})_y + \frac{u_y}{|\nabla u|}(g(|\nabla u|^2))_y\bigr)\\
+                    &= |\nabla u|\bigl(g(|\nabla u|^2)\mathrm{div}(\frac{\nabla u}{|\nabla u|}) + \frac{u_x}{|\nabla u|}(g(|\nabla u|^2))_x + \frac{u_y}{|\nabla u|}(g(|\nabla u|^2))_y\bigr)\\
+                    &= |\nabla u|\bigl(g(|\nabla u|^2)\mathrm{div}(\frac{\nabla u}{|\nabla u|}) + \frac{u_x\partial_x g(|\nabla u|^2) + u_y\partial_y g(|\nabla u|^2)}{|\nabla u|}\bigr)\\
+                    &= |\nabla u|\bigl(g(|\nabla u|^2)\mathrm{div}(\frac{\nabla u}{|\nabla u|})\bigr) + u_x\partial_x g(|\nabla u|^2) + u_y\partial_y g(|\nabla u|^2)\\
+                    &= g(|\nabla u|^2)|\nabla u|\mathrm{div}(\frac{\nabla u}{|\nabla u|}) + u_x\partial_x g(|\nabla u|^2) + u_y\partial_y g(|\nabla u|^2)\\
+                    &= g(|\nabla u|^2)u_{\xi\xi} + u_x\partial_x g(|\nabla u|^2) + u_y\partial_y g(|\nabla u|^2)\\
+                    &= g(|\nabla u|^2)u_{\xi\xi} + u_x \cdot g'(|\nabla u|^2)(2u_xu_{xx} + 2u_yu_{yx}) + u_y \cdot g'(|\nabla u|^2)(2u_xu_{xy} + 2u_yu_{yy})\\
+                    &= g(|\nabla u|^2)u_{\xi\xi} + 2g'(|\nabla u|^2)(u_x^2u_{xx} + u_xu_yu_{yx}) + 2g'(|\nabla u|^2)(u_yu_xu_{xy} + u_y^2u_{yy})\\
+                    &= g(|\nabla u|^2)u_{\xi\xi} + 2g'(|\nabla u|^2)(u_x^2u_{xx} + 2u_xu_yu_{xy} + u_y^2u_{yy})\\
+                    &= g(|\nabla u|^2)u_{\xi\xi} + 2g'(|\nabla u|^2)\nabla u^\top\mathrm{Hess}(u)\nabla u\\
+                    &= g(|\nabla u|^2)u_{\xi\xi} + 2g'(|\nabla u|^2)|\nabla u|^2\frac{\nabla u^\top}{|\nabla u|}\mathrm{Hess}(u)\frac{\nabla u}{|\nabla u|}\\
+                    &= g(|\nabla u|^2)u_{\xi\xi} + 2g'(|\nabla u|^2)|\nabla u|^2\eta^\top\mathrm{Hess}(u)\eta\\
+                    &= g(|\nabla u|^2)u_{\xi\xi} + 2g'(|\nabla u|^2)|\nabla u|^2u_{\eta\eta}\\
+    \end{align*}
+    \subsection*{(b)}
+    The sign in front of $u_{\xi\xi}$ is positive because function $g$ is always positive and
+    the sign in front of $u_{\eta\eta}$ is negative because function $g$ is decreasing thus $g'$ is negative.
+
+    The first term is MCM slowed down with a factor of $g$, it is of forward parabolic type.
+
+    The basic property still depends on the contrast parameter $\lambda$ in $g$ because it still exists in $g'$.
+    
+    We can rewrite the last term in (a) as:
+    \begin{align*}
+        &2g'(|\nabla u|^2)|\nabla u|^2u_{\eta\eta}\\
+       =&\underbrace{2g'(|\nabla u|^2)|\nabla u||u_{\eta\eta}|}_{\le 0}\mathrm{sgn}(u_{\eta\eta})|\nabla u|\\
+    \end{align*}
+    which resembles a shock filter.
+\end{homeworkProblem}
+\begin{homeworkProblem}{Minmod Scheme for SILD}
+    
+\end{homeworkProblem}
+
 \end{document}
