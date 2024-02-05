@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 #VsCode Temp Folder
-*/vscode/
+*/.vscode/
 
 # LaTex Build files
 *.synctex.gz
