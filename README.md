@@ -1,0 +1,3 @@
+# Differential Equations in Image Processing and Computer Vision (DIC)
+
+This repository contains implementations of various assignments related to the [Differential Equations in Image Processing and Computer Vision](https://www.mia.uni-saarland.de/Teaching/dic23.shtml) course lectured by [Prof. Dr. Peter Pascal]([https://www.lsv.uni-saarland.de/people/dietrich-klakow/](https://www.mia.uni-saarland.de/peter/index.shtml)) at [Saarland University](https://www.uni-saarland.de/) during the Winter Semester 2023/24. *All course materials and assignments outlines belong to the course's instructors*. *No guarantee is given to the correctness of the solution of the assignments, or any code implementation in this entire repository.*
